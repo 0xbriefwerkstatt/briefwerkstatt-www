@@ -69,7 +69,7 @@ export function Problem() {
             {`Deshalb machen wir es analog.`}
           </h3>
           <p className="text-lg sm:text-xl text-muted-foreground max-w-3xl mx-auto">
-            {`Ein echter Brief landet nicht im Spam-Filter, sondern auf dem Schreibtisch. Er wird geöffnet, gelesen und bleibt liegen – und ist dank QR-Code trotzdem so messbar wie eine digitale Kampagne.`}
+            {`Ein echter Brief landet nicht im Spam-Filter, sondern auf dem Schreibtisch. Er wird geöffnet, gelesen und bleibt liegen und ist dank QR-Code trotzdem so messbar wie eine digitale Kampagne.`}
           </p>
         </div>
       </div>

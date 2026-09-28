@@ -42,7 +42,7 @@ const teams = [
       },
       {
         title: "ABM- & Direct-Mail-Kampagnen",
-        description: "Ausgewählte Zielaccounts mit personalisierten Briefen ansprechen – mit variablen Inhalten und individuellem QR-Code pro Empfänger.",
+        description: "Ausgewählte Zielaccounts mit personalisierten Briefen ansprechen, mit variablen Inhalten und individuellem QR-Code pro Empfänger.",
       },
       {
         title: "Anlässe & Kundenbindung",
@@ -57,7 +57,7 @@ const teams = [
     useCases: [
       {
         title: "Onboarding & Welcome",
-        description: "Neukunden erhalten automatisch einen persönlichen Willkommensbrief – ausgelöst direkt aus Ihrem CRM oder Shop.",
+        description: "Neukunden erhalten automatisch einen persönlichen Willkommensbrief, ausgelöst direkt aus Ihrem CRM oder Shop.",
       },
       {
         title: "Reaktivierung & Win-Back",
@@ -65,7 +65,7 @@ const teams = [
       },
       {
         title: "Churn-Prävention & Upsell",
-        description: "Trigger bei sinkender Nutzung oder vor der Vertragsverlängerung – der Brief kommt genau im richtigen Moment.",
+        description: "Trigger bei sinkender Nutzung oder vor der Vertragsverlängerung: Der Brief kommt genau im richtigen Moment.",
       },
     ],
   },
@@ -73,8 +73,8 @@ const teams = [
 
 const examples = [
   { src: reaktivierungPostcard, label: "Reaktivierungs-Karte" },
-  { src: postcardFrontImage, label: "Postkarte – Vorderseite" },
-  { src: postcardBackImage, label: "Postkarte – Rückseite" },
+  { src: postcardFrontImage, label: "Postkarte, Vorderseite" },
+  { src: postcardBackImage, label: "Postkarte, Rückseite" },
 ];
 
 export function Products() {
@@ -153,28 +153,6 @@ export function Products() {
             </div>
           </div>
 
-          {/* Lightbox Modal */}
-          {lightboxImage && (
-            <div
-              className="fixed inset-0 z-50 bg-black/90 flex items-center justify-center p-4 cursor-zoom-out"
-              onClick={() => setLightboxImage(null)}
-            >
-              <div className="relative max-w-5xl w-full max-h-[90vh] flex items-center justify-center">
-                <img
-                  src={img(lightboxImage, 2048)}
-                  alt="Vergrößerung"
-                  className="max-w-full max-h-[90vh] object-contain rounded-lg shadow-2xl"
-                />
-                <button
-                  className="absolute top-4 right-4 w-10 h-10 bg-white/10 hover:bg-white/20 rounded-full flex items-center justify-center text-white transition-colors"
-                  onClick={() => setLightboxImage(null)}
-                >
-                  <span className="text-2xl">&times;</span>
-                </button>
-              </div>
-            </div>
-          )}
-
           {/* CTA Section - Musterpaket - INSIDE Products Section */}
           <div className="container mx-auto max-w-6xl px-4 mt-16 lg:mt-20">
             <div className="bg-gradient-to-r from-primary/10 to-accent/10 rounded-2xl p-6 sm:p-8 md:p-12 text-center border">
@@ -193,6 +171,28 @@ export function Products() {
           </div>
         </div>
       </section>
+
+      {/* Lightbox Modal */}
+      {lightboxImage && (
+        <div
+          className="fixed inset-0 z-50 bg-black/90 flex items-center justify-center p-4 cursor-zoom-out"
+          onClick={() => setLightboxImage(null)}
+        >
+          <div className="relative max-w-5xl w-full max-h-[90vh] flex items-center justify-center">
+            <img
+              src={img(lightboxImage, 2048)}
+              alt="Vergrößerung"
+              className="max-w-full max-h-[90vh] object-contain rounded-lg shadow-2xl"
+            />
+            <button
+              className="absolute top-4 right-4 w-10 h-10 bg-white/10 hover:bg-white/20 rounded-full flex items-center justify-center text-white transition-colors"
+              onClick={() => setLightboxImage(null)}
+            >
+              <span className="text-2xl">&times;</span>
+            </button>
+          </div>
+        </div>
+      )}
 
       {/* Sample Package Modal */}
       <SamplePackageModal open={isModalOpen} onOpenChange={setIsModalOpen} />

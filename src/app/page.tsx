@@ -6,7 +6,6 @@ import { Products } from "@/components/Products";
 import { Features } from "@/components/Features";
 import { MiddleCTA } from "@/components/MiddleCTA";
 import { Process } from "@/components/Process";
-import { VideoSection } from "@/components/VideoSection";
 import { ServiceOptions } from "@/components/ServiceOptions";
 import { Testimonials } from "@/components/Testimonials";
 import { Pricing } from "@/components/Pricing";
@@ -24,7 +23,6 @@ export default function Home() {
         <Products />
         <ServiceOptions />
         <Process />
-        <VideoSection />
         <Features />
         <MiddleCTA />
         <Testimonials />

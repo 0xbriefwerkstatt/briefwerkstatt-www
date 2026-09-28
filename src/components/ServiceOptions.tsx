@@ -10,7 +10,7 @@ const options = [
     points: [
       { title: "CSV / Excel hochladen", text: "Ihre bestehende Empfängerliste, keine Umformatierung nötig" },
       { title: "Text & Design wählen", text: "Vorlage nutzen oder eigenen Text mit Variablen hinterlegen" },
-      { title: "Absenden – fertig", text: "Wir übernehmen Druck, Handschrift, Kuvertierung und Versand" },
+      { title: "Absenden, fertig", text: "Wir übernehmen Druck, Handschrift, Kuvertierung und Versand" },
     ],
     idealFor: "Messe-Follow-up, Event-Einladungen, Weihnachtskarten, Quartalsaktionen",
     highlighted: false,
@@ -22,7 +22,7 @@ const options = [
     subtitle: "Einmal einrichten, dauerhaft automatisiert",
     points: [
       { title: "Anbindung an Ihre Tools", text: "HubSpot, Salesforce, Pipedrive, Shopify, Zapier oder direkt per REST-API" },
-      { title: "Automatische Trigger", text: "Neuer Deal, Onboarding, Inaktivität, Jubiläum – der Brief geht von selbst raus" },
+      { title: "Automatische Trigger", text: "Neuer Deal, Onboarding, Inaktivität, Jubiläum: Der Brief geht von selbst raus" },
       { title: "Tracking zurück ins CRM", text: "QR-Scans landen als Aktivität beim Kontakt in Ihrem System" },
     ],
     idealFor: "Sales-Sequenzen, Onboarding, Win-Back, Lifecycle-Marketing",

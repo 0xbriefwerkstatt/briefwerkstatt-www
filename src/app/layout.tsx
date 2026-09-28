@@ -4,7 +4,7 @@ import { SpeedInsights } from "@vercel/speed-insights/next";
 import "./globals.css";
 
 export const metadata: Metadata = {
-  title: "Die Briefwerkstatt – Echte Briefe für Marketing, Sales & Growth",
+  title: "Die Briefwerkstatt: Echte Briefe für Marketing, Sales & Growth",
   description:
     "Handgeschriebene Briefe für Growth-, Sales- und Marketing-Teams: DSGVO-konform, skalierbar, per API oder CRM integriert und per QR-Code messbar. Auf Wunsch als Full-Service.",
 };
