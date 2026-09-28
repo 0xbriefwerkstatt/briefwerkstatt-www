@@ -12,7 +12,7 @@ export function Header() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   // Landingpages enthalten die Sektionen selbst, alle anderen Seiten verlinken auf die Startseite
   const pathname = usePathname();
-  const base = pathname === "/" || pathname === "/bits-pretzels" ? "" : "/";
+  const base = pathname === "/" || pathname === "/bits-and-pretzels" ? "" : "/";
 
   return (
     <>
@@ -58,12 +58,6 @@ export function Header() {
               className="px-3 py-2 text-sm font-medium text-muted-foreground hover:text-primary hover:bg-primary/5 rounded-lg transition-all"
             >
               Tracking
-            </a>
-            <a
-              href={`${base}#preise`}
-              className="px-3 py-2 text-sm font-medium text-muted-foreground hover:text-primary hover:bg-primary/5 rounded-lg transition-all"
-            >
-              Preise
             </a>
             <a
               href={`${base}#faq`}
@@ -119,13 +113,6 @@ export function Header() {
                 onClick={() => setIsMenuOpen(false)}
               >
                 Tracking
-              </a>
-              <a
-                href={`${base}#preise`}
-                className="px-4 py-3 text-sm font-medium text-muted-foreground hover:text-primary hover:bg-primary/5 rounded-lg transition-all"
-                onClick={() => setIsMenuOpen(false)}
-              >
-                Preise
               </a>
               <a
                 href={`${base}#faq`}
