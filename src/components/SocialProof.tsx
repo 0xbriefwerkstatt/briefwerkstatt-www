@@ -1,30 +1,30 @@
 import { Card, CardContent } from "./ui/card";
-import { TrendingUp, Target, Repeat, ShieldCheck } from "lucide-react";
+import { Layers, Target, QrCode, ShieldCheck } from "lucide-react";
 
 const stats = [
   {
-    icon: TrendingUp,
-    value: "ROAS > 20:1",
-    label: "Der Profit-Hebel",
-    description: "Ein Brief für 3,50 € reaktiviert Kunden mit durchschnittlich 100 € Warenkorbwert. Das ist ein Return on Ad Spend von über 20:1 – messbar und reproduzierbar."
+    icon: QrCode,
+    value: "QR",
+    label: "Messbar wie digital",
+    description: "Jeder Brief trägt einen individuellen QR-Code. Sie sehen, wer gescannt hat, und können Kampagnen genauso auswerten wie Ihre digitalen Kanäle."
   },
   {
     icon: Target,
     value: "98%",
     label: "Öffnungsrate",
-    description: "Während E-Mails oft ungelesen bleiben (< 20% Öffnungsrate), wird ein handadressierter Brief fast immer geöffnet und gelesen. Garantierte Aufmerksamkeit."
+    description: "Während E-Mails und LinkedIn-Nachrichten oft ungelesen bleiben, wird ein handadressierter Brief fast immer geöffnet und gelesen. Garantierte Aufmerksamkeit."
   },
   {
-    icon: Repeat,
-    value: "+35%",
-    label: "Wiederkaufrate",
-    description: "Persönliche Wertschätzung durch handgeschriebene Karten steigert die Customer Lifetime Value signifikant. Aus Einmalkäufern werden loyale Stammkunden."
+    icon: Layers,
+    value: "Ab 1 Stück",
+    label: "Skalierbar",
+    description: "Vom einzelnen Brief an einen Top-Lead bis zur Kampagne mit Tausenden Empfängern. Keine Mindestauflage, keine Druckerei-Vorlaufzeiten."
   },
   {
     icon: ShieldCheck,
     value: "100%",
     label: "Legal & DSGVO-konform",
-    description: "Keine Opt-in-Pflicht für Briefpost an Bestandskunden. Während E-Mail-Marketing rechtlich heikel ist, sind Sie mit Briefen auf der sicheren Seite."
+    description: "Anders als bei E-Mail-Werbung braucht Briefpost kein vorheriges Opt-in. Wir verarbeiten Ihre Daten als deutscher Auftragsverarbeiter auf Servern in Deutschland."
   }
 ];
 
@@ -34,10 +34,10 @@ export function SocialProof() {
       <div className="container mx-auto max-w-6xl px-4">
         <div className="text-center space-y-4 mb-16">
           <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl px-4">
-            {`Zahlen, die zählen: Echter ROI statt Vanity-Metriken`}
+            {`Die Aufmerksamkeit eines Briefes. Die Effizienz einer digitalen Kampagne.`}
           </h2>
           <p className="text-base sm:text-lg text-muted-foreground max-w-2xl mx-auto px-4">
-            {`Briefpost ist kein Branding-Tool – es ist ein Umsatz-Hebel mit messbarem Return on Investment.`}
+            {`Briefpost ist kein Nostalgie-Projekt, sondern ein messbarer Kanal für Pipeline und Umsatz.`}
           </p>
         </div>
 

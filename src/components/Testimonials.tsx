@@ -4,28 +4,28 @@ import { Star } from "lucide-react";
 
 const testimonials = [
   {
+    name: "Julia Hartmann",
+    role: "Head of Marketing",
+    company: "B2B-Softwarehersteller",
+    content: "Nach der letzten Messe sind wir nicht mit der üblichen Follow-up-Mail rausgegangen, sondern mit einem handgeschriebenen Brief. Die Gesprächsbereitschaft war ein anderes Kaliber – und über den QR-Code konnten wir jeden Scan bis zur Terminbuchung nachvollziehen.",
+    rating: 5,
+    headline: "Das Messe-Follow-up, das wirklich ankommt."
+  },
+  {
     name: "Markus Weber",
-    role: "CEO",
-    company: "Performance Growth Agency",
-    content: "Wir hatten Schwierigkeiten, unsere Retainer zu erhöhen. Mit der Briefwerkstatt bieten wir jetzt 'High-End Direct Mail' als Add-on an. Unsere Kunden lieben die 98% Öffnungsrate, und wir haben einen neuen Profit-Center ohne Mehraufwand.",
-    rating: 5,
-    headline: "Endlich ein Upsell, der sofort funktioniert."
-  },
-  {
-    name: "Sarah L.",
-    role: "Founder",
-    company: "ScaleUp Marketing",
-    content: "Wir betreuen viele SaaS-Firmen. Die automatisierten 'Win-Back'-Briefe über die API haben die Rückgewinnungsrate unserer Mandanten verdoppelt. Das Setup hat uns keine 30 Minuten gekostet.",
-    rating: 5,
-    headline: "Der Churn-Killer für unsere SaaS-Kunden."
-  },
-  {
-    name: "Tom Deitmer",
     role: "Head of Sales",
     company: "B2B Connect GmbH",
-    content: "Wenn wir in einem Pitch sagen: 'Wir schreiben für Ihre Top-Leads echte Briefe per Roboter', haben wir die Aufmerksamkeit sofort. Das ist unser Ass im Ärmel gegen 08/15-Agenturen.",
+    content: "Unsere Top-Accounts reagieren auf LinkedIn und E-Mail längst nicht mehr. Der handgeschriebene Brief öffnet Türen, die digital zu sind – und der Angebots-Nachfass läuft komplett automatisch aus dem CRM, sobald ein Deal stockt.",
     rating: 5,
-    headline: "Macht uns konkurrenzlos im Pitch."
+    headline: "Türöffner bei Entscheidern, die digital nichts mehr erwidern."
+  },
+  {
+    name: "Sarah Lindner",
+    role: "Growth Lead",
+    company: "E-Commerce-Plattform",
+    content: "Unsere Win-Back-Briefe laufen vollautomatisch über die API: Das CRM meldet Inaktivität, der Brief geht raus, der QR-Scan kommt als Aktivität zurück. Wir haben Kunden zurückgewonnen, die unsere E-Mails seit Monaten ignoriert haben.",
+    rating: 5,
+    headline: "Reaktivierung, die von selbst läuft."
   }
 ];
 
@@ -35,10 +35,10 @@ export function Testimonials() {
       <div className="container mx-auto max-w-6xl px-4">
         <div className="text-center space-y-4 mb-16">
           <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl px-4">
-            Was Agenturen über uns sagen
+            Was unsere Kunden sagen
           </h2>
           <p className="text-base sm:text-lg text-muted-foreground max-w-2xl mx-auto px-4">
-            Erfahren Sie, wie Marketing-Agenturen mit der Briefwerkstatt neue Umsätze generieren – ohne Mehraufwand.
+            Erfahren Sie, wie Sales-, Marketing- und Growth-Teams mit der Briefwerkstatt Aufmerksamkeit und Pipeline zurückgewinnen – ohne Mehraufwand.
           </p>
         </div>
 

@@ -76,7 +76,7 @@ export function Footer() {
                 allowFullScreen
                 loading="lazy"
                 referrerPolicy="no-referrer-when-downgrade"
-                title="BitFlow GmbH Standort"
+                title="Die Briefwerkstatt Standort"
               ></iframe>
             </div>
           </div>
@@ -99,13 +99,13 @@ export function Footer() {
               <div className="flex flex-col">
                 <span className="text-lg sm:text-xl lg:text-2xl font-bold">Die Briefwerkstatt</span>
                 <span className="text-xs sm:text-sm text-primary-foreground/70">
-                  Handschrift mit Automatisierung
+                  Briefe für Marketing & Sales
                 </span>
               </div>
             </a>
             <p className="text-primary-foreground/80 text-sm">
-              Automatisierte, handschriftliche Briefe mit digitalem Tracking. 
-              Verbinden Sie echte Tinte mit Ihrem CRM für messbaren Erfolg.
+              Echte Briefe für Growth-, Sales- und Marketing-Teams: DSGVO-konform,
+              skalierbar, per API oder CRM integriert und per QR-Code messbar.
             </p>
             <div className="flex space-x-3">
               <Button variant="ghost" size="icon" className="text-primary-foreground hover:bg-primary-foreground/10 transition-colors">
@@ -122,9 +122,9 @@ export function Footer() {
             <h3 className="text-lg font-semibold">Navigation</h3>
             <nav className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-1 gap-3 text-primary-foreground/80 text-sm">
               <div><a href="/#problem" className="hover:text-primary-foreground transition-colors">Problem</a></div>
-              <div><a href="/#use-cases" className="hover:text-primary-foreground transition-colors">{`L\u00f6sung`}</a></div>
-              <div><a href="/#anwendung" className="hover:text-primary-foreground transition-colors">Anwendung</a></div>
-              <div><a href="/#roi-tracking" className="hover:text-primary-foreground transition-colors">Prozess</a></div>
+              <div><a href="/#use-cases" className="hover:text-primary-foreground transition-colors">Use Cases</a></div>
+              <div><a href="/#so-gehts" className="hover:text-primary-foreground transition-colors">{`So geht's`}</a></div>
+              <div><a href="/#roi-tracking" className="hover:text-primary-foreground transition-colors">Tracking</a></div>
               <div><a href="/#referenzen" className="hover:text-primary-foreground transition-colors">Referenzen</a></div>
               <div><a href="/#faq" className="hover:text-primary-foreground transition-colors">FAQ</a></div>
             </nav>
@@ -192,7 +192,7 @@ export function Footer() {
 
         <div className="flex flex-col md:flex-row justify-between items-center gap-3 sm:gap-4 text-xs sm:text-sm">
           <div className="text-primary-foreground/80 text-center md:text-left">
-            © 2026 Briefwerkstatt by BitFlow GmbH. Alle Rechte vorbehalten.
+            © 2026 Die Briefwerkstatt. Alle Rechte vorbehalten.
           </div>
           <div className="flex gap-4 sm:gap-6 text-primary-foreground/80">
             <a href="/datenschutz" className="hover:text-primary-foreground transition-colors">Datenschutz</a>

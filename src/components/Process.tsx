@@ -1,21 +1,20 @@
 "use client";
 
 import { Card, CardContent } from "./ui/card";
-import { Mail, Scan, TrendingUp, ArrowRight, Zap, FileSpreadsheet } from "lucide-react";
-import { useState } from "react";
+import { Mail, Scan, TrendingUp, ArrowRight } from "lucide-react";
 
 const steps = [
   {
     number: "1",
     icon: Mail,
-    title: "Kunde öffnet Brief",
+    title: "Empfänger öffnet den Brief",
     description: "Ihr handgeschriebener Brief landet auf dem Schreibtisch und wird geöffnet. Garantiert."
   },
   {
     number: "2",
     icon: Scan,
-    title: "Kunde scannt QR-Code",
-    description: "Der individualisierte QR-Code führt zu seinem persönlichen Angebot oder Geschenk."
+    title: "Empfänger scannt den QR-Code",
+    description: "Der individualisierte QR-Code führt zum persönlichen Angebot, zur Terminbuchung oder Landingpage."
   },
   {
     number: "3",
@@ -25,26 +24,7 @@ const steps = [
   }
 ];
 
-const integrationMethods = [
-  {
-    icon: Zap,
-    title: "Via API / CRM",
-    subtitle: "Für wiederkehrende Umsätze",
-    description: "Vollautomatisch aus Salesforce, HubSpot & Co. Einmal einrichten, für immer profitieren. Der Geburtstags-Brief läuft jeden Tag – ohne dass Sie einen Finger rühren.",
-    badge: "Sticky Business"
-  },
-  {
-    icon: FileSpreadsheet,
-    title: "Via Datei-Upload",
-    subtitle: "Für saisonale Kampagnen",
-    description: "Für Event-Einladungen, Weihnachtskampagnen oder Messe-Follow-Ups einfach CSV hochladen. Schneller Cashflow, kein Setup-Aufwand.",
-    badge: "Quick Win"
-  }
-];
-
 export function Process() {
-  const [isModalOpen, setIsModalOpen] = useState(false);
-
   return (
     <>
       <section className="py-20 lg:py-32 bg-muted/30" id="roi-tracking">

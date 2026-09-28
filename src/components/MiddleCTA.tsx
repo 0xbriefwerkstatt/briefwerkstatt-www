@@ -11,10 +11,10 @@ export function MiddleCTA() {
         <div className="container mx-auto max-w-6xl px-4">
           <div className="bg-gradient-to-r from-primary to-primary/80 rounded-2xl p-8 md:p-12 lg:p-16 text-center shadow-2xl border border-primary/20">
             <h2 className="text-3xl sm:text-4xl md:text-5xl mb-6 text-white">
-              {`Bereit, Ihre inaktiven Kunden zurückzuholen?`}
+              {`Bereit für Post, die gelesen wird?`}
             </h2>
             <p className="text-lg sm:text-xl text-white/90 max-w-2xl mx-auto mb-8">
-              {`Lassen Sie uns gemeinsam analysieren, wie viel Umsatzpotenzial aktuell in Ihrer Datenbank schlummert – und wie Sie es mit automatisierten Briefkampagnen heben können.`}
+              {`In einem kurzen Austausch schauen wir uns Ihre Zielgruppe und Ihre Workflows an und zeigen, wo ein Brief den größten Hebel hat – ob als einzelne Kampagne, automatisiert oder im Full-Service.`}
             </p>
 
             <Button
@@ -24,7 +24,7 @@ export function MiddleCTA() {
               onClick={openCalModal}
             >
               <Rocket className="w-5 h-5 mr-2" />
-              {`Gratis Win-Back-Analyse anfordern`}
+              {`Kurzen Austausch buchen`}
             </Button>
           </div>
         </div>
