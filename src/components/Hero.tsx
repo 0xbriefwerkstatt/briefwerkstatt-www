@@ -79,9 +79,9 @@ export function Hero() {
 
               <div className="space-y-6">
                 <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl leading-[1.1] tracking-tight">
-                  {`Auf den Schreibtisch statt in den Spam-Filter`}{" "}
+                  {`Auf den Schreibtisch statt in den Spam-Filter.`}{" "}
                   <span className="bg-gradient-to-r from-primary to-primary/70 bg-clip-text text-transparent">
-                    {`– mit echten Briefen.`}
+                    {`Mit echten Briefen.`}
                   </span>
                 </h1>
 
@@ -128,7 +128,7 @@ export function Hero() {
 
               <div className="pt-8 border-t">
                 <p className="text-sm font-medium text-foreground/80 mb-4">
-                  {`Fügt sich in Ihre Workflows ein – per API, CRM-Anbindung oder CSV-Upload`}
+                  {`Fügt sich in Ihre Workflows ein: per API, CRM-Anbindung oder CSV-Upload`}
                 </p>
                 <div className="flex flex-wrap items-center gap-2 sm:gap-3">
                   {integrations.map((tool) => (
@@ -288,7 +288,7 @@ export function Hero() {
             <div className="bg-white rounded-2xl shadow-2xl p-4 sm:p-6 overflow-auto max-h-[90vh]">
               <ImageWithFallback
                 src={img(realLetterImage, 1536)}
-                alt={`Handschriftlicher Premium-Brief auf Firmenbriefpapier – Vorschau`}
+                alt={`Handschriftlicher Premium-Brief auf Firmenbriefpapier, Vorschau`}
                 className="w-full h-auto rounded-lg"
               />
             </div>

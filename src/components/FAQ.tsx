@@ -15,7 +15,7 @@ const faqSections = [
       },
       {
         question: "Was umfasst der Full-Service?",
-        answer: "Im Full-Service übernehmen wir den gesamten Prozess: Wir entwickeln mit Ihnen Anlass, Botschaft und Angebot, texten den Brief, gestalten Briefpapier und Beilagen in Ihrem Branding, produzieren, versenden und werten die QR-Scans aus. Sie liefern nur die Empfängerliste – oder wir stimmen die Zielgruppe gemeinsam ab."
+        answer: "Im Full-Service übernehmen wir den gesamten Prozess: Wir entwickeln mit Ihnen Anlass, Botschaft und Angebot, texten den Brief, gestalten Briefpapier und Beilagen in Ihrem Branding, produzieren, versenden und werten die QR-Scans aus. Sie liefern nur die Empfängerliste. Oder wir stimmen die Zielgruppe gemeinsam ab."
       },
       {
         question: "Brauche ich für Werbebriefe eine Einwilligung der Empfänger?",
@@ -28,7 +28,7 @@ const faqSections = [
     questions: [
       {
         question: "Kann ich die Briefe in meinem eigenen Branding versenden?",
-        answer: "Ja. Auf Briefpapier und Kuvert stehen Sie als Absender – im Enterprise-Tarif vollständig mit Ihrem individuellen Briefpapier. Wir tauchen nirgends auf, auch nicht im Tracking-Link (neutrale Domain)."
+        answer: "Ja. Auf Briefpapier und Kuvert stehen Sie als Absender, im Enterprise-Tarif vollständig mit Ihrem individuellen Briefpapier. Wir tauchen nirgends auf, auch nicht im Tracking-Link (neutrale Domain)."
       },
       {
         question: "Gibt es Konditionen für hohe Stückzahlen?",
@@ -49,15 +49,15 @@ Vordrucke: Bei großen Volumina senden Sie uns Ihr originales Briefpapier nach M
     questions: [
       {
         question: "Welche CRM-Systeme und Tools werden unterstützt?",
-        answer: `Wir sind „Tech-First“: Über unsere REST-API und Zapier binden Sie uns an fast jedes moderne Tool an – HubSpot, Salesforce, Pipedrive, Shopify, Klaviyo, WooCommerce, GoHighLevel und viele mehr. Für einzelne Kampagnen reicht auch ein CSV-Upload.`
+        answer: `Wir sind „Tech-First“: Über unsere REST-API und Zapier binden Sie uns an fast jedes moderne Tool an: HubSpot, Salesforce, Pipedrive, Shopify, Klaviyo, WooCommerce, GoHighLevel und viele mehr. Für einzelne Kampagnen reicht auch ein CSV-Upload.`
       },
       {
         question: "Was sind „Variable Daten“?",
-        answer: `Unsere Roboter schreiben nicht nur statische Texte. Sie nutzen beliebige Variablen im Fließtext: „Hallo [Vorname], schön, dass wir uns auf der [Messe] kennengelernt haben." Das erhöht die Conversion massiv – perfekt für personalisierte B2B-Kampagnen, Sales-Sequenzen und E-Commerce.`
+        answer: `Unsere Roboter schreiben nicht nur statische Texte. Sie nutzen beliebige Variablen im Fließtext: „Hallo [Vorname], schön, dass wir uns auf der [Messe] kennengelernt haben." Das erhöht die Conversion massiv. Perfekt für personalisierte B2B-Kampagnen, Sales-Sequenzen und E-Commerce.`
       },
       {
         question: "Wie funktioniert das QR-Tracking?",
-        answer: `Wir drucken auf jeden Brief (oder das Kuvert) einen individuellen QR-Code. Sobald der Empfänger scannt, wird er auf Ihre Ziel-URL weitergeleitet und der Lead in Ihrem Dashboard – oder direkt in Ihrem CRM – als konvertiert markiert. So messen Sie den ROI jeder Kampagne genau.`
+        answer: `Wir drucken auf jeden Brief (oder das Kuvert) einen individuellen QR-Code. Sobald der Empfänger scannt, wird er auf Ihre Ziel-URL weitergeleitet und der Lead in Ihrem Dashboard (oder direkt in Ihrem CRM) als konvertiert markiert. So messen Sie den ROI jeder Kampagne genau.`
       }
     ]
   },
@@ -66,7 +66,7 @@ Vordrucke: Bei großen Volumina senden Sie uns Ihr originales Briefpapier nach M
     questions: [
       {
         question: "Wie „echt“ sieht die Handschrift aus?",
-        answer: "Täuschend echt. Wir nutzen echte Füllfederhalter mit blauer Tinte, keine Laserdrucker. Zudem variieren unsere Algorithmen das Schriftbild minimal (Zeilenabstand, Buchstabenform) – genau wie eine menschliche Hand. In Blindtests erkennen 95 % der Empfänger keinen Unterschied."
+        answer: "Täuschend echt. Wir nutzen echte Füllfederhalter mit blauer Tinte, keine Laserdrucker. Zudem variieren unsere Algorithmen das Schriftbild minimal (Zeilenabstand, Buchstabenform), genau wie eine menschliche Hand. In Blindtests erkennen 95 % der Empfänger keinen Unterschied."
       },
       {
         question: "Wo wird produziert und wie schnell geht der Versand?",
@@ -76,11 +76,11 @@ Bestellungen bis 12:00 Uhr gehen in der Regel am nächsten Werktag zur Post. Ver
       },
       {
         question: "Können die Briefe automatisiert aus unserem System ausgelöst werden?",
-        answer: "Ja. Über API oder CRM-Integration geht jeder Brief automatisch raus – etwa beim Deal-Abschluss, nach dem Onboarding oder wenn ein Kunde inaktiv wird. Sie brauchen dafür keinen Druckpartner und keine internen Kapazitäten."
+        answer: "Ja. Über API oder CRM-Integration geht jeder Brief automatisch raus, etwa beim Deal-Abschluss, nach dem Onboarding oder wenn ein Kunde inaktiv wird. Sie brauchen dafür keinen Druckpartner und keine internen Kapazitäten."
       },
       {
         question: "Ist der Service DSGVO-konform?",
-        answer: "Ja. Wir agieren als deutscher Auftragsverarbeiter. Ihre Daten – und die Ihrer Kunden – werden auf Servern in Deutschland (Frankfurt) gespeichert und nach der Produktion automatisch gelöscht, sofern nichts anderes gewünscht ist. Ein Auftragsverarbeitungsvertrag steht in Ihrem Account bereit."
+        answer: "Ja. Wir agieren als deutscher Auftragsverarbeiter. Ihre Daten (und die Ihrer Kunden) werden auf Servern in Deutschland (Frankfurt) gespeichert und nach der Produktion automatisch gelöscht, sofern nichts anderes gewünscht ist. Ein Auftragsverarbeitungsvertrag steht in Ihrem Account bereit."
       }
     ]
   }

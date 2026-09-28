@@ -14,7 +14,7 @@ export function MiddleCTA() {
               {`Bereit für Post, die gelesen wird?`}
             </h2>
             <p className="text-lg sm:text-xl text-white/90 max-w-2xl mx-auto mb-8">
-              {`In einem kurzen Austausch schauen wir uns Ihre Zielgruppe und Ihre Workflows an und zeigen, wo ein Brief den größten Hebel hat – ob als einzelne Kampagne, automatisiert oder im Full-Service.`}
+              {`In einem kurzen Austausch schauen wir uns Ihre Zielgruppe und Ihre Workflows an und zeigen, wo ein Brief den größten Hebel hat: ob als einzelne Kampagne, automatisiert oder im Full-Service.`}
             </p>
 
             <Button

@@ -7,7 +7,7 @@ const testimonials = [
     name: "Julia Hartmann",
     role: "Head of Marketing",
     company: "B2B-Softwarehersteller",
-    content: "Nach der letzten Messe sind wir nicht mit der üblichen Follow-up-Mail rausgegangen, sondern mit einem handgeschriebenen Brief. Die Gesprächsbereitschaft war ein anderes Kaliber – und über den QR-Code konnten wir jeden Scan bis zur Terminbuchung nachvollziehen.",
+    content: "Nach der letzten Messe sind wir nicht mit der üblichen Follow-up-Mail rausgegangen, sondern mit einem handgeschriebenen Brief. Die Gesprächsbereitschaft war ein anderes Kaliber. Über den QR-Code konnten wir jeden Scan bis zur Terminbuchung nachvollziehen.",
     rating: 5,
     headline: "Das Messe-Follow-up, das wirklich ankommt."
   },
@@ -15,7 +15,7 @@ const testimonials = [
     name: "Markus Weber",
     role: "Head of Sales",
     company: "B2B Connect GmbH",
-    content: "Unsere Top-Accounts reagieren auf LinkedIn und E-Mail längst nicht mehr. Der handgeschriebene Brief öffnet Türen, die digital zu sind – und der Angebots-Nachfass läuft komplett automatisch aus dem CRM, sobald ein Deal stockt.",
+    content: "Unsere Top-Accounts reagieren auf LinkedIn und E-Mail längst nicht mehr. Der handgeschriebene Brief öffnet Türen, die digital zu sind. Der Angebots-Nachfass läuft komplett automatisch aus dem CRM, sobald ein Deal stockt.",
     rating: 5,
     headline: "Türöffner bei Entscheidern, die digital nichts mehr erwidern."
   },
@@ -38,7 +38,7 @@ export function Testimonials() {
             Was unsere Kunden sagen
           </h2>
           <p className="text-base sm:text-lg text-muted-foreground max-w-2xl mx-auto px-4">
-            Erfahren Sie, wie Sales-, Marketing- und Growth-Teams mit der Briefwerkstatt Aufmerksamkeit und Pipeline zurückgewinnen – ohne Mehraufwand.
+            Erfahren Sie, wie Sales-, Marketing- und Growth-Teams mit der Briefwerkstatt Aufmerksamkeit und Pipeline zurückgewinnen, ohne Mehraufwand.
           </p>
         </div>
 

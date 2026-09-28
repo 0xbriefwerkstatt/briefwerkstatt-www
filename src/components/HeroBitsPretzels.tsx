@@ -20,20 +20,20 @@ export function HeroBitsPretzels() {
             <div className="space-y-8 max-w-xl">
               <div className="flex flex-wrap gap-3">
                 <span className="inline-flex items-center rounded-full bg-primary/10 px-4 py-1.5 text-sm font-medium text-primary ring-1 ring-inset ring-primary/20">
-                  {`Bits & Pretzels München – Messe-Special`}
+                  {`Bits & Pretzels München · Messe-Special`}
                 </span>
               </div>
 
               <div className="space-y-6">
                 <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl leading-[1.1] tracking-tight">
-                  {`Auf den Schreibtisch statt in den Spam-Filter`}{" "}
+                  {`Auf den Schreibtisch statt in den Spam-Filter.`}{" "}
                   <span className="bg-gradient-to-r from-primary to-primary/70 bg-clip-text text-transparent">
-                    {`– mit echten Briefen.`}
+                    {`Mit echten Briefen.`}
                   </span>
                 </h1>
 
                 <p className="text-xl sm:text-2xl text-muted-foreground leading-relaxed">
-                  {`Schön, dass Sie auf den Bits & Pretzels vorbeischauen – oder unseren Brief geöffnet haben. Wir bringen Ihre Botschaft als echten, handschriftlichen Brief auf den Schreibtisch Ihrer wichtigsten Kunden: DSGVO-konform, in jeder Stückzahl, per API oder CRM integriert und per QR-Code messbar.`}
+                  {`Schön, dass Sie auf den Bits & Pretzels vorbeischauen oder unseren Brief geöffnet haben. Wir bringen Ihre Botschaft als echten, handschriftlichen Brief auf den Schreibtisch Ihrer wichtigsten Kunden: DSGVO-konform, in jeder Stückzahl, per API oder CRM integriert und per QR-Code messbar.`}
                 </p>
               </div>
 
@@ -55,7 +55,7 @@ export function HeroBitsPretzels() {
                       <span className="font-mono font-semibold text-foreground">
                         {`BITS10`}
                       </span>
-                      {` – einfach im Kennenlerngespräch nennen.`}
+                      {`, einfach im Kennenlerngespräch nennen.`}
                     </p>
                   </div>
                 </div>

@@ -19,7 +19,7 @@ export function BitsPretzelsOffer() {
                   {`Ihr Messe-Special: 10 % auf Ihre erste Kampagne`}
                 </p>
                 <p className="text-sm sm:text-base text-white/80">
-                  {`Code BITS10 – einfach im Gespräch nennen. Gilt für Kennenlerngespräche rund um die Bits & Pretzels.`}
+                  {`Code BITS10, einfach im Gespräch nennen. Gilt für Kennenlerngespräche rund um die Bits & Pretzels.`}
                 </p>
               </div>
             </div>
