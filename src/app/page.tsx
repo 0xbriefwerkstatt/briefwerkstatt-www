@@ -8,7 +8,6 @@ import { MiddleCTA } from "@/components/MiddleCTA";
 import { Process } from "@/components/Process";
 import { ServiceOptions } from "@/components/ServiceOptions";
 import { Testimonials } from "@/components/Testimonials";
-import { Pricing } from "@/components/Pricing";
 import { FAQ } from "@/components/FAQ";
 import { Footer } from "@/components/Footer";
 
@@ -26,7 +25,6 @@ export default function Home() {
         <Features />
         <MiddleCTA />
         <Testimonials />
-        <Pricing />
         <FAQ />
       </main>
       <Footer />

@@ -10,7 +10,6 @@ import { Features } from "@/components/Features";
 import { MiddleCTA } from "@/components/MiddleCTA";
 import { Testimonials } from "@/components/Testimonials";
 import { BitsPretzelsOffer } from "@/components/BitsPretzelsOffer";
-import { Pricing } from "@/components/Pricing";
 import { FAQ } from "@/components/FAQ";
 import { Footer } from "@/components/Footer";
 
@@ -35,7 +34,6 @@ export default function BitsPretzelsPage() {
         <MiddleCTA />
         <Testimonials />
         <BitsPretzelsOffer />
-        <Pricing />
         <FAQ />
       </main>
       <Footer />
