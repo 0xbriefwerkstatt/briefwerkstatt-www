@@ -28,11 +28,11 @@ const faqSections = [
     questions: [
       {
         question: "Kann ich die Briefe in meinem eigenen Branding versenden?",
-        answer: "Ja. Auf Briefpapier und Kuvert stehen Sie als Absender, im Enterprise-Tarif vollständig mit Ihrem individuellen Briefpapier. Wir tauchen nirgends auf, auch nicht im Tracking-Link (neutrale Domain)."
+        answer: "Ja. Auf Briefpapier und Kuvert stehen Sie als Absender, bei Bedarf vollständig mit Ihrem individuellen Briefpapier. Wir tauchen nirgends auf, auch nicht im Tracking-Link (neutrale Domain)."
       },
       {
         question: "Gibt es Konditionen für hohe Stückzahlen?",
-        answer: "Ja. Ab dem Enterprise-Tarif sinkt der Stückpreis auf 1,49 €. Für sehr hohe Volumina oder wiederkehrende Kampagnen mit Beilagen erstellen wir gerne ein individuelles Angebot."
+        answer: "Ja. Bei höheren Stückzahlen und wiederkehrenden Kampagnen gibt es Rabatt. Sprechen Sie uns einfach an, wir erstellen gerne ein individuelles Angebot."
       },
       {
         question: "Wie funktioniert das mit dem Briefpapier?",
