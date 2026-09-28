@@ -9,6 +9,14 @@ import { SamplePackageModal } from "./SamplePackageModal";
 import { CalModal, openCalModal } from "./CalModal";
 import { img } from "../lib/imgParams";
 
+const integrations = [
+  { name: "HubSpot", color: "#ff7a59" },
+  { name: "Salesforce", color: "#00a1e0" },
+  { name: "Pipedrive", color: "#017737" },
+  { name: "Shopify", color: "#96bf48" },
+  { name: "Zapier", color: "#ff4a00" },
+];
+
 export function Hero() {
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [isPreviewOpen, setIsPreviewOpen] = useState(false);
@@ -65,23 +73,20 @@ export function Hero() {
             <div className="space-y-8 max-w-xl">
               <div className="flex flex-wrap gap-3">
                 <span className="inline-flex items-center rounded-full bg-primary/10 px-4 py-1.5 text-sm font-medium text-primary ring-1 ring-inset ring-primary/20">
-                  {`🛒 Für Online-Shops`}
-                </span>
-                <span className="inline-flex items-center rounded-full bg-primary/10 px-4 py-1.5 text-sm font-medium text-primary ring-1 ring-inset ring-primary/20">
-                  {`📈 Customer Lifetime Value steigern`}
+                  {`Für Growth-, Sales- & Marketing-Teams`}
                 </span>
               </div>
 
               <div className="space-y-6">
                 <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl leading-[1.1] tracking-tight">
-                  {`Reaktivieren Sie 15% Ihrer inaktiven Kunden`}{" "}
+                  {`Auf den Schreibtisch statt in den Spam-Filter`}{" "}
                   <span className="bg-gradient-to-r from-primary to-primary/70 bg-clip-text text-transparent">
-                    {`– vollautomatisiert per Post.`}
+                    {`– mit echten Briefen.`}
                   </span>
                 </h1>
 
                 <p className="text-xl sm:text-2xl text-muted-foreground leading-relaxed">
-                  {`Wenn E-Mails ignoriert werden, wirken handgeschriebene Briefe Wunder. 98% Öffnungsrate für Ihre Win-Back-Kampagnen. Nahtlose Anbindung an Shopify & Klaviyo.`}
+                  {`Inboxen sind voll mit automatisierten Follow-ups und AI-Pitches. Ein handgeschriebener Brief fällt auf. Wir versenden ihn DSGVO-konform und in jeder Stückzahl, angebunden per API oder CRM und per QR-Code messbar.`}
                 </p>
               </div>
 
@@ -92,7 +97,7 @@ export function Hero() {
                   onClick={openCalModal}
                 >
                   <Calendar className="w-5 h-5 mr-2" />
-                  {`Gratis Win-Back-Analyse anfordern`}
+                  {`Kurzen Austausch buchen`}
                 </Button>
                 <Button
                   variant="outline"
@@ -106,87 +111,49 @@ export function Hero() {
               </div>
 
               <div className="flex items-center flex-wrap gap-x-8 gap-y-3 pt-2">
-                <div className="flex items-center space-x-2">
-                  <CheckCircle className="w-5 h-5 text-primary" />
-                  <span className="text-sm font-medium text-foreground/80">
-                    {`Echte Handschrift`}
-                  </span>
-                </div>
-                <div className="flex items-center space-x-2">
-                  <CheckCircle className="w-5 h-5 text-primary" />
-                  <span className="text-sm font-medium text-foreground/80">
-                    {`Voll automatisiert`}
-                  </span>
-                </div>
-                <div className="flex items-center space-x-2">
-                  <CheckCircle className="w-5 h-5 text-primary" />
-                  <span className="text-sm font-medium text-foreground/80">
-                    {`ROI-Tracking`}
-                  </span>
-                </div>
+                {[
+                  `Echte Handschrift`,
+                  `DSGVO-konform`,
+                  `QR-Tracking`,
+                  `Full-Service optional`,
+                ].map((label) => (
+                  <div key={label} className="flex items-center space-x-2">
+                    <CheckCircle className="w-5 h-5 text-primary" />
+                    <span className="text-sm font-medium text-foreground/80">
+                      {label}
+                    </span>
+                  </div>
+                ))}
               </div>
 
               <div className="pt-8 border-t">
                 <p className="text-sm font-medium text-foreground/80 mb-4">
-                  {`Kein Setup-Aufwand – Nahtlose Anbindung per Webhook`}
+                  {`Fügt sich in Ihre Workflows ein – per API, CRM-Anbindung oder CSV-Upload`}
                 </p>
                 <div className="flex flex-wrap items-center gap-2 sm:gap-3">
-                  {/* Shopify */}
-                  <div className="group bg-white border border-gray-200 rounded-lg px-3 py-2 flex items-center space-x-2 shadow-sm hover:shadow-md hover:border-[#96bf48] transition-all duration-200">
-                    <div className="w-5 h-5 rounded bg-[#96bf48] flex items-center justify-center group-hover:scale-110 transition-transform">
-                      <svg
-                        className="w-3 h-3"
-                        viewBox="0 0 24 24"
-                        fill="white"
+                  {integrations.map((tool) => (
+                    <div
+                      key={tool.name}
+                      className="group bg-white border border-gray-200 rounded-lg px-3 py-2 flex items-center space-x-2 shadow-sm hover:shadow-md transition-all duration-200"
+                    >
+                      <div
+                        className="w-5 h-5 rounded flex items-center justify-center group-hover:scale-110 transition-transform"
+                        style={{ backgroundColor: tool.color }}
                       >
-                        <path d="M16 8h-6v8h6V8zm3-3h-3V3c0-1.1-.9-2-2-2h-4c-1.1 0-2 .9-2 2v2H5v18h14V5z" />
-                      </svg>
-                    </div>
-                    <span className="text-xs font-semibold text-gray-700">
-                      Shopify
-                    </span>
-                  </div>
-
-                  {/* Klaviyo */}
-                  <div className="group bg-white border border-gray-200 rounded-lg px-3 py-2 flex items-center space-x-2 shadow-sm hover:shadow-md hover:border-black transition-all duration-200">
-                    <div className="w-5 h-5 rounded bg-black flex items-center justify-center group-hover:scale-110 transition-transform">
-                      <span className="text-white text-xs font-bold">
-                        K
+                        <span className="text-white text-xs font-bold">
+                          {tool.name[0]}
+                        </span>
+                      </div>
+                      <span className="text-xs font-semibold text-gray-700">
+                        {tool.name}
                       </span>
                     </div>
-                    <span className="text-xs font-semibold text-gray-700">
-                      Klaviyo
-                    </span>
-                  </div>
-
-                  {/* WooCommerce */}
-                  <div className="group bg-white border border-gray-200 rounded-lg px-3 py-2 flex items-center space-x-2 shadow-sm hover:shadow-md hover:border-[#96588a] transition-all duration-200">
-                    <div className="w-5 h-5 rounded bg-[#96588a] flex items-center justify-center group-hover:scale-110 transition-transform">
-                      <span className="text-white text-xs font-bold">
-                        W
-                      </span>
-                    </div>
-                    <span className="text-xs font-semibold text-gray-700">
-                      WooCommerce
-                    </span>
-                  </div>
-
-                  {/* Zapier */}
-                  <div className="group bg-white border border-gray-200 rounded-lg px-3 py-2 flex items-center space-x-2 shadow-sm hover:shadow-md hover:border-[#ff4a00] transition-all duration-200">
-                    <div className="w-5 h-5 rounded bg-[#ff4a00] flex items-center justify-center group-hover:scale-110 transition-transform">
-                      <span className="text-white text-xs font-bold">
-                        Z
-                      </span>
-                    </div>
-                    <span className="text-xs font-semibold text-gray-700">
-                      Zapier
-                    </span>
-                  </div>
+                  ))}
 
                   {/* More indicator */}
                   <div className="bg-muted/50 border border-dashed border-gray-300 rounded-lg px-3 py-2 flex items-center space-x-1">
                     <span className="text-xs font-medium text-muted-foreground">
-                      {`+ jeder Shop per Webhook`}
+                      {`+ REST-API & Webhooks`}
                     </span>
                   </div>
                 </div>
@@ -218,7 +185,7 @@ export function Hero() {
                 >
                   <ImageWithFallback
                     src={img(realLetterImage, 1200)}
-                    alt="Handschriftlicher Premium-Brief auf Firmenbriefpapier"
+                    alt="Handschriftlicher Brief auf Firmenbriefpapier"
                     className="w-full h-auto rounded-xl shadow-xl transition-transform duration-300 group-hover/letter:scale-[1.02]"
                   />
                   {/* Hover overlay with magnify hint */}

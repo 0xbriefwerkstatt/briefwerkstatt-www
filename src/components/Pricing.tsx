@@ -49,7 +49,7 @@ const pricingTiers = [
       { value: "0,00 €" },
       { value: "1 Stück" },
       { value: "Premium Standard" },
-      { value: "Sammelpaket (an dich)" },
+      { value: "Sammelpaket (an Sie)" },
       { value: "CSV Upload" },
       { value: "Briefwerkstatt Stempel auf der Rückseite" },
       { value: "E-Mail" },
@@ -61,7 +61,7 @@ const pricingTiers = [
   {
     icon: Rocket,
     name: "Growth & Scale",
-    subtitle: "Online-Shops & E-Commerce",
+    subtitle: "Marketing-, Sales- & Growth-Teams",
     badge: "Empfohlen",
     values: [
       { value: "29,00 €", oldValue: "49,00 €" },
@@ -74,7 +74,7 @@ const pricingTiers = [
       { value: "Neutral" },
       { value: "Priority Chat & Mail" },
     ],
-    cta: "Gratis Win-Back-Analyse",
+    cta: "Austausch buchen",
     highlighted: true,
     color: "primary"
   },
@@ -91,10 +91,10 @@ const pricingTiers = [
       { value: "Eigenes Papier (Lagerung)" },
       { value: "Full-Fulfillment" },
       { value: "API / Zapier / CSV / Webhook" },
-      { value: "Vollständig im Branding deiner Kunden mit individuellem Briefpapier" },
+      { value: "Vollständig in Ihrem Branding, mit individuellem Briefpapier" },
       { value: "Dedicated Account Manager" },
     ],
-    cta: "Gratis Win-Back-Analyse",
+    cta: "Austausch buchen",
     highlighted: false,
     color: "accent",
     footnote: "Spezial-Konditionen für hohe Volumina (z.B. Beilagenkarten-Abo) auf Anfrage möglich."

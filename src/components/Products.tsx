@@ -1,7 +1,7 @@
 "use client";
 
 import { Card, CardContent } from "./ui/card";
-import { RotateCcw, Heart, ShoppingCart, CheckCircle, Expand, ChevronLeft, ChevronRight, Mail } from "lucide-react";
+import { Briefcase, Megaphone, TrendingUp, Expand, Mail } from "lucide-react";
 import { ImageWithFallback } from "./figma/ImageWithFallback";
 const reaktivierungPostcard = "/assets/1299e5357ed066a64df40c10cdeafa93a7a5d356.png";
 const postcardBackImage = "/assets/c295a864ed3cfdbfd1079e3aa01ebd0c5d0885d8.png";
@@ -11,66 +11,75 @@ import { Button } from "./ui/button";
 import { SamplePackageModal } from "./SamplePackageModal";
 import { img } from "../lib/imgParams";
 
-const products = [
+const teams = [
   {
-    icon: RotateCcw,
-    title: `Der Win-Back-Automat`,
-    subtitle: "Automatische Briefe an Kunden, die seit 90 Tagen nicht bestellt haben",
-    images: [reaktivierungPostcard],
-    imageLabels: ["Reaktivierungs-Kampagne"],
-    features: [
-      `Das Problem: Kunden, die seit Monaten nicht mehr bestellt haben, ignorieren Ihre E-Mails. Digitale Reminder-Kampagnen verpuffen wirkungslos.`,
-      `Die Lösung: Verbinden Sie Ihren Shop per Webhook mit unseren Robotern. Automatisch nach 90 Tagen Inaktivität schreiben wir eine persönliche "Wir vermissen Sie"-Karte mit einem exklusiven Rabattcode.`,
-      `Ihr ROI: Ein Brief für 3,50 € reaktiviert Kunden mit durchschnittlich 100 € Warenkorbwert. Das ist ein ROAS von über 20:1 – ohne manuellen Aufwand.`
+    icon: Briefcase,
+    team: "Sales",
+    tagline: "Termine bei Entscheidern, die digital nicht reagieren",
+    useCases: [
+      {
+        title: "Türöffner an Entscheider",
+        description: "Persönliche Briefe an Top-Accounts und C-Level, die auf LinkedIn-Nachrichten und Cold-Mails längst nicht mehr antworten.",
+      },
+      {
+        title: "Messe- & Event-Follow-up",
+        description: "Während alle anderen nach der Messe die gleiche Follow-up-Mail schicken, liegt Ihr Brief auf dem Schreibtisch.",
+      },
+      {
+        title: "Angebots-Nachfass",
+        description: "Automatisch ausgelöst, wenn ein Deal im CRM stockt. Ein kurzer, handgeschriebener Gruß bringt das Gespräch wieder in Gang.",
+      },
     ],
-    bgColor: "bg-primary/5"
   },
   {
-    icon: Heart,
-    title: `Der High-Value-Dank`,
-    subtitle: "Handgeschriebene Karten für Erstkäufer ab 150€ Warenkorb",
-    images: ["https://images.unsplash.com/photo-1631010233091-43e8de2f9581?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxoYW5kd3JpdHRlbiUyMHRoYW5rJTIweYywJTIwY2FyZCUyMHVuYm94aW5nJTIwc2hpcHBpbmd8ZW58MXx8fHwxNzczNTA2ODIzfDA&ixlib=rb-4.1.0&q=80&w=1080&utm_source=figma&utm_medium=referral"],
-    imageLabels: ["Premium Dankeskarte"],
-    features: [
-      `Das Problem: Hochpreisige Erstkäufer haben oft hohe Retourenquoten. Sie fehlt die emotionale Bindung zur Marke.`,
-      `Die Lösung: Bei Bestellungen ab 150 € Warenkorbwert wird automatisch eine handgeschriebene Dankeskarte dem Paket beigelegt. Kein Extra-Porto, nur maximale Wertschätzung.`,
-      `Ihr ROI: Studien zeigen: Persönliche Dankesgesten senken die Retourenquote um bis zu 15% und steigern die Wiederkaufrate massiv. Kunden teilen diese Karten organisch in Social Media.`
+    icon: Megaphone,
+    team: "Marketing",
+    tagline: "Kampagnen, die auffallen statt überscrollt zu werden",
+    useCases: [
+      {
+        title: "Event- & Webinar-Einladungen",
+        description: "Eine persönliche Einladung per Post wirkt verbindlicher als die zehnte Kalender-Mail und senkt die No-Show-Rate.",
+      },
+      {
+        title: "ABM- & Direct-Mail-Kampagnen",
+        description: "Ausgewählte Zielaccounts mit personalisierten Briefen ansprechen – mit variablen Inhalten und individuellem QR-Code pro Empfänger.",
+      },
+      {
+        title: "Anlässe & Kundenbindung",
+        description: "Jubiläen, Weihnachtsgrüße oder ein Dankeschön nach Vertragsabschluss. Wertschätzung, die im Gedächtnis bleibt.",
+      },
     ],
-    bgColor: "bg-green-50"
   },
   {
-    icon: ShoppingCart,
-    title: `Der Warenkorb-Abbrecher-Brief`,
-    subtitle: "Physisches Retargeting für abgebrochene Checkouts",
-    images: [postcardBackImage, postcardFrontImage],
-    imageLabels: ["Rückseite", "Vorderseite"],
-    features: [
-      `Das Problem: Warenkorbabbrecher ignorieren Ihre E-Mail-Reminder. Digitale Retargeting-Ads werden geblockt oder übersehen.`,
-      `Die Lösung: Wenn ein Kunde den Checkout abbricht (und Sie seine Adresse haben), triggert Ihr System automatisch einen handgeschriebenen Brief mit einem "Letzte Chance"-Rabatt.`,
-      `Ihr ROI: Sie erreichen Kunden dort, wo es keinen Ad-Blocker gibt: im echten Briefkasten. Conversion-Rates für Win-Back-Kampagnen steigen messbar.`
+    icon: TrendingUp,
+    team: "Growth",
+    tagline: "Automatisierte Touchpoints entlang des Customer Lifecycles",
+    useCases: [
+      {
+        title: "Onboarding & Welcome",
+        description: "Neukunden erhalten automatisch einen persönlichen Willkommensbrief – ausgelöst direkt aus Ihrem CRM oder Shop.",
+      },
+      {
+        title: "Reaktivierung & Win-Back",
+        description: "Inaktive Kunden erreichen, die keine E-Mails mehr öffnen oder nie ein Opt-in gegeben haben. Mit exklusivem Angebot per QR-Code.",
+      },
+      {
+        title: "Churn-Prävention & Upsell",
+        description: "Trigger bei sinkender Nutzung oder vor der Vertragsverlängerung – der Brief kommt genau im richtigen Moment.",
+      },
     ],
-    bgColor: "bg-accent/5"
-  }
+  },
+];
+
+const examples = [
+  { src: reaktivierungPostcard, label: "Reaktivierungs-Karte" },
+  { src: postcardFrontImage, label: "Postkarte – Vorderseite" },
+  { src: postcardBackImage, label: "Postkarte – Rückseite" },
 ];
 
 export function Products() {
-  const [currentImageIndexes, setCurrentImageIndexes] = useState<{[key: number]: number}>({});
   const [lightboxImage, setLightboxImage] = useState<string | null>(null);
   const [isModalOpen, setIsModalOpen] = useState(false);
-
-  const handlePrevImage = (productIndex: number) => {
-    const product = products[productIndex];
-    const currentIndex = currentImageIndexes[productIndex] || 0;
-    const newIndex = currentIndex > 0 ? currentIndex - 1 : product.images.length - 1;
-    setCurrentImageIndexes(prev => ({ ...prev, [productIndex]: newIndex }));
-  };
-
-  const handleNextImage = (productIndex: number) => {
-    const product = products[productIndex];
-    const currentIndex = currentImageIndexes[productIndex] || 0;
-    const newIndex = currentIndex < product.images.length - 1 ? currentIndex + 1 : 0;
-    setCurrentImageIndexes(prev => ({ ...prev, [productIndex]: newIndex }));
-  };
 
   return (
     <>
@@ -78,123 +87,32 @@ export function Products() {
         <div className="container mx-auto max-w-6xl px-4">
           <div className="text-center space-y-4 mb-16">
             <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl px-4">
-              {`Drei bewährte Anwendungsfälle für Online-Shops`}
+              {`Ein Brief für jedes Team`}
             </h2>
             <p className="text-base sm:text-lg text-muted-foreground max-w-2xl mx-auto px-4">
-              {`Von Kundenreaktivierung bis Retourenvermeidung. Briefpost wirkt messbar – und bringt echten ROAS.`}
+              {`Ob Neukundengewinnung, Kampagne oder Kundenbindung: Überall dort, wo Aufmerksamkeit knapp ist, sorgt ein echter Brief dafür, dass Ihre Botschaft ankommt.`}
             </p>
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8">
-            {products.map((product, productIndex) => {
-              const Icon = product.icon;
-              const hasMultipleImages = product.images.length > 1;
-
+            {teams.map((team) => {
+              const Icon = team.icon;
               return (
-                <Card key={productIndex} className={`border-primary/20 ${product.bgColor} overflow-hidden flex flex-col`}>
+                <Card key={team.team} className="border-primary/20 bg-background flex flex-col">
                   <CardContent className="p-6 sm:p-8 flex flex-col h-full">
-                    <div className="flex flex-col items-start space-y-4 mb-6">
+                    <div className="flex items-center gap-4 mb-3">
                       <div className="w-12 h-12 sm:w-14 sm:h-14 rounded-lg bg-primary/10 flex items-center justify-center flex-shrink-0">
                         <Icon className="w-6 h-6 sm:w-7 sm:h-7 text-primary" />
                       </div>
-                      <div className="flex-1 min-w-0">
-                        <h3 className="text-xl sm:text-2xl mb-2">{product.title}</h3>
-                        <p className="text-sm sm:text-base text-muted-foreground italic">{product.subtitle}</p>
-                      </div>
+                      <h3 className="text-2xl sm:text-3xl">{`Für ${team.team}`}</h3>
                     </div>
+                    <p className="text-sm sm:text-base text-muted-foreground italic mb-6">{team.tagline}</p>
 
-                    {/* Bild-Galerie mit Navigation */}
-                    <div className="mb-6 rounded-lg overflow-hidden relative group h-80 sm:h-96 w-full" style={{ backgroundColor: '#343853' }}>
-                      {/* Bild-Label Badge */}
-                      {hasMultipleImages && (
-                        <div className="absolute top-3 left-3 z-20 bg-black/70 backdrop-blur-sm px-3 py-1.5 rounded-full">
-                          <span className="text-white text-xs sm:text-sm font-medium">
-                            {product.imageLabels[currentImageIndexes[productIndex] || 0]}
-                          </span>
-                        </div>
-                      )}
-
-                      <div
-                        className="cursor-pointer h-full w-full"
-                        onClick={() => setLightboxImage(typeof product.images[currentImageIndexes[productIndex] || 0] === 'string' ? product.images[currentImageIndexes[productIndex] || 0] : product.images[currentImageIndexes[productIndex] || 0])}
-                      >
-                        <ImageWithFallback
-                          src={img(product.images[currentImageIndexes[productIndex] || 0], 1200)}
-                          alt={`${product.title} - ${product.imageLabels[currentImageIndexes[productIndex] || 0]}`}
-                          className="w-full h-full object-contain transition-all duration-500"
-                          style={{ maxWidth: '100%', maxHeight: '100%' }}
-                        />
-                        {/* Hover Overlay */}
-                        <div className="absolute inset-0 bg-black/0 group-hover:bg-black/40 transition-all duration-300 flex items-center justify-center pointer-events-none">
-                          <div className="opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex flex-col items-center space-y-2 text-white">
-                            <Expand className="w-8 h-8" />
-                            <span className="font-medium text-sm sm:text-base">{`Klicken zur Vergrößerung`}</span>
-                          </div>
-                        </div>
-                      </div>
-
-                      {/* Navigation Pfeile (nur wenn mehrere Bilder) */}
-                      {hasMultipleImages && (
-                        <>
-                          <button
-                            onClick={(e) => {
-                              e.stopPropagation();
-                              handlePrevImage(productIndex);
-                            }}
-                            className="absolute left-3 top-1/2 -translate-y-1/2 w-12 h-12 bg-black/60 hover:bg-black/80 rounded-full flex items-center justify-center text-white transition-all opacity-0 group-hover:opacity-100 z-10 shadow-lg"
-                            aria-label="Vorheriges Bild"
-                          >
-                            <ChevronLeft className="w-7 h-7" />
-                          </button>
-                          <button
-                            onClick={(e) => {
-                              e.stopPropagation();
-                              handleNextImage(productIndex);
-                            }}
-                            className="absolute right-3 top-1/2 -translate-y-1/2 w-12 h-12 bg-black/60 hover:bg-black/80 rounded-full flex items-center justify-center text-white transition-all opacity-0 group-hover:opacity-100 z-10 shadow-lg"
-                            aria-label="Nächstes Bild"
-                          >
-                            <ChevronRight className="w-7 h-7" />
-                          </button>
-
-                          {/* Enhanced Thumbnail Dots mit Labels */}
-                          <div className="absolute bottom-4 left-1/2 -translate-x-1/2 bg-black/60 backdrop-blur-sm rounded-full px-4 py-2 z-10">
-                            <div className="flex items-center space-x-3">
-                              {product.images.map((_, imgIndex) => (
-                                <button
-                                  key={imgIndex}
-                                  onClick={(e) => {
-                                    e.stopPropagation();
-                                    setCurrentImageIndexes(prev => ({ ...prev, [productIndex]: imgIndex }));
-                                  }}
-                                  className="group/dot flex items-center space-x-1.5 transition-all"
-                                  aria-label={product.imageLabels[imgIndex]}
-                                >
-                                  <div className={`rounded-full transition-all duration-300 ${
-                                    imgIndex === (currentImageIndexes[productIndex] || 0)
-                                      ? 'bg-white w-2.5 h-2.5'
-                                      : 'bg-white/50 hover:bg-white/75 w-2 h-2'
-                                  }`} />
-                                  <span className={`text-xs whitespace-nowrap transition-all ${
-                                    imgIndex === (currentImageIndexes[productIndex] || 0)
-                                      ? 'text-white font-medium'
-                                      : 'text-white/60 group-hover/dot:text-white/80'
-                                  }`}>
-                                    {product.imageLabels[imgIndex]}
-                                  </span>
-                                </button>
-                              ))}
-                            </div>
-                          </div>
-                        </>
-                      )}
-                    </div>
-
-                    <div className="space-y-3">
-                      {product.features.map((feature, featureIndex) => (
-                        <div key={featureIndex} className="flex items-start space-x-3">
-                          <CheckCircle className="w-4 h-4 sm:w-5 sm:h-5 text-primary flex-shrink-0 mt-0.5" />
-                          <span className="text-sm sm:text-base text-muted-foreground">{feature}</span>
+                    <div className="space-y-5">
+                      {team.useCases.map((useCase) => (
+                        <div key={useCase.title} className="border-l-2 border-primary/30 pl-4">
+                          <h4 className="font-semibold mb-1">{useCase.title}</h4>
+                          <p className="text-sm sm:text-base text-muted-foreground">{useCase.description}</p>
                         </div>
                       ))}
                     </div>
@@ -202,6 +120,37 @@ export function Products() {
                 </Card>
               );
             })}
+          </div>
+
+          {/* Beispiele */}
+          <div className="mt-16 lg:mt-20">
+            <h3 className="text-xl sm:text-2xl text-center mb-8">{`Beispiele aus der Werkstatt`}</h3>
+            <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 sm:gap-6">
+              {examples.map((example) => (
+                <button
+                  key={example.label}
+                  className="rounded-lg overflow-hidden relative group h-64 w-full"
+                  style={{ backgroundColor: '#343853' }}
+                  onClick={() => setLightboxImage(example.src)}
+                  aria-label={`${example.label} vergrößern`}
+                >
+                  <ImageWithFallback
+                    src={img(example.src, 1200)}
+                    alt={example.label}
+                    className="w-full h-full object-contain"
+                  />
+                  <div className="absolute bottom-3 left-3 bg-black/70 backdrop-blur-sm px-3 py-1.5 rounded-full">
+                    <span className="text-white text-xs sm:text-sm font-medium">{example.label}</span>
+                  </div>
+                  <div className="absolute inset-0 bg-black/0 group-hover:bg-black/40 transition-all duration-300 flex items-center justify-center pointer-events-none">
+                    <div className="opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex flex-col items-center space-y-2 text-white">
+                      <Expand className="w-8 h-8" />
+                      <span className="font-medium text-sm sm:text-base">{`Klicken zur Vergrößerung`}</span>
+                    </div>
+                  </div>
+                </button>
+              ))}
+            </div>
           </div>
 
           {/* Lightbox Modal */}
