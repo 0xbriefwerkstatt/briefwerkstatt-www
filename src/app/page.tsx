@@ -9,6 +9,7 @@ import { DevTracking } from "@/components/dev/DevTracking";
 import { DevPricing } from "@/components/dev/DevPricing";
 import { FAQ } from "@/components/FAQ";
 import { Footer } from "@/components/Footer";
+import { Wave } from "@/components/paper/Ink";
 
 export const metadata: Metadata = {
   title: "Die Briefwerkstatt: Post-Outreach API für Tech- und SaaS-Teams",
@@ -18,13 +19,15 @@ export const metadata: Metadata = {
 
 export default function Home() {
   return (
-    <div className="min-h-screen bg-background">
+    <div className="min-h-screen bg-paper">
       <Header />
-      <main className="bg-[#0a0a12]">
+      <main>
         <DevHero />
         <DevPain />
         <DevGuide />
+        <Wave from="var(--color-paper-2)" to="var(--color-blush)" />
         <DevShift />
+        <Wave from="var(--color-blush)" to="var(--color-paper)" flip />
         <DevPlayground />
         <DevTracking />
         <DevPricing />

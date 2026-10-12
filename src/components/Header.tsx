@@ -1,153 +1,142 @@
 "use client";
 
-import { Button } from "./ui/button";
-import { Menu, X, Calendar } from "lucide-react";
-import { useState } from "react";
+import { Menu, X, ArrowRight } from "lucide-react";
+import { useEffect, useState } from "react";
 import { usePathname } from "next/navigation";
 const logoImg = "/assets/580b420df5b154f221ec7c41675f5b0aacc3ab71.png";
 import { CalModal, openCalModal } from "./CalModal";
 import { img } from "../lib/imgParams";
 
+const links = [
+  { href: "use-cases", label: "So funktioniert's" },
+  { href: "so-gehts", label: "Playground" },
+  { href: "roi-tracking", label: "Tracking" },
+  { href: "pricing", label: "Preise" },
+  { href: "faq", label: "FAQ" },
+];
+
 export function Header() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const [scrolled, setScrolled] = useState(false);
   // Landingpages enthalten die Sektionen selbst, alle anderen Seiten verlinken auf die Startseite
   const pathname = usePathname();
   const base = pathname === "/" || pathname === "/bits-and-pretzels" ? "" : "/";
 
+  useEffect(() => {
+    const onScroll = () => setScrolled(window.scrollY > 24);
+    onScroll();
+    window.addEventListener("scroll", onScroll, { passive: true });
+    return () => window.removeEventListener("scroll", onScroll);
+  }, []);
+
+  useEffect(() => {
+    document.body.style.overflow = isMenuOpen ? "hidden" : "";
+  }, [isMenuOpen]);
+
   return (
     <>
-      <header className="border-b bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60 sticky top-0 z-50 shadow-sm">
-        <div className="container flex h-20 sm:h-24 items-center justify-between px-4 sm:px-6 mx-auto max-w-6xl">
-          <a
-            href={`${base}#`}
-            className="flex items-center space-x-3 group hover:opacity-90 transition-opacity"
-          >
-            <div className="relative h-14 w-14 sm:h-16 sm:w-16 lg:h-20 lg:w-20 flex-shrink-0">
-              <img
-                src={img(logoImg, 160)}
-                alt="Briefwerkstatt Logo"
-                className="w-full h-full object-contain transition-transform duration-300 ease-out group-hover:scale-110 drop-shadow-md"
-              />
-            </div>
-
-            <div className="flex flex-col">
-              <span className="text-lg sm:text-xl lg:text-2xl font-bold text-foreground group-hover:text-primary transition-colors">
+      <header
+        className={`sticky top-0 z-50 transition-all duration-500 ${
+          scrolled || isMenuOpen
+            ? "border-b-2 border-ink bg-paper/90 backdrop-blur-md"
+            : "border-b-2 border-transparent bg-paper"
+        }`}
+      >
+        <div
+          className={`mx-auto flex max-w-7xl items-center justify-between px-4 transition-all duration-500 sm:px-8 ${
+            scrolled ? "h-16 sm:h-[72px]" : "h-20 sm:h-28"
+          }`}
+        >
+          <a href={`${base}#`} className="group flex items-center gap-3">
+            <img
+              src={img(logoImg, 160)}
+              alt="Briefwerkstatt Logo"
+              className={`object-contain transition-all duration-500 group-hover:rotate-[-8deg] ${
+                scrolled ? "h-10 w-10" : "h-12 w-12 sm:h-16 sm:w-16"
+              }`}
+            />
+            <span className="flex flex-col leading-none">
+              <span className="font-display text-xl font-semibold tracking-tight text-ink sm:text-2xl">
                 Die Briefwerkstatt
               </span>
-              <span className="text-xs sm:text-sm text-muted-foreground">
-                Briefe für Marketing & Sales
+              <span
+                className={`font-hand text-lg text-plum transition-all duration-500 ${
+                  scrolled ? "h-0 opacity-0" : "h-5 opacity-100"
+                }`}
+              >
+                echte Tinte, per API
               </span>
-            </div>
+            </span>
           </a>
 
-          <nav className="hidden lg:flex items-center space-x-1">
-            <a
-              href={`${base}#use-cases`}
-              className="px-3 py-2 text-sm font-medium text-muted-foreground hover:text-primary hover:bg-primary/5 rounded-lg transition-all"
-            >
-              Use Cases
-            </a>
-            <a
-              href={`${base}#so-gehts`}
-              className="px-3 py-2 text-sm font-medium text-muted-foreground hover:text-primary hover:bg-primary/5 rounded-lg transition-all"
-            >
-              So geht's
-            </a>
-            <a
-              href={`${base}#roi-tracking`}
-              className="px-3 py-2 text-sm font-medium text-muted-foreground hover:text-primary hover:bg-primary/5 rounded-lg transition-all"
-            >
-              Tracking
-            </a>
-            <a
-              href={`${base}#pricing`}
-              className="px-3 py-2 text-sm font-medium text-muted-foreground hover:text-primary hover:bg-primary/5 rounded-lg transition-all"
-            >
-              Preise
-            </a>
-            <a
-              href={`${base}#faq`}
-              className="px-3 py-2 text-sm font-medium text-muted-foreground hover:text-primary hover:bg-primary/5 rounded-lg transition-all"
-            >
-              FAQ
-            </a>
+          <nav className="hidden items-center gap-1 lg:flex">
+            {links.map((l) => (
+              <a
+                key={l.href}
+                href={`${base}#${l.href}`}
+                className="group relative px-3 py-2 text-[15px] font-medium text-ink"
+              >
+                {l.label}
+                <svg
+                  aria-hidden
+                  viewBox="0 0 100 10"
+                  preserveAspectRatio="none"
+                  className="absolute bottom-0 left-3 right-3 h-2 w-[calc(100%-1.5rem)] opacity-0 transition-opacity group-hover:opacity-100"
+                >
+                  <path d="M2 6 C 30 2, 70 9, 98 4" fill="none" stroke="var(--color-plum)" strokeWidth="3" strokeLinecap="round" />
+                </svg>
+              </a>
+            ))}
           </nav>
 
-          <div className="hidden lg:flex items-center">
-            <Button
-              onClick={openCalModal}
-              className="shadow-sm"
-            >
-              <Calendar className="w-4 h-4 mr-2" />
-              {`Austausch buchen`}
-            </Button>
+          <div className="hidden items-center gap-5 lg:flex">
+            <a href={`${base}#so-gehts`} className="text-[15px] font-medium text-ink hover:text-plum">
+              Sandbox
+            </a>
+            <button onClick={openCalModal} className="btn-ink btn-plum btn-sm">
+              Gespräch buchen
+            </button>
           </div>
 
           <button
-            className="lg:hidden p-2 hover:bg-muted rounded-lg transition-colors"
+            className="btn-ink btn-paper !p-2.5 lg:hidden"
             onClick={() => setIsMenuOpen(!isMenuOpen)}
-            aria-label="Menu"
+            aria-label={isMenuOpen ? "Menü schließen" : "Menü öffnen"}
+            aria-expanded={isMenuOpen}
           >
-            {isMenuOpen ? (
-              <X className="h-6 w-6" />
-            ) : (
-              <Menu className="h-6 w-6" />
-            )}
+            {isMenuOpen ? <X className="h-5 w-5" /> : <Menu className="h-5 w-5" />}
           </button>
         </div>
 
         {isMenuOpen && (
-          <div className="lg:hidden border-t bg-background/95 backdrop-blur">
-            <nav className="flex flex-col space-y-1 p-4">
-              <a
-                href={`${base}#use-cases`}
-                className="px-4 py-3 text-sm font-medium text-muted-foreground hover:text-primary hover:bg-primary/5 rounded-lg transition-all"
-                onClick={() => setIsMenuOpen(false)}
-              >
-                Use Cases
-              </a>
-              <a
-                href={`${base}#so-gehts`}
-                className="px-4 py-3 text-sm font-medium text-muted-foreground hover:text-primary hover:bg-primary/5 rounded-lg transition-all"
-                onClick={() => setIsMenuOpen(false)}
-              >
-                So geht's
-              </a>
-              <a
-                href={`${base}#roi-tracking`}
-                className="px-4 py-3 text-sm font-medium text-muted-foreground hover:text-primary hover:bg-primary/5 rounded-lg transition-all"
-                onClick={() => setIsMenuOpen(false)}
-              >
-                Tracking
-              </a>
-              <a
-                href={`${base}#pricing`}
-                className="px-4 py-3 text-sm font-medium text-muted-foreground hover:text-primary hover:bg-primary/5 rounded-lg transition-all"
-                onClick={() => setIsMenuOpen(false)}
-              >
-                Preise
-              </a>
-              <a
-                href={`${base}#faq`}
-                className="px-4 py-3 text-sm font-medium text-muted-foreground hover:text-primary hover:bg-primary/5 rounded-lg transition-all"
-                onClick={() => setIsMenuOpen(false)}
-              >
-                FAQ
-              </a>
-              <div className="pt-2">
-                <Button
-                  className="w-full shadow-sm"
-                  size="lg"
-                  onClick={() => {
-                    openCalModal();
-                    setIsMenuOpen(false);
-                  }}
+          <div className="paper-grain absolute inset-x-0 top-full h-[100dvh] overflow-y-auto bg-paper lg:hidden">
+            <nav className="flex flex-col px-6 pb-10 pt-6">
+              {links.map((l, i) => (
+                <a
+                  key={l.href}
+                  href={`${base}#${l.href}`}
+                  onClick={() => setIsMenuOpen(false)}
+                  className="flex items-center justify-between border-b border-ink/15 py-5 font-display text-3xl text-ink"
+                  style={{ animation: `bw-menu-in .45s ${i * 0.05}s both cubic-bezier(.22,1,.36,1)` }}
                 >
-                  <Calendar className="w-4 h-4 mr-2" />
-                  {`Austausch buchen`}
-                </Button>
-              </div>
+                  {l.label}
+                  <ArrowRight className="h-5 w-5 text-plum" />
+                </a>
+              ))}
+              <button
+                onClick={() => {
+                  openCalModal();
+                  setIsMenuOpen(false);
+                }}
+                className="btn-ink btn-plum mt-8 w-full"
+              >
+                Kennenlerngespräch buchen
+              </button>
+              <p className="mt-8 font-hand text-2xl text-plum">
+                Tengstraße 26 · München
+              </p>
             </nav>
+            <style>{`@keyframes bw-menu-in { from { opacity: 0; transform: translateY(14px); } }`}</style>
           </div>
         )}
       </header>

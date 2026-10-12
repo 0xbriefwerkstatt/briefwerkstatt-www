@@ -1,9 +1,9 @@
-import {
-  Accordion,
-  AccordionContent,
-  AccordionItem,
-  AccordionTrigger,
-} from "./ui/accordion";
+"use client";
+
+import { useState } from "react";
+import * as AccordionPrimitive from "@radix-ui/react-accordion";
+import { Plus } from "lucide-react";
+import { Eyebrow } from "./paper/Ink";
 
 const faqSections = [
   {
@@ -87,56 +87,81 @@ Bestellungen bis 12:00 Uhr gehen in der Regel am nächsten Werktag zur Post. Ver
 ];
 
 export function FAQ() {
+  const [active, setActive] = useState(0);
+  const section = faqSections[active];
+
   return (
-    <section id="faq" className="py-20 lg:py-32 bg-muted/30">
-      <div className="container mx-auto max-w-4xl px-4">
-        <div className="text-center space-y-4 mb-16">
-          <h2 className="text-3xl md:text-4xl lg:text-5xl">
-            Häufig gestellte Fragen
+    <section id="faq" className="paper-grain relative scroll-mt-20 bg-paper py-24 text-ink lg:py-32">
+      <div className="mx-auto grid max-w-7xl gap-12 px-4 sm:px-8 lg:grid-cols-[0.8fr_1.2fr] lg:gap-20">
+        <div className="lg:sticky lg:top-28 lg:self-start">
+          <Eyebrow>FAQ</Eyebrow>
+          <h2 className="mt-5 font-display text-4xl font-medium leading-[1.05] tracking-tight sm:text-5xl">
+            Häufig gestellte{" "}
+            <span className="font-hand text-[1.2em] text-plum">Fragen</span>
           </h2>
-          <p className="text-lg text-muted-foreground">
+          <p className="mt-5 text-lg text-ink-soft">
             Alles, was Sie über die Briefwerkstatt wissen müssen.
           </p>
-        </div>
 
-        <div className="space-y-12">
-          {faqSections.map((section, sectionIndex) => (
-            <div key={sectionIndex}>
-              <h3 className="text-xl sm:text-2xl font-semibold mb-6 text-primary">
-                {section.category}
-              </h3>
-              <Accordion type="single" collapsible className="space-y-4">
-                {section.questions.map((faq, index) => (
-                  <AccordionItem 
-                    key={index} 
-                    value={`item-${sectionIndex}-${index}`} 
-                    className="border border-border/50 rounded-lg px-6 bg-background"
-                  >
-                    <AccordionTrigger className="text-left hover:no-underline py-5">
-                      <span className="pr-4">{faq.question}</span>
-                    </AccordionTrigger>
-                    <AccordionContent className="text-muted-foreground whitespace-pre-line pb-5 leading-relaxed">
-                      {faq.answer}
-                    </AccordionContent>
-                  </AccordionItem>
-                ))}
-              </Accordion>
-            </div>
-          ))}
-        </div>
+          <div className="mt-8 flex flex-wrap gap-2.5" role="tablist" aria-label="FAQ-Kategorien">
+            {faqSections.map((s, i) => (
+              <button
+                key={s.category}
+                role="tab"
+                aria-selected={i === active}
+                onClick={() => setActive(i)}
+                className={`rounded-full border-2 border-ink px-4 py-2 text-sm font-semibold transition-all ${
+                  i === active
+                    ? "bg-ink text-white shadow-[3px_3px_0_0_var(--color-plum)]"
+                    : "bg-white hover:bg-sun"
+                }`}
+              >
+                {s.category}
+              </button>
+            ))}
+          </div>
 
-        {/* Tech Support Hint */}
-        <div className="mt-12 pt-8 border-t text-center">
-          <p className="text-sm text-muted-foreground">
-            Noch eine technische Frage? Schreiben Sie direkt an unsere API-Entwickler:{" "}
-            <a 
-              href="mailto:dev@briefwerkstatt.com" 
-              className="text-primary hover:underline font-medium"
-            >
+          <div className="relative mt-12 hidden rotate-[-1.5deg] rounded-[4px] border-2 border-ink bg-white p-6 shadow-[5px_5px_0_0_var(--color-ink)] lg:block">
+            <span className="tape -top-3 left-8 rotate-[-5deg]" />
+            <p className="font-hand text-2xl leading-snug">
+              Noch eine technische Frage? Schreib direkt an unsere API-Entwickler:
+            </p>
+            <a href="mailto:dev@briefwerkstatt.com" className="mt-2 inline-block font-mono text-sm font-semibold text-plum underline decoration-2 underline-offset-4">
               dev@briefwerkstatt.com
             </a>
-          </p>
+          </div>
         </div>
+
+        <AccordionPrimitive.Root key={active} type="single" collapsible defaultValue="q-0" className="space-y-4">
+          {section.questions.map((faq, index) => (
+            <AccordionPrimitive.Item
+              key={faq.question}
+              value={`q-${index}`}
+              className="group rounded-[18px] border-2 border-ink bg-white shadow-[4px_4px_0_0_var(--color-ink)] transition-shadow data-[state=open]:shadow-[6px_6px_0_0_var(--color-plum)]"
+            >
+              <AccordionPrimitive.Header>
+                <AccordionPrimitive.Trigger className="flex w-full items-center justify-between gap-6 px-6 py-5 text-left font-display text-lg font-semibold leading-snug outline-none focus-visible:underline sm:text-xl">
+                  {faq.question}
+                  <span className="flex h-9 w-9 shrink-0 items-center justify-center rounded-full border-2 border-ink bg-paper transition-all duration-300 group-data-[state=open]:rotate-45 group-data-[state=open]:bg-plum group-data-[state=open]:text-white">
+                    <Plus className="h-4 w-4" strokeWidth={3} />
+                  </span>
+                </AccordionPrimitive.Trigger>
+              </AccordionPrimitive.Header>
+              <AccordionPrimitive.Content className="overflow-hidden data-[state=closed]:animate-accordion-up data-[state=open]:animate-accordion-down">
+                <div className="whitespace-pre-line px-6 pb-6 leading-relaxed text-ink-soft">
+                  {faq.answer}
+                </div>
+              </AccordionPrimitive.Content>
+            </AccordionPrimitive.Item>
+          ))}
+        </AccordionPrimitive.Root>
+
+        <p className="text-center text-ink-soft lg:hidden">
+          Noch eine technische Frage?{" "}
+          <a href="mailto:dev@briefwerkstatt.com" className="font-semibold text-plum underline">
+            dev@briefwerkstatt.com
+          </a>
+        </p>
       </div>
     </section>
   );

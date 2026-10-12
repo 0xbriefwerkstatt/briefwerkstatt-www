@@ -1,75 +1,79 @@
+import { Eyebrow, HandNote, Reveal, Scribble } from "../paper/Ink";
+
 const signals = [
-  "Tech Stack geprüft",
-  "Unit Economics ok",
-  "Distribution: alarmierend",
-  "CAC steigt, Reply-Rate fällt",
-  "Empfehlung: analoger Kanal prüfen",
+  { mark: "✓", text: "Tech Stack geprüft", tone: "text-emerald-600" },
+  { mark: "✓", text: "Unit Economics ok", tone: "text-emerald-600" },
+  { mark: "!", text: "Distribution: alarmierend", tone: "text-red-600" },
+  { mark: "!", text: "CAC steigt, Reply-Rate fällt", tone: "text-red-600" },
+  { mark: "→", text: "Empfehlung: analoger Kanal prüfen", tone: "text-plum" },
 ];
 
 export function DevGuide() {
   return (
-    <section className="relative bg-[#0a0a12] py-20 text-white lg:py-28">
-      <div className="container mx-auto max-w-6xl px-4">
-        <div className="grid items-start gap-12 lg:grid-cols-2 lg:gap-16">
-          <div className="space-y-6">
-            <p className="font-mono text-sm text-[#c65db3]">{`// die erkenntnis`}</p>
-            <h2 className="text-3xl font-bold leading-tight tracking-tight sm:text-4xl lg:text-5xl">
-              {`Dein Code ist nicht das Problem. `}
-              <span className="bg-gradient-to-r from-[#e08bd0] to-[#9b2580] bg-clip-text text-transparent">
-                {`Deine Distribution ist es.`}
-              </span>
+    <section className="paper-grain relative bg-paper-2 py-24 text-ink lg:py-32">
+      <div className="mx-auto max-w-7xl px-4 sm:px-8">
+        <div className="grid items-center gap-16 lg:grid-cols-2 lg:gap-20">
+          <Reveal className="space-y-6">
+            <Eyebrow>Die Erkenntnis</Eyebrow>
+            <h2 className="font-display text-4xl font-medium leading-[1.08] tracking-tight sm:text-5xl lg:text-[3.4rem]">
+              Dein Code ist nicht das Problem.{" "}
+              <Scribble variant="circle">Deine Distribution</Scribble> ist es.
             </h2>
-            <div className="space-y-4 text-lg leading-relaxed text-zinc-400">
+            <div className="space-y-5 text-lg leading-relaxed text-ink-soft">
               <p>
-                {`In über 50 Tech Due Diligences für VCs und Private Equity habe ich immer wieder dasselbe Muster gesehen: Geniale SaaS-Lösungen scheitern fast nie am Tech-Stack. Sie scheitern an der Distribution, weil ihre Sales-Pitches schlichtweg im Spam-Filter verpuffen.`}
+                In über 50 Tech Due Diligences für VCs und Private Equity habe ich immer wieder dasselbe
+                Muster gesehen: Geniale SaaS-Lösungen scheitern fast nie am Tech-Stack. Sie scheitern an
+                der Distribution, weil ihre Sales-Pitches schlichtweg im Spam-Filter verpuffen.
               </p>
               <p>
-                {`Wir haben die Briefwerkstatt gebaut, damit du digitale Mauern legal umgehst: mit Briefpost, die sich anfühlt wie ein handgeschriebener Commit und sich steuert wie ein API-Endpoint.`}
+                Wir haben die Briefwerkstatt gebaut, damit du digitale Mauern legal umgehst: mit
+                Briefpost, die sich anfühlt wie ein handgeschriebener Commit und sich steuert wie ein
+                API-Endpoint.
               </p>
             </div>
-            <div className="flex flex-wrap gap-2 pt-2 font-mono text-xs">
-              <span className="rounded-full border border-white/15 bg-white/5 px-3 py-1.5 text-zinc-300">
-                {`50+ tech due diligences`}
-              </span>
-              <span className="rounded-full border border-white/15 bg-white/5 px-3 py-1.5 text-zinc-300">
-                {`vc & private equity`}
-              </span>
-            </div>
-          </div>
-
-          {/* DD Report Card */}
-          <div className="relative">
-            <div className="absolute -inset-4 rounded-3xl bg-[#781E69]/20 blur-2xl" />
-            <div className="relative rounded-2xl border border-white/10 bg-[#0d0d16] p-6 shadow-2xl">
-              <div className="flex items-center justify-between border-b border-white/10 pb-4 font-mono text-xs">
-                <span className="text-zinc-400">{`dd_report.md`}</span>
-                <span className="rounded bg-emerald-400/10 px-2 py-0.5 text-emerald-400">
-                  {`verified`}
+            <div className="flex flex-wrap gap-3 pt-2">
+              {["50+ Tech Due Diligences", "VC & Private Equity"].map((t) => (
+                <span
+                  key={t}
+                  className="rounded-full border-2 border-ink bg-white px-4 py-1.5 text-sm font-semibold"
+                >
+                  {t}
                 </span>
-              </div>
-              <ul className="space-y-3 py-5 font-mono text-sm">
-                {signals.map((signal, i) => (
-                  <li key={signal} className="flex items-center gap-3">
-                    <span
-                      className={
-                        i < 2
-                          ? "text-emerald-400"
-                          : i === 4
-                            ? "text-[#e08bd0]"
-                            : "text-amber-400"
-                      }
-                    >
-                      {i < 2 ? `[ok]` : i === 4 ? `[->]` : `[!!]`}
-                    </span>
-                    <span className="text-zinc-300">{signal}</span>
-                  </li>
-                ))}
-              </ul>
-              <blockquote className="border-l-2 border-[#c65db3] pl-4 text-lg font-medium leading-relaxed text-white">
-                {`Das beste Produkt gewinnt nicht. Das Produkt gewinnt, das der Kunde auch wirklich liest.`}
-              </blockquote>
+              ))}
             </div>
-          </div>
+          </Reveal>
+
+          {/* Notizblatt */}
+          <Reveal delay={0.15} className="relative">
+            <div className="relative mx-auto max-w-lg rotate-[1.5deg]">
+              <span className="tape -top-3 left-1/2 z-10 -translate-x-1/2 rotate-[3deg]" />
+              <div className="ruled relative rounded-[4px] border-2 border-ink bg-[#fffdf8] px-8 pb-10 pt-8 shadow-[10px_10px_0_0_var(--color-ink)] sm:px-10">
+                <div className="absolute bottom-0 left-12 top-0 w-[2px] bg-red-300/70" />
+                <div className="flex items-center justify-between pl-6">
+                  <span className="font-mono text-xs uppercase tracking-widest text-ink-soft">
+                    dd_report.md
+                  </span>
+                  <span className="rotate-[-8deg] rounded border-2 border-emerald-600 px-2 py-0.5 font-mono text-xs font-bold uppercase text-emerald-700">
+                    verified
+                  </span>
+                </div>
+                <ul className="mt-6 space-y-[6px] pl-6">
+                  {signals.map((s) => (
+                    <li key={s.text} className="flex h-[26px] items-center gap-3 font-hand text-[1.6rem]">
+                      <span className={`w-5 font-bold ${s.tone}`}>{s.mark}</span>
+                      <span>{s.text}</span>
+                    </li>
+                  ))}
+                </ul>
+                <blockquote className="mt-8 border-l-4 border-plum pl-5 font-display text-xl font-medium italic leading-snug sm:text-2xl">
+                  „Das beste Produkt gewinnt nicht. Das Produkt gewinnt, das der Kunde auch wirklich liest.“
+                </blockquote>
+              </div>
+            </div>
+            <HandNote className="absolute -bottom-14 right-0 hidden md:block" arrow="left" rotate={-3}>
+              aus 50+ Reports
+            </HandNote>
+          </Reveal>
         </div>
       </div>
     </section>

@@ -1,8 +1,5 @@
 "use client";
 
-import { Button } from "./ui/button";
-import { Input } from "./ui/input";
-import { Separator } from "./ui/separator";
 import { Mail, Phone, MapPin, Linkedin, Twitter, Send } from "lucide-react";
 const logoImg = "/assets/580b420df5b154f221ec7c41675f5b0aacc3ab71.png";
 const printerImage = "/assets/2a1e023a513c7d26c4ee4c0148d9ac3f2a7e5096.png";
@@ -11,6 +8,21 @@ import { ImageWithFallback } from "./figma/ImageWithFallback";
 const officeImage = "/assets/e2f5791ec0044e74da59fc1b390b9293b94bcca8.png";
 const officeImage2 = "/assets/531a0680e7d362118c9aba54d033229647beedd6.png";
 import { img } from "../lib/imgParams";
+
+const photos = [
+  { src: officeImage, alt: "Unser Office in München", caption: "das Office", rotate: "-3deg" },
+  { src: printerImage, alt: "Unsere Roboter-Technologie", caption: "die Plotter", rotate: "2deg" },
+  { src: officeImage2, alt: "Unser Arbeitsbereich in München", caption: "die Werkstatt", rotate: "-1deg" },
+];
+
+const nav = [
+  { href: "/#problem", label: "Problem" },
+  { href: "/#use-cases", label: "So funktioniert's" },
+  { href: "/#so-gehts", label: "Playground" },
+  { href: "/#roi-tracking", label: "Tracking" },
+  { href: "/#pricing", label: "Preise" },
+  { href: "/#faq", label: "FAQ" },
+];
 
 export function Footer() {
   const [email, setEmail] = useState("");
@@ -28,51 +40,112 @@ export function Footer() {
   };
 
   return (
-    <footer className="bg-primary text-primary-foreground">
-      {/* Map Section */}
-      <div className="border-b border-primary-foreground/20">
-        <div className="container mx-auto max-w-6xl px-4 py-12">
-          <div className="text-center mb-8">
-            <h3 className="text-2xl mb-2">Besuchen Sie uns</h3>
-            <p className="text-primary-foreground/80">Tengstraße 26, 80798 München</p>
+    <footer className="relative bg-ink text-white">
+      {/* Siegel */}
+      <div className="absolute left-1/2 top-0 flex h-20 w-20 -translate-x-1/2 -translate-y-1/2 items-center justify-center rounded-full border-2 border-ink bg-paper shadow-[4px_4px_0_0_var(--color-plum)]">
+        <img src={img(logoImg, 160)} alt="" className="h-14 w-14 object-contain" />
+      </div>
+
+      <div className="mx-auto max-w-7xl px-4 pb-10 pt-24 sm:px-8">
+        {/* Newsletter */}
+        <div className="mx-auto max-w-xl text-center">
+          <h3 className="font-display text-3xl font-medium tracking-tight sm:text-4xl">
+            Post von uns,{" "}
+            <span className="font-hand text-[1.2em] text-[#e08bd0]">ab und zu.</span>
+          </h3>
+          <p className="mt-3 text-white/60">
+            Exklusive Tipps, Erfolgsgeschichten und Angebote direkt in Ihr Postfach.
+          </p>
+          <form onSubmit={handleNewsletterSubmit} className="mt-7 flex flex-col gap-3 sm:flex-row">
+            <label className="sr-only" htmlFor="nl-email">E-Mail-Adresse</label>
+            <input
+              id="nl-email"
+              type="email"
+              placeholder="Ihre E-Mail-Adresse"
+              value={email}
+              onChange={(e) => setEmail(e.target.value)}
+              required
+              className="flex-1 rounded-full border-2 border-white/20 bg-white/5 px-5 py-3.5 text-white outline-none transition-colors placeholder:text-white/40 focus:border-[#e08bd0]"
+            />
+            <button
+              type="submit"
+              disabled={isSubmitting}
+              className="btn-ink btn-plum btn-sm !border-white !shadow-[3px_3px_0_0_#fff]"
+            >
+              <Send className="h-4 w-4" />
+              {isSubmitting ? "Senden …" : "Abonnieren"}
+            </button>
+          </form>
+          <p className="mt-3 text-xs text-white/40">
+            Mit der Anmeldung akzeptieren Sie unsere{" "}
+            <a href="/datenschutz" className="underline hover:text-white">Datenschutzerklärung</a>
+          </p>
+        </div>
+
+        {/* Spalten */}
+        <div className="mt-20 grid gap-12 border-t border-white/10 pt-14 md:grid-cols-2 lg:grid-cols-12">
+          <div className="space-y-5 lg:col-span-4">
+            <a href="/#" className="flex items-center gap-3">
+              <img
+                src={img(logoImg, 160)}
+                alt="Briefwerkstatt Logo"
+                className="h-12 w-12 object-contain brightness-0 invert"
+              />
+              <span className="font-display text-2xl font-semibold">Die Briefwerkstatt</span>
+            </a>
+            <p className="max-w-sm text-sm leading-relaxed text-white/60">
+              Echte Briefe für Growth-, Sales- und Marketing-Teams: DSGVO-konform, skalierbar, per API
+              oder CRM integriert und per QR-Code messbar.
+            </p>
+            <div className="flex gap-3">
+              {[Linkedin, Twitter].map((Icon, i) => (
+                <span
+                  key={i}
+                  className="flex h-10 w-10 items-center justify-center rounded-full border-2 border-white/20 text-white/70 transition-colors hover:border-white hover:text-white"
+                >
+                  <Icon className="h-4 w-4" />
+                </span>
+              ))}
+            </div>
           </div>
-          
-          {/* Office Images, Printer & Map Grid - 2x2 Layout */}
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-            {/* Office Image 1 */}
-            <div className="rounded-xl overflow-hidden shadow-2xl border-4 border-primary-foreground/10">
-              <ImageWithFallback
-                src={img(officeImage, 1200)}
-                alt="Unser Office in München"
-                className="w-full h-[280px] object-cover"
-              />
+
+          <div className="lg:col-span-3">
+            <h4 className="font-display text-xl">Navigation</h4>
+            <nav className="mt-5 grid grid-cols-2 gap-3 text-sm text-white/60 lg:grid-cols-1">
+              {nav.map((l) => (
+                <a key={l.href} href={l.href} className="transition-colors hover:text-[#e08bd0]">
+                  {l.label}
+                </a>
+              ))}
+            </nav>
+          </div>
+
+          <div className="lg:col-span-5">
+            <h4 className="font-display text-xl">Kontakt</h4>
+            <div className="mt-5 space-y-3 text-sm text-white/60">
+              <a href="mailto:info@briefwerkstatt.com" className="flex items-center gap-3 hover:text-white">
+                <Mail className="h-4 w-4 shrink-0 text-[#e08bd0]" />
+                info@briefwerkstatt.com
+              </a>
+              <a href="tel:+4989125012270" className="flex items-center gap-3 hover:text-white">
+                <Phone className="h-4 w-4 shrink-0 text-[#e08bd0]" />
+                +49 89 1250 1227 0
+              </a>
+              <div className="flex items-start gap-3">
+                <MapPin className="mt-0.5 h-4 w-4 shrink-0 text-[#e08bd0]" />
+                <span>
+                  Tengstraße 26
+                  <br />
+                  80798 München
+                </span>
+              </div>
             </div>
-            
-            {/* Office Image 2 */}
-            <div className="rounded-xl overflow-hidden shadow-2xl border-4 border-primary-foreground/10">
-              <ImageWithFallback
-                src={img(officeImage2, 1200)}
-                alt="Unser Arbeitsbereich in München"
-                className="w-full h-[280px] object-cover"
-              />
-            </div>
-            
-            {/* Printer/Robot Image */}
-            <div className="rounded-xl overflow-hidden shadow-2xl border-4 border-primary-foreground/10">
-              <ImageWithFallback
-                src={img(printerImage, 1200)}
-                alt="Unsere Roboter-Technologie"
-                className="w-full h-[280px] object-cover"
-              />
-            </div>
-            
-            {/* Map */}
-            <div className="rounded-xl overflow-hidden shadow-2xl border-4 border-primary-foreground/10">
+            <div className="mt-6 overflow-hidden rounded-2xl border-2 border-white/15">
               <iframe
                 src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d10648.189956553542!2d11.586236876891728!3d48.15508407124344!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x479e75f7f6f6f6f7%3A0x3f3f3f3f3f3f3f3f!2sTengstra%C3%9Fe%2026%2C%2080798%20M%C3%BCnchen!5e0!3m2!1sde!2sde!4v1234567890123!5m2!1sde!2sde&z=12"
                 width="100%"
-                height="280"
-                style={{ border: 0 }}
+                height="180"
+                style={{ border: 0, filter: "grayscale(1) contrast(1.1)" }}
                 allowFullScreen
                 loading="lazy"
                 referrerPolicy="no-referrer-when-downgrade"
@@ -81,122 +154,32 @@ export function Footer() {
             </div>
           </div>
         </div>
-      </div>
 
-      <div className="container mx-auto max-w-6xl px-4 py-16">
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 mb-12">
-          {/* Logo & Description */}
-          <div className="lg:col-span-4 space-y-4 sm:space-y-6">
-            <a href="/#" className="flex items-center space-x-3 group hover:opacity-90 transition-opacity">
-              <div className="relative h-14 w-14 sm:h-16 sm:w-16 lg:h-20 lg:w-20 flex-shrink-0">
-                <img 
-                  src={img(logoImg, 160)} 
-                  alt="Briefwerkstatt Logo" 
-                  className="w-full h-full object-contain transition-transform duration-300 ease-out group-hover:scale-110 brightness-0 invert drop-shadow-md"
-                />
-              </div>
-              
-              <div className="flex flex-col">
-                <span className="text-lg sm:text-xl lg:text-2xl font-bold">Die Briefwerkstatt</span>
-                <span className="text-xs sm:text-sm text-primary-foreground/70">
-                  Briefe für Marketing & Sales
-                </span>
-              </div>
-            </a>
-            <p className="text-primary-foreground/80 text-sm">
-              Echte Briefe für Growth-, Sales- und Marketing-Teams: DSGVO-konform,
-              skalierbar, per API oder CRM integriert und per QR-Code messbar.
-            </p>
-            <div className="flex space-x-3">
-              <Button variant="ghost" size="icon" className="text-primary-foreground hover:bg-primary-foreground/10 transition-colors">
-                <Linkedin className="w-5 h-5" />
-              </Button>
-              <Button variant="ghost" size="icon" className="text-primary-foreground hover:bg-primary-foreground/10 transition-colors">
-                <Twitter className="w-5 h-5" />
-              </Button>
-            </div>
-          </div>
-
-          {/* Navigation */}
-          <div className="lg:col-span-3 space-y-4">
-            <h3 className="text-lg font-semibold">Navigation</h3>
-            <nav className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-1 gap-3 text-primary-foreground/80 text-sm">
-              <div><a href="/#problem" className="hover:text-primary-foreground transition-colors">Problem</a></div>
-              <div><a href="/#use-cases" className="hover:text-primary-foreground transition-colors">Use Cases</a></div>
-              <div><a href="/#so-gehts" className="hover:text-primary-foreground transition-colors">{`So geht's`}</a></div>
-              <div><a href="/#roi-tracking" className="hover:text-primary-foreground transition-colors">Tracking</a></div>
-              <div><a href="/#referenzen" className="hover:text-primary-foreground transition-colors">Referenzen</a></div>
-              <div><a href="/#faq" className="hover:text-primary-foreground transition-colors">FAQ</a></div>
-            </nav>
-          </div>
-
-          {/* Kontakt */}
-          <div className="lg:col-span-5 space-y-4">
-            <h3 className="text-lg font-semibold">Kontakt</h3>
-            <div className="space-y-3 text-primary-foreground/80 text-sm">
-              <div className="flex items-center space-x-3">
-                <Mail className="w-4 h-4 flex-shrink-0" />
-                <a href="mailto:info@briefwerkstatt.com" className="hover:text-primary-foreground transition-colors break-all">
-                  info@briefwerkstatt.com
-                </a>
-              </div>
-              <div className="flex items-center space-x-3">
-                <Phone className="w-4 h-4 flex-shrink-0" />
-                <a href="tel:+4989125012270" className="hover:text-primary-foreground transition-colors">
-                  +49 89 1250 1227 0
-                </a>
-              </div>
-              <div className="flex items-start space-x-3">
-                <MapPin className="w-4 h-4 mt-1 flex-shrink-0" />
-                <div>
-                  <div>Tengstraße 26</div>
-                  <div>80798 München</div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        {/* Newsletter Section */}
-        <div className="bg-primary-foreground/10 rounded-xl p-4 sm:p-6 lg:p-8 mb-8 sm:mb-12">
-          <div className="max-w-2xl mx-auto text-center">
-            <h3 className="text-lg sm:text-xl lg:text-2xl font-semibold mb-2 sm:mb-3">Newsletter abonnieren</h3>
-            <p className="text-primary-foreground/80 mb-4 sm:mb-6 text-xs sm:text-sm lg:text-base">
-              Erhalten Sie exklusive Tipps, Erfolgsgeschichten und Angebote direkt in Ihr Postfach.
-            </p>
-            <form onSubmit={handleNewsletterSubmit} className="flex flex-col sm:flex-row gap-3 max-w-md mx-auto">
-              <Input
-                type="email"
-                placeholder="Ihre E-Mail-Adresse"
-                value={email}
-                onChange={(e) => setEmail(e.target.value)}
-                required
-                className="bg-primary-foreground text-foreground flex-1"
+        {/* Polaroids */}
+        <div className="mt-16 grid grid-cols-1 gap-8 px-2 sm:grid-cols-3 sm:gap-6">
+          {photos.map((p) => (
+            <figure
+              key={p.caption}
+              className="rounded-[4px] bg-paper p-2.5 pb-10 shadow-xl transition-transform duration-300 hover:rotate-0 hover:scale-[1.02]"
+              style={{ rotate: p.rotate }}
+            >
+              <ImageWithFallback
+                src={img(p.src, 900)}
+                alt={p.alt}
+                className="aspect-[4/3] w-full rounded-[2px] object-cover"
               />
-              <Button 
-                type="submit" 
-                disabled={isSubmitting}
-                className="bg-primary-foreground text-primary hover:bg-primary-foreground/90 w-full sm:w-auto"
-              >
-                <Send className="w-4 h-4 mr-2" />
-                {isSubmitting ? "Senden..." : "Abonnieren"}
-              </Button>
-            </form>
-            <p className="text-xs text-primary-foreground/60 mt-3 sm:mt-4">
-              Mit der Anmeldung akzeptieren Sie unsere <a href="/datenschutz" className="underline hover:text-primary-foreground">Datenschutzerklärung</a>
-            </p>
-          </div>
+              <figcaption className="mt-2 text-center font-hand text-2xl text-ink">
+                {p.caption}
+              </figcaption>
+            </figure>
+          ))}
         </div>
 
-        <Separator className="my-6 sm:my-8 bg-primary-foreground/20" />
-
-        <div className="flex flex-col md:flex-row justify-between items-center gap-3 sm:gap-4 text-xs sm:text-sm">
-          <div className="text-primary-foreground/80 text-center md:text-left">
-            © 2026 Die Briefwerkstatt. Alle Rechte vorbehalten.
-          </div>
-          <div className="flex gap-4 sm:gap-6 text-primary-foreground/80">
-            <a href="/datenschutz" className="hover:text-primary-foreground transition-colors">Datenschutz</a>
-            <a href="/impressum" className="hover:text-primary-foreground transition-colors">Impressum</a>
+        <div className="mt-16 flex flex-col items-center justify-between gap-4 border-t border-white/10 pt-8 text-sm text-white/50 md:flex-row">
+          <div>© 2026 Die Briefwerkstatt. Alle Rechte vorbehalten.</div>
+          <div className="flex gap-6">
+            <a href="/datenschutz" className="hover:text-white">Datenschutz</a>
+            <a href="/impressum" className="hover:text-white">Impressum</a>
           </div>
         </div>
       </div>

@@ -1,57 +1,78 @@
+import { Eyebrow, Reveal, Scribble } from "../paper/Ink";
+
 const stats = [
   {
     value: "< 5 %",
     label: "Reply-Rate bei B2B-Cold-Mails",
     note: "Der Durchschnitt in deinem Outreach-Tool. Der Rest wird nicht mal geöffnet.",
+    rotate: "-1.5deg",
+    bg: "bg-white",
   },
   {
     value: "0,3 %",
     label: "Spam-Cutoff bei Google",
     note: "Ab dieser Beschwerderate landet deine Domain auf der Blocklist. Ein schlechter Tag reicht.",
+    rotate: "1deg",
+    bg: "bg-blush",
   },
   {
     value: "50+",
     label: "Pitches, die dein Lead pro Tag löscht",
     note: "Reflexartig. Auch deinen. Auch wenn dein Produkt besser ist.",
+    rotate: "-0.5deg",
+    bg: "bg-white",
   },
 ];
 
 export function DevPain() {
   return (
-    <section className="relative bg-[#0a0a12] py-20 text-white lg:py-28">
-      <div className="container mx-auto max-w-6xl px-4">
-        <div className="max-w-3xl space-y-6">
-          <p className="font-mono text-sm text-[#c65db3]">{`// das problem`}</p>
-          <h2 className="text-3xl font-bold leading-tight tracking-tight sm:text-4xl lg:text-5xl">
-            {`Es wird digital immer schwerer, B2B-Kunden zu erreichen. `}
-            <span className="text-zinc-500">{`Und du kannst nichts dafür.`}</span>
+    <section id="problem" className="relative bg-white py-24 text-ink lg:py-32">
+      <div className="mx-auto max-w-7xl px-4 sm:px-8">
+        <Reveal className="mx-auto max-w-4xl text-center">
+          <Eyebrow>Das Problem</Eyebrow>
+          <h2 className="mt-5 font-display text-4xl font-medium leading-[1.08] tracking-tight sm:text-5xl lg:text-[3.6rem]">
+            Es wird digital immer schwerer, B2B-Kunden zu erreichen.{" "}
+            <span className="font-hand text-[1.15em] text-plum">Und du kannst nichts dafür.</span>
           </h2>
-          <p className="text-lg leading-relaxed text-zinc-400">
-            {`Aktuelle Daten zeigen: Die durchschnittliche Reply-Rate bei B2B-Cold-Mails liegt bei unter 5 %. Googles Spam-Filter blockieren Domains rigoros ab 0,3 % Beschwerderate. LinkedIn ist völlig von KI-Agenten überlaufen.`}
+          <p className="mx-auto mt-6 max-w-2xl text-lg leading-relaxed text-ink-soft sm:text-xl">
+            Aktuelle Daten zeigen: Die durchschnittliche Reply-Rate bei B2B-Cold-Mails liegt bei unter
+            5 %. Googles Spam-Filter blockieren Domains rigoros ab 0,3 % Beschwerderate. LinkedIn ist
+            völlig von KI-Agenten überlaufen.
           </p>
-        </div>
+        </Reveal>
 
-        <div className="mt-14 grid gap-4 sm:grid-cols-3 sm:gap-6">
-          {stats.map((stat) => (
-            <div
-              key={stat.label}
-              className="rounded-2xl border border-white/10 bg-white/[0.03] p-6 transition-colors hover:border-[#c65db3]/40"
-            >
-              <div className="font-mono text-4xl font-bold text-white lg:text-5xl">
-                {stat.value}
+        <div className="mt-16 grid gap-8 md:grid-cols-3 md:gap-6 lg:gap-10">
+          {stats.map((stat, i) => (
+            <Reveal key={stat.label} delay={i * 0.1}>
+              <div
+                className={`ink-card ink-card-hover h-full p-7 sm:p-8 ${stat.bg}`}
+                style={{ rotate: stat.rotate }}
+              >
+                <div className="font-display text-6xl font-semibold tracking-tight text-plum lg:text-7xl">
+                  {stat.value}
+                </div>
+                <div className="mt-4 text-lg font-bold leading-snug">{stat.label}</div>
+                <p className="mt-2 leading-relaxed text-ink-soft">{stat.note}</p>
               </div>
-              <div className="mt-3 font-medium text-zinc-200">{stat.label}</div>
-              <p className="mt-2 text-sm leading-relaxed text-zinc-500">{stat.note}</p>
-            </div>
+            </Reveal>
           ))}
         </div>
 
-        <div className="mt-12 rounded-2xl border border-white/10 bg-gradient-to-r from-[#781E69]/20 to-transparent p-6 sm:p-8">
-          <p className="text-lg leading-relaxed text-zinc-300">
-            {`Jeder kann heute für 20 Euro tausende Spam-Mails generieren. Das digitale Postfach deiner Zielgruppe ist ein Schlachtfeld. Wenn dein idealer Kunde jeden Tag 50 Pitches reflexartig löscht, geht dein überragendes Produkt einfach unter. `}
-            <span className="text-white">{`Ich verstehe deinen Frust: Du bist Gründer. Du willst bauen und wachsen, nicht gegen Spam-Filter kämpfen.`}</span>
-          </p>
-        </div>
+        <Reveal className="mx-auto mt-20 max-w-4xl">
+          <div className="relative rotate-[-0.6deg] rounded-[4px] border-2 border-ink bg-sun/70 p-8 shadow-[6px_6px_0_0_var(--color-ink)] sm:p-12">
+            <span className="tape -top-3 left-10 rotate-[-6deg]" />
+            <p className="font-display text-xl leading-relaxed sm:text-2xl">
+              Jeder kann heute für 20 Euro tausende Spam-Mails generieren. Das digitale Postfach deiner
+              Zielgruppe ist ein Schlachtfeld. Wenn dein idealer Kunde jeden Tag 50 Pitches reflexartig
+              löscht, geht dein überragendes Produkt einfach unter.
+            </p>
+            <p className="mt-6 font-hand text-3xl leading-tight text-plum-ink sm:text-[2.1rem]">
+              Ich verstehe deinen Frust: Du bist Gründer. Du willst{" "}
+              <Scribble color="var(--color-ink)">bauen und wachsen</Scribble>, nicht gegen Spam-Filter
+              kämpfen.
+            </p>
+          </div>
+        </Reveal>
       </div>
     </section>
   );

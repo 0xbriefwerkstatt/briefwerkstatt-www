@@ -1,230 +1,229 @@
 "use client";
 
-import { Button } from "../ui/button";
-import { Calendar, ChevronDown } from "lucide-react";
+import { ArrowDown, Calendar, Check } from "lucide-react";
+import { motion } from "motion/react";
 import { CalModal, openCalModal } from "../CalModal";
+import { HandNote, Scribble } from "../paper/Ink";
+import { img } from "../../lib/imgParams";
+
+const letterImg = "/assets/baf8c036e64b1e4e879710f5028d046ed28fd68c.png";
+const plotterImg = "/assets/2a1e023a513c7d26c4ee4c0148d9ac3f2a7e5096.png";
+
+const ticker = [
+  "Echte Tinte",
+  "REST API + Webhooks",
+  "QR-Tracking pro Brief",
+  "DSGVO-konform",
+  "Keine Mindestauflage",
+  "Made in München",
+  "98 % Öffnungsrate",
+];
 
 function scrollToPlayground() {
-  document
-    .getElementById("playground")
-    ?.scrollIntoView({ behavior: "smooth", block: "start" });
+  document.getElementById("playground")?.scrollIntoView({ behavior: "smooth", block: "start" });
 }
+
+const pop = (delay: number, rotate = 0) => ({
+  initial: { opacity: 0, y: 40, rotate: rotate - 6 },
+  animate: { opacity: 1, y: 0, rotate },
+  transition: { duration: 0.9, delay, ease: [0.22, 1, 0.36, 1] as const },
+});
 
 export function DevHero() {
   return (
     <>
-      <section className="relative overflow-hidden bg-[#0a0a12] text-white">
-        {/* Dot Grid Background */}
-        <div
-          className="absolute inset-0 opacity-20"
-          style={{
-            backgroundImage:
-              "radial-gradient(rgba(255,255,255,0.28) 1px, transparent 1px)",
-            backgroundSize: "28px 28px",
-          }}
-        />
-        {/* Glows */}
-        <div className="absolute -top-48 -right-48 h-[560px] w-[560px] rounded-full bg-[#781E69]/30 blur-[140px]" />
-        <div className="absolute -bottom-32 -left-32 h-[420px] w-[420px] rounded-full bg-[#c65db3]/10 blur-[120px]" />
+      <section className="paper-grain relative overflow-hidden bg-paper text-ink">
+        <div className="relative mx-auto grid max-w-7xl items-center gap-10 px-4 pb-20 pt-10 sm:px-8 lg:grid-cols-[1.05fr_1fr] lg:gap-6 lg:pb-28 lg:pt-14">
+          {/* Copy */}
+          <div className="relative z-10 max-w-2xl">
+            <motion.div
+              initial={{ opacity: 0, y: 10 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6 }}
+              className="mb-7 inline-flex items-center gap-2 rounded-full border-2 border-ink bg-white px-4 py-1.5 font-mono text-xs text-ink shadow-[3px_3px_0_0_var(--color-ink)]"
+            >
+              <span className="h-2 w-2 animate-pulse rounded-full bg-emerald-500" />
+              pen_plotter × webhooks
+            </motion.div>
 
-        <div className="container relative mx-auto max-w-6xl px-4 pt-16 pb-16 sm:pt-24 sm:pb-24 lg:pt-28 lg:pb-28">
-          <div className="grid items-center gap-12 lg:grid-cols-2 lg:gap-8">
-            <div className="max-w-xl space-y-8">
-              <div className="flex flex-wrap items-center gap-3 font-mono text-xs">
-                <span className="inline-flex items-center gap-2 rounded-full border border-white/15 bg-white/5 px-3 py-1.5 text-zinc-300">
-                  <span className="h-2 w-2 animate-pulse rounded-full bg-emerald-400" />
-                  pen_plotter × webhooks
-                </span>
-                <span className="text-zinc-500">made in munich · uuna tek</span>
+            <motion.h1
+              initial={{ opacity: 0, y: 24 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.8, delay: 0.05, ease: [0.22, 1, 0.36, 1] }}
+              className="font-display text-[2.9rem] font-medium leading-[1.02] tracking-[-0.02em] sm:text-6xl lg:text-[4.4rem] xl:text-[4.8rem]"
+            >
+              Sichere dir <Scribble>30 Sekunden</Scribble> ungeteilte Aufmerksamkeit{" "}
+              <span className="font-hand text-[1.1em] font-bold leading-[0.9] text-plum">
+                deiner idealen Kunden.
+              </span>
+            </motion.h1>
+
+            <motion.p
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.8, delay: 0.15 }}
+              className="mt-7 max-w-xl text-lg leading-relaxed text-ink-soft sm:text-xl"
+            >
+              Cold-Mails sind tot. Verlasse das digitale Schlachtfeld und verkaufe deine Lösung
+              analog: <strong className="text-ink">echte Briefe, echte Tinte, gesteuert per API.</strong>{" "}
+              98 % Öffnungsrate, DSGVO-konform per berechtigtem Interesse.
+            </motion.p>
+
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.8, delay: 0.25 }}
+              className="mt-9 flex flex-col gap-4 sm:flex-row"
+            >
+              <button onClick={scrollToPlayground} className="btn-ink btn-plum">
+                API-Playground öffnen
+                <ArrowDown className="h-4 w-4" />
+              </button>
+              <button onClick={openCalModal} className="btn-ink btn-paper">
+                <Calendar className="h-4 w-4" />
+                Kennenlerngespräch
+              </button>
+            </motion.div>
+
+            <motion.ul
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              transition={{ duration: 0.8, delay: 0.4 }}
+              className="mt-8 flex flex-wrap gap-x-6 gap-y-2 text-sm font-medium text-ink-soft"
+            >
+              {["Keine Mindestauflage", "REST API + Webhooks", "QR-Tracking pro Brief"].map((t) => (
+                <li key={t} className="flex items-center gap-1.5">
+                  <Check className="h-4 w-4 text-plum" strokeWidth={3} />
+                  {t}
+                </li>
+              ))}
+            </motion.ul>
+          </div>
+
+          {/* Collage */}
+          <div className="relative mx-auto h-[470px] w-full max-w-[560px] sm:h-[600px]">
+            {/* Kuvert */}
+            <motion.div
+              {...pop(0.35, 7)}
+              className="absolute right-0 top-6 w-[68%] sm:right-2 sm:top-10"
+            >
+              <div className="float" style={{ ["--r" as string]: "7deg", animationDelay: "-2s" }}>
+                <Envelope />
               </div>
+            </motion.div>
 
-              <h1 className="text-4xl font-bold leading-[1.08] tracking-tight sm:text-5xl lg:text-6xl">
-                {`Sichere dir `}
-                <span className="bg-gradient-to-r from-[#e08bd0] via-[#c65db3] to-[#9b2580] bg-clip-text text-transparent">
-                  {`30 Sekunden ungeteilte Aufmerksamkeit`}
-                </span>
-                {` deiner idealen Kunden.`}
-              </h1>
-
-              <p className="text-lg leading-relaxed text-zinc-400 sm:text-xl">
-                {`Cold-Mails sind tot. Verlasse das digitale Schlachtfeld und verkaufe deine Lösung analog: echte Briefe, echte Tinte, gesteuert per API. 98 % Öffnungsrate, DSGVO-konform per berechtigtem Interesse.`}
-              </p>
-
-              <div className="flex flex-col gap-4 pt-2 sm:flex-row">
-                <Button
-                  size="lg"
-                  onClick={scrollToPlayground}
-                  className="h-auto px-8 py-6 text-lg"
-                >
-                  {`API-Playground öffnen`}
-                  <ChevronDown className="ml-2 h-5 w-5 animate-bounce" />
-                </Button>
-                <Button
-                  size="lg"
-                  variant="outline"
-                  onClick={openCalModal}
-                  className="h-auto border-white/20 bg-transparent px-8 py-6 text-lg text-white hover:bg-white/10 hover:text-white"
-                >
-                  <Calendar className="mr-2 h-5 w-5" />
-                  {`Kennenlerngespräch buchen`}
-                </Button>
+            {/* Echter Brief */}
+            <motion.div
+              {...pop(0.15, -5)}
+              className="absolute left-[4%] top-[10%] w-[56%] sm:left-[6%] sm:w-[52%]"
+            >
+              <div className="float" style={{ ["--r" as string]: "-5deg" }}>
+                <div className="relative overflow-hidden rounded-[6px] border-2 border-ink bg-white shadow-[8px_10px_0_0_var(--color-ink)]">
+                  <img
+                    src={img(letterImg, 900)}
+                    alt="Echter, mit Füller geschriebener Brief der Briefwerkstatt"
+                    className="block h-auto w-full"
+                    fetchPriority="high"
+                  />
+                </div>
+                <span className="tape left-1/2 top-[-12px] -translate-x-1/2 rotate-[-4deg]" />
               </div>
+            </motion.div>
 
-              <div className="flex flex-wrap gap-x-6 gap-y-2 pt-2 font-mono text-xs text-zinc-500">
-                <span>{`$ keine mindestauflage`}</span>
-                <span>{`$ rest api + webhooks`}</span>
-                <span>{`$ qr tracking pro brief`}</span>
+            {/* Plotter-Polaroid */}
+            <motion.div
+              {...pop(0.5, 4)}
+              className="absolute bottom-[2%] right-[2%] w-[52%] sm:bottom-[4%] sm:w-[46%]"
+            >
+              <div className="float" style={{ ["--r" as string]: "4deg", animationDelay: "-4s" }}>
+                <div className="relative rounded-[6px] border-2 border-ink bg-white p-2 pb-9 shadow-[6px_6px_0_0_var(--color-ink)]">
+                  <img
+                    src={img(plotterImg, 600)}
+                    alt="Pen-Plotter schreibt einen Brief in München"
+                    className="aspect-[4/3] w-full rounded-[3px] object-cover"
+                  />
+                  <span className="absolute bottom-1.5 left-3 whitespace-nowrap font-hand text-lg text-ink sm:text-xl">
+                    live aus München
+                  </span>
+                </div>
+                <span className="tape right-[-18px] top-3 rotate-[38deg]" />
               </div>
-            </div>
+            </motion.div>
 
-            {/* Plotter Scene */}
-            <div className="relative mx-auto w-full max-w-lg">
-              <div className="relative rounded-2xl border border-white/10 bg-white/[0.03] p-4 shadow-2xl backdrop-blur-sm sm:p-6">
-                <svg
-                  viewBox="0 0 520 440"
-                  className="h-auto w-full"
-                  role="img"
-                  aria-label="Pen-Plotter schreibt einen Brief"
-                >
-                  {/* Paper */}
-                  <g transform="rotate(-3 390 375)">
-                    <rect
-                      x="300"
-                      y="318"
-                      width="185"
-                      height="118"
-                      rx="6"
-                      fill="#f4f1ea"
-                    />
-                    <rect x="316" y="334" width="120" height="6" rx="3" fill="#d6d0c4" />
-                    <rect x="316" y="350" width="150" height="6" rx="3" fill="#d6d0c4" />
-                    <rect x="316" y="366" width="135" height="6" rx="3" fill="#d6d0c4" />
-                    <path
-                      className="bw-sig"
-                      d="M318 404 C 336 384, 348 418, 364 400 S 392 388, 404 404 S 432 416, 452 396"
-                      fill="none"
-                      stroke="#2563eb"
-                      strokeWidth="3"
-                      strokeLinecap="round"
-                    />
-                  </g>
+            {/* API-Chips */}
+            <motion.div
+              {...pop(0.8)}
+              className="absolute right-[-4px] top-0 z-20 sm:right-[-24px]"
+            >
+              <div className="float rounded-xl border-2 border-ink bg-ink px-3.5 py-2.5 font-mono text-[11px] text-white shadow-[4px_4px_0_0_var(--color-plum)]">
+                <span className="text-white/50">POST </span>/v1/letters
+                <div className="text-emerald-300">200 OK · 12 ms</div>
+              </div>
+            </motion.div>
+            <motion.div {...pop(1)} className="absolute bottom-[30%] left-[-6px] z-20 sm:left-[-28px]">
+              <div
+                className="float rounded-xl border-2 border-ink bg-white px-3.5 py-2.5 font-mono text-[11px] shadow-[4px_4px_0_0_var(--color-ink)]"
+                style={{ animationDelay: "-3s" }}
+              >
+                <span className="text-ink-soft">webhook:</span>
+                <div className="font-semibold text-ink">letter.scanned ✓</div>
+              </div>
+            </motion.div>
 
-                  {/* Robot base */}
-                  <rect x="56" y="382" width="150" height="22" rx="7" fill="#27272a" />
-                  <rect x="112" y="330" width="38" height="58" rx="6" fill="#3f3f46" />
+            <HandNote
+              className="absolute -bottom-6 left-[2%] z-20 hidden sm:block"
+              arrow="none"
+              rotate={-6}
+            >
+              <span className="block max-w-[180px]">kein Font. echte Tinte, echtes Papier.</span>
+            </HandNote>
+          </div>
+        </div>
 
-                  {/* Arm segment 1 */}
-                  <g
-                    className="bw-arm1"
-                    style={{
-                      transformBox: "view-box",
-                      transformOrigin: "131px 338px",
-                    }}
-                  >
-                    <line
-                      x1="131"
-                      y1="338"
-                      x2="253"
-                      y2="196"
-                      stroke="#d4d4d8"
-                      strokeWidth="16"
-                      strokeLinecap="round"
-                    />
-                    <circle
-                      cx="253"
-                      cy="196"
-                      r="13"
-                      fill="#781E69"
-                      stroke="#e08bd0"
-                      strokeWidth="3"
-                    />
-                    {/* Arm segment 2 */}
-                    <g
-                      className="bw-arm2"
-                      style={{
-                        transformBox: "view-box",
-                        transformOrigin: "253px 196px",
-                      }}
-                    >
-                      <line
-                        x1="253"
-                        y1="196"
-                        x2="330"
-                        y2="312"
-                        stroke="#a1a1aa"
-                        strokeWidth="12"
-                        strokeLinecap="round"
-                      />
-                      {/* Gripper + pen */}
-                      <rect x="318" y="306" width="24" height="30" rx="5" fill="#27272a" />
-                      <line
-                        x1="330"
-                        y1="336"
-                        x2="330"
-                        y2="356"
-                        stroke="#2563eb"
-                        strokeWidth="4"
-                        strokeLinecap="round"
-                      />
-                    </g>
-                  </g>
-
-                  <circle cx="131" cy="338" r="14" fill="#781E69" stroke="#e08bd0" strokeWidth="3" />
+        {/* Laufband */}
+        <div className="relative border-y-2 border-ink bg-plum py-3.5 text-white">
+          <div className="flex w-max marquee">
+            {[...ticker, ...ticker, ...ticker, ...ticker].map((t, i) => (
+              <span key={i} className="flex items-center gap-6 px-6 font-display text-lg italic sm:text-xl">
+                {t}
+                <svg viewBox="0 0 20 20" className="h-4 w-4 text-sun" aria-hidden>
+                  <path
+                    d="M10 0 L12 8 L20 10 L12 12 L10 20 L8 12 L0 10 L8 8 Z"
+                    fill="currentColor"
+                  />
                 </svg>
-
-                {/* Floating status chips */}
-                <div className="bw-chip absolute -right-2 top-4 rounded-lg border border-white/10 bg-[#0d0d16]/90 px-3 py-2 font-mono text-[11px] shadow-xl backdrop-blur sm:-right-4">
-                  <span className="text-zinc-500">{`POST `}</span>
-                  <span className="text-zinc-200">{`/v1/letters`}</span>
-                  <div className="text-emerald-400">{`200 OK · 12 ms`}</div>
-                </div>
-                <div
-                  className="bw-chip absolute -left-2 top-1/3 rounded-lg border border-white/10 bg-[#0d0d16]/90 px-3 py-2 font-mono text-[11px] shadow-xl backdrop-blur sm:-left-4"
-                  style={{ animationDelay: "-2s" }}
-                >
-                  <span className="text-zinc-500">{`webhook:`}</span>
-                  <div className="text-zinc-200">{`letter.scanned ✓`}</div>
-                </div>
-                <div
-                  className="bw-chip absolute -bottom-3 right-8 rounded-lg border border-white/10 bg-[#0d0d16]/90 px-3 py-2 font-mono text-[11px] shadow-xl backdrop-blur"
-                  style={{ animationDelay: "-3.5s" }}
-                >
-                  <span className="text-zinc-200">{`98 %`}</span>
-                  <span className="text-zinc-500">{` öffnungsrate`}</span>
-                </div>
-              </div>
-            </div>
+              </span>
+            ))}
           </div>
         </div>
       </section>
 
-      <style>{`
-        @keyframes bwFloat {
-          0%, 100% { transform: translateY(0); }
-          50% { transform: translateY(-10px); }
-        }
-        @keyframes bwDraw {
-          to { stroke-dashoffset: 0; }
-        }
-        @keyframes bwArm1 {
-          0%, 100% { transform: rotate(-1.5deg); }
-          50% { transform: rotate(2.5deg); }
-        }
-        @keyframes bwArm2 {
-          0%, 100% { transform: rotate(2deg); }
-          50% { transform: rotate(-2.5deg); }
-        }
-        .bw-chip { animation: bwFloat 5s ease-in-out infinite; }
-        .bw-sig {
-          stroke-dasharray: 620;
-          stroke-dashoffset: 620;
-          animation: bwDraw 4s ease-in-out infinite alternate;
-        }
-        .bw-arm1 { animation: bwArm1 6s ease-in-out infinite; }
-        .bw-arm2 { animation: bwArm2 6s ease-in-out infinite; }
-      `}</style>
-
       <CalModal />
     </>
+  );
+}
+
+function Envelope() {
+  return (
+    <svg viewBox="0 0 360 240" className="h-auto w-full drop-shadow-[6px_8px_0_var(--color-ink)]" role="img" aria-label="Handadressiertes Kuvert">
+      <rect x="2" y="2" width="356" height="236" rx="10" fill="#fbf7ee" stroke="var(--color-ink)" strokeWidth="3" />
+      <path d="M4 8 L180 128 L356 8" fill="none" stroke="var(--color-ink)" strokeWidth="2.5" strokeLinejoin="round" opacity=".35" />
+      {/* Briefmarke */}
+      <g transform="translate(280 18) rotate(4)">
+        <rect width="58" height="70" rx="3" fill="var(--color-plum)" stroke="var(--color-ink)" strokeWidth="2.5" strokeDasharray="4 3" />
+        <circle cx="29" cy="35" r="17" fill="none" stroke="#fff" strokeWidth="2" />
+        <text x="29" y="41" textAnchor="middle" fontFamily="Georgia, serif" fontSize="16" fontWeight="700" fill="#fff">BW</text>
+      </g>
+      {/* Poststempel */}
+      <g transform="translate(232 70)" opacity=".55" stroke="var(--color-ink)" fill="none" strokeWidth="1.8">
+        <circle r="26" />
+        <path d="M30 -8 q 14 -8 28 0 t 28 0 M30 4 q 14 -8 28 0 t 28 0 M30 16 q 14 -8 28 0 t 28 0" />
+      </g>
+      <g fontFamily="var(--nf-hand), cursive" fill="var(--color-fountain)" fontSize="27">
+        <text x="70" y="146">Dr. Thomas Wagner</text>
+        <text x="70" y="176">Parkstraße 12</text>
+        <text x="70" y="206">80538 München</text>
+      </g>
+    </svg>
   );
 }
