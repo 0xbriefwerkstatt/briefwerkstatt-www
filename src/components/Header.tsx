@@ -60,6 +60,12 @@ export function Header() {
               Tracking
             </a>
             <a
+              href={`${base}#pricing`}
+              className="px-3 py-2 text-sm font-medium text-muted-foreground hover:text-primary hover:bg-primary/5 rounded-lg transition-all"
+            >
+              Preise
+            </a>
+            <a
               href={`${base}#faq`}
               className="px-3 py-2 text-sm font-medium text-muted-foreground hover:text-primary hover:bg-primary/5 rounded-lg transition-all"
             >
@@ -113,6 +119,13 @@ export function Header() {
                 onClick={() => setIsMenuOpen(false)}
               >
                 Tracking
+              </a>
+              <a
+                href={`${base}#pricing`}
+                className="px-4 py-3 text-sm font-medium text-muted-foreground hover:text-primary hover:bg-primary/5 rounded-lg transition-all"
+                onClick={() => setIsMenuOpen(false)}
+              >
+                Preise
               </a>
               <a
                 href={`${base}#faq`}

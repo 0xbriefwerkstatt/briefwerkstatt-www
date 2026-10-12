@@ -1,30 +1,33 @@
+import type { Metadata } from "next";
 import { Header } from "@/components/Header";
-import { Hero } from "@/components/Hero";
-import { Problem } from "@/components/Problem";
-import { SocialProof } from "@/components/SocialProof";
-import { Products } from "@/components/Products";
-import { Features } from "@/components/Features";
-import { MiddleCTA } from "@/components/MiddleCTA";
-import { Process } from "@/components/Process";
-import { ServiceOptions } from "@/components/ServiceOptions";
-import { Testimonials } from "@/components/Testimonials";
+import { DevHero } from "@/components/dev/DevHero";
+import { DevPain } from "@/components/dev/DevPain";
+import { DevGuide } from "@/components/dev/DevGuide";
+import { DevShift } from "@/components/dev/DevShift";
+import { DevPlayground } from "@/components/dev/DevPlayground";
+import { DevTracking } from "@/components/dev/DevTracking";
+import { DevPricing } from "@/components/dev/DevPricing";
 import { FAQ } from "@/components/FAQ";
 import { Footer } from "@/components/Footer";
+
+export const metadata: Metadata = {
+  title: "Die Briefwerkstatt: Post-Outreach API für Tech- und SaaS-Teams",
+  description:
+    "Sichere dir 30 Sekunden ungeteilte Aufmerksamkeit: echte Briefe mit echter Tinte, gesteuert per API und Webhook. 98 % Öffnungsrate, DSGVO-konform, QR-Tracking. Sandbox kostenlos testen.",
+};
 
 export default function Home() {
   return (
     <div className="min-h-screen bg-background">
       <Header />
-      <main>
-        <Hero />
-        <Problem />
-        <SocialProof />
-        <Products />
-        <ServiceOptions />
-        <Process />
-        <Features />
-        <MiddleCTA />
-        <Testimonials />
+      <main className="bg-[#0a0a12]">
+        <DevHero />
+        <DevPain />
+        <DevGuide />
+        <DevShift />
+        <DevPlayground />
+        <DevTracking />
+        <DevPricing />
         <FAQ />
       </main>
       <Footer />

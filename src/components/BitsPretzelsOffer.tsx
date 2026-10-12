@@ -7,7 +7,7 @@ import { CalModal, openCalModal } from "./CalModal";
 export function BitsPretzelsOffer() {
   return (
     <>
-      <section className="py-12 lg:py-16">
+      <section id="pricing" className="scroll-mt-24 py-12 lg:py-16">
         <div className="container mx-auto max-w-6xl px-4">
           <div className="bg-gradient-to-r from-primary to-primary/80 rounded-2xl p-8 md:p-12 shadow-2xl border border-primary/20 flex flex-col md:flex-row items-center justify-between gap-6">
             <div className="flex items-start sm:items-center gap-4 text-white">
