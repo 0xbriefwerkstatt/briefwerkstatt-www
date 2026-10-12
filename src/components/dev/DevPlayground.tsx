@@ -9,6 +9,8 @@ import { Loader2, Mail, PackageOpen, RotateCcw, Sparkles } from "lucide-react";
 const AI_TEXT =
   "Du starrst den ganzen Tag auf Code, aber dieser Brief lag heute legal auf deinem Schreibtisch. Kein Spam-Filter. Keine DSGVO-Abmahnung. Lass uns deine B2B-Kunden genau so erreichen.";
 
+const PLAYGROUND_API = "https://api.briefwerkstatt.com/playground/preview";
+
 type Phase = "idle" | "generating" | "ready" | "sending" | "done";
 
 export function DevPlayground() {
@@ -58,19 +60,18 @@ export function DevPlayground() {
     if (!emailValid || phase !== "ready") return;
     setPhase("sending");
     setError(null);
-    setLines(["> POST /api/playground"]);
+    setLines(["> POST api.briefwerkstatt.com/playground/preview"]);
     try {
-      const res = await fetch("/api/playground", {
+      const res = await fetch(PLAYGROUND_API, {
         method: "POST",
         headers: { "content-type": "application/json" },
         body: JSON.stringify({ email, name, address, body: aiText }),
       });
       const data = (await res.json().catch(() => ({}))) as {
-        ok?: boolean;
         letterId?: string;
         error?: string;
       };
-      if (!res.ok || !data.ok) {
+      if (!res.ok || !data.letterId) {
         throw new Error(data.error ?? `HTTP ${res.status}`);
       }
       setLines((prev) => [...prev, `> rendering preview (${data.letterId}) ...`]);
