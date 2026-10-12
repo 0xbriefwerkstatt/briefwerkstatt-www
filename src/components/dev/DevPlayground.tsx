@@ -18,12 +18,16 @@ export function DevPlayground() {
   const [address, setAddress] = useState("Werksviertel 12, 81673 München");
   const [email, setEmail] = useState("");
   const [lines, setLines] = useState<string[]>([]);
+  const [error, setError] = useState<string | null>(null);
   const [modalOpen, setModalOpen] = useState(false);
   const timers = useRef<number[]>([]);
 
   useEffect(() => {
     return () => {
-      timers.current.forEach((t) => window.clearTimeout(t));
+      timers.current.forEach((t) => {
+        window.clearTimeout(t);
+        window.clearInterval(t);
+      });
     };
   }, []);
 
@@ -50,19 +54,34 @@ export function DevPlayground() {
 
   const emailValid = /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
 
-  function sendPreview() {
+  async function sendPreview() {
     if (!emailValid || phase !== "ready") return;
     setPhase("sending");
-    setLines([]);
-    const seq = [
-      "> API authorized. Token: bw_live_9f27ac",
-      `> Sending preview mockup to ${email} ...`,
-      "> done. Check your mail to trigger UUNA TEK plotters in Munich.",
-    ];
-    seq.forEach((line, idx) => {
-      later(() => setLines((prev) => [...prev, line]), 500 * (idx + 1));
-    });
-    later(() => setPhase("done"), 500 * (seq.length + 1));
+    setError(null);
+    setLines(["> POST /api/playground"]);
+    try {
+      const res = await fetch("/api/playground", {
+        method: "POST",
+        headers: { "content-type": "application/json" },
+        body: JSON.stringify({ email, name, address, body: aiText }),
+      });
+      const data = (await res.json().catch(() => ({}))) as {
+        ok?: boolean;
+        letterId?: string;
+        error?: string;
+      };
+      if (!res.ok || !data.ok) {
+        throw new Error(data.error ?? `HTTP ${res.status}`);
+      }
+      setLines((prev) => [...prev, `> rendering preview (${data.letterId}) ...`]);
+      await new Promise((r) => setTimeout(r, 700));
+      setLines((prev) => [...prev, `> 200 OK · Vorschau an ${email} versendet`]);
+      setPhase("done");
+    } catch (err) {
+      setError(err instanceof Error ? err.message : "Unbekannter Fehler");
+      setLines((prev) => [...prev, "> request failed"]);
+      setPhase("ready");
+    }
   }
 
   function reset() {
@@ -75,6 +94,7 @@ export function DevPlayground() {
     setAiText("");
     setEmail("");
     setLines([]);
+    setError(null);
   }
 
   const canType = phase === "idle";
@@ -95,7 +115,7 @@ export function DevPlayground() {
             <span className="text-zinc-500">{`Teste es direkt hier.`}</span>
           </h2>
           <p className="mx-auto max-w-2xl text-lg leading-relaxed text-zinc-400">
-            {`Wirf stundenlanges API-Wälzen über Bord. Gib einfach deinen Prompt ein, generiere den Payload und triggere deinen ersten echten Brief.`}
+            {`Wirf stundenlanges API-Wälzen über Bord. Gib einfach deinen Prompt ein, generiere den Payload und triggere deinen ersten echten Brief. Die Vorschau kommt per Mail.`}
           </p>
         </div>
 
@@ -109,7 +129,7 @@ export function DevPlayground() {
               <span className="h-3 w-3 rounded-full bg-emerald-400/80" />
             </div>
             <span className="font-mono text-xs text-zinc-500">
-              {`briefwerkstatt · sandbox`}
+              {`briefwerkstatt · live sandbox`}
             </span>
             <button
               onClick={reset}
@@ -246,19 +266,29 @@ export function DevPlayground() {
                   <p
                     key={i}
                     className={
-                      line.startsWith("> done")
+                      line.startsWith("> 200 OK")
                         ? "text-emerald-400"
-                        : "text-zinc-300"
+                        : line.startsWith("> request failed")
+                          ? "text-red-400"
+                          : "text-zinc-300"
                     }
                   >
                     {line}
+                    {i === lines.length - 1 && phase === "sending" ? (
+                      <span className="ml-1 inline-block h-3.5 w-2 animate-pulse bg-zinc-300" />
+                    ) : null}
                   </p>
                 ))}
+                {error ? (
+                  <p className="text-red-400">{`> error: ${error}`}</p>
+                ) : null}
                 {phase === "done" ? (
-                  <div className="space-y-4 rounded-lg border border-[#c65db3]/30 bg-[#781E69]/10 p-4">
+                  <div className="space-y-4 rounded-lg border border-emerald-400/30 bg-emerald-400/5 p-4">
                     <p className="leading-relaxed text-zinc-300">
-                      <span className="font-semibold text-white">{`Sandbox-Demo: `}</span>
-                      {`Hier wurde nichts versendet. So fühlt sich die Integration an. Einen echten Testbrief auf Papier, geschrieben von unseren Plottern, bekommst du hier:`}
+                      <span className="font-semibold text-emerald-300">
+                        {`Preview ist unterwegs. `}
+                      </span>
+                      {`Die gerenderte PNG-Vorschau deines Briefs kommt in wenigen Minuten in dein Postfach. Einen echten Brief auf Papier, geschrieben von unseren Plottern in München, bekommst du hier:`}
                     </p>
                     <Button
                       onClick={() => setModalOpen(true)}
@@ -266,7 +296,7 @@ export function DevPlayground() {
                       className="border-[#c65db3]/50 bg-transparent text-white hover:bg-[#c65db3]/20 hover:text-white"
                     >
                       <PackageOpen className="mr-2 h-4 w-4" />
-                      {`Echten Testbrief anfordern`}
+                      {`Echten Testbrief auf Papier anfordern`}
                     </Button>
                   </div>
                 ) : null}
