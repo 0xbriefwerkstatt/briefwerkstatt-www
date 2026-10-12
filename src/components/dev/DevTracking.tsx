@@ -1,4 +1,5 @@
 import { Eyebrow, Reveal, Scribble } from "../paper/Ink";
+import { WebhookLog } from "./WebhookLog";
 
 const flow = [
   {
@@ -16,14 +17,6 @@ const flow = [
     title: "Lead im CRM markiert",
     text: "Dein System markiert den Kontakt als konvertiert, der Nachfass-Task wird ausgelöst. Offline-Kampagne, online ausgewertet.",
   },
-];
-
-const json: [string, string][] = [
-  ["event", "letter.scanned"],
-  ["letter_id", "ltr_9f27ac"],
-  ["campaign", "bnp-2026"],
-  ["scanned_at", "2026-10-12T09:41:07Z"],
-  ["landing_page", "https://deine-app.com/b/9f27ac"],
 ];
 
 export function DevTracking() {
@@ -66,40 +59,9 @@ export function DevTracking() {
           <Reveal delay={0.15} className="lg:sticky lg:top-28">
             <div className="relative">
               <div className="absolute -right-3 -top-5 z-10 rotate-[6deg] rounded-full border-2 border-ink bg-mint px-4 py-1.5 font-hand text-xl shadow-[3px_3px_0_0_var(--color-ink)]">
-                38 ms, ganz ohne Polling
+                in Echtzeit, ohne Polling
               </div>
-              <div className="overflow-hidden rounded-[22px] border-2 border-ink bg-ink shadow-[10px_10px_0_0_var(--color-plum)]">
-                <div className="flex items-center justify-between border-b border-white/10 px-5 py-3.5 font-mono text-xs">
-                  <span className="text-white/60">webhook_delivery.log</span>
-                  <span className="flex items-center gap-2 text-emerald-300">
-                    <span className="h-1.5 w-1.5 animate-pulse rounded-full bg-emerald-300" />
-                    live
-                  </span>
-                </div>
-                <pre className="overflow-x-auto p-6 font-mono text-xs leading-relaxed text-white sm:text-sm">
-                  <code>
-                    <span className="text-[#e08bd0]">POST </span>
-                    <span>/api/webhook HTTP/1.1</span>
-                    {"\n"}
-                    <span className="text-white/50">Host: </span>
-                    <span>deine-app.com</span>
-                    {"\n\n"}
-                    <span className="text-white/50">{"{"}</span>
-                    {"\n"}
-                    {json.map(([k, v], i) => (
-                      <span key={k}>
-                        <span className="text-white/50">{`  "${k}": `}</span>
-                        <span className="text-emerald-300">{`"${v}"`}</span>
-                        <span className="text-white/50">{i < json.length - 1 ? "," : ""}</span>
-                        {"\n"}
-                      </span>
-                    ))}
-                    <span className="text-white/50">{"}"}</span>
-                    {"\n\n"}
-                    <span className="text-emerald-300">200 OK · delivered in 38 ms</span>
-                  </code>
-                </pre>
-              </div>
+              <WebhookLog />
             </div>
           </Reveal>
         </div>

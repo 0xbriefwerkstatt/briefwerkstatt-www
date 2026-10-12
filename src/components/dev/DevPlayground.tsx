@@ -3,6 +3,7 @@
 import { useEffect, useRef, useState } from "react";
 import { Eyebrow, HandNote, Reveal } from "../paper/Ink";
 import { SamplePackageModal } from "../SamplePackageModal";
+import { CodeTabs } from "./CodeTabs";
 import { Loader2, Mail, PackageOpen, RotateCcw, Sparkles } from "lucide-react";
 
 const AI_TEXT =
@@ -326,6 +327,16 @@ export function DevPlayground() {
               ) : null}
             </div>
           </div>
+        </Reveal>
+
+        <Reveal className="mt-20">
+          <div className="mb-6 flex flex-wrap items-end justify-between gap-3">
+            <h3 className="font-display text-3xl font-semibold tracking-tight">
+              Oder direkt aus deinem Code.
+            </h3>
+            <p className="font-hand text-2xl text-plum">ein Request, ein Brief.</p>
+          </div>
+          <CodeTabs />
         </Reveal>
       </div>
 

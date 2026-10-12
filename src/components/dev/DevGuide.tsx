@@ -70,7 +70,7 @@ export function DevGuide() {
                 </blockquote>
               </div>
             </div>
-            <HandNote className="absolute -bottom-14 right-0 hidden md:block" arrow="left" rotate={-3}>
+            <HandNote className="absolute -bottom-20 right-6 hidden md:block" arrow="left" rotate={-3}>
               aus 50+ Reports
             </HandNote>
           </Reveal>

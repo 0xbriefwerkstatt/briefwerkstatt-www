@@ -2,6 +2,7 @@
 
 import { Menu, X, ArrowRight } from "lucide-react";
 import { useEffect, useState } from "react";
+import { motion, useScroll, useSpring } from "motion/react";
 import { usePathname } from "next/navigation";
 const logoImg = "/assets/580b420df5b154f221ec7c41675f5b0aacc3ab71.png";
 import { CalModal, openCalModal } from "./CalModal";
@@ -18,6 +19,8 @@ const links = [
 export function Header() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
+  const { scrollYProgress } = useScroll();
+  const progress = useSpring(scrollYProgress, { stiffness: 120, damping: 30, mass: 0.3 });
   // Landingpages enthalten die Sektionen selbst, alle anderen Seiten verlinken auf die Startseite
   const pathname = usePathname();
   const base = pathname === "/" || pathname === "/bits-and-pretzels" ? "" : "/";
@@ -107,6 +110,12 @@ export function Header() {
             {isMenuOpen ? <X className="h-5 w-5" /> : <Menu className="h-5 w-5" />}
           </button>
         </div>
+
+        <motion.div
+          aria-hidden
+          className="absolute -bottom-[2px] left-0 right-0 h-[3px] origin-left bg-plum"
+          style={{ scaleX: progress, opacity: scrolled ? 1 : 0 }}
+        />
 
         {isMenuOpen && (
           <div className="paper-grain absolute inset-x-0 top-full h-[100dvh] overflow-y-auto bg-paper lg:hidden">

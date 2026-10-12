@@ -1,6 +1,6 @@
 "use client";
 
-import { Eyebrow, Reveal, Scribble, useInView } from "../paper/Ink";
+import { CountUp, Eyebrow, InkArrow, Reveal, Scribble, useInView } from "../paper/Ink";
 
 const steps = [
   {
@@ -26,6 +26,13 @@ const steps = [
   },
 ];
 
+const proof = [
+  { to: 98, suffix: " %", label: "Öffnungsrate bei handadressierten Briefen" },
+  { to: 95, suffix: " %", label: "erkennen im Blindtest keinen Unterschied zur Hand" },
+  { to: 1, suffix: "", label: "Werktag bis zur Post, bei Bestellung bis 12 Uhr" },
+  { to: 0, suffix: "", label: "Mindestauflage. Ein Brief reicht." },
+];
+
 export function DevShift() {
   const [pathRef, pathInView] = useInView<HTMLDivElement>(0.3);
 
@@ -46,28 +53,15 @@ export function DevShift() {
         </Reveal>
 
         <div ref={pathRef} className={`relative mt-20 ${pathInView ? "in-view" : ""}`}>
-          {/* Gestrichelte Flugbahn zwischen den Schritten */}
-          <svg
-            aria-hidden
-            viewBox="0 0 1200 120"
-            preserveAspectRatio="none"
-            className="pointer-events-none absolute left-[12%] right-[12%] top-[70px] hidden h-[120px] w-[76%] lg:block"
-          >
-            <path
-              className="draw-on-view"
-              style={{ ["--len" as string]: 1400, ["--delay" as string]: ".3s" }}
-              d="M0 60 C 150 -20, 300 -10, 420 50 S 700 130, 800 60 S 1080 -20, 1200 50"
-              fill="none"
-              stroke="var(--color-plum)"
-              strokeWidth="3"
-              strokeDasharray="2 12"
-              strokeLinecap="round"
-            />
-          </svg>
-
           <div className="grid gap-16 lg:grid-cols-3 lg:gap-10">
             {steps.map(({ num, kicker, title, text, Art }, i) => (
               <Reveal key={num} delay={i * 0.15} className="relative text-center">
+                {i < 2 ? (
+                  <InkArrow
+                    flip={i === 1}
+                    className="absolute -right-[22%] top-12 hidden h-16 w-32 lg:block"
+                  />
+                ) : null}
                 <div className="relative mx-auto h-[200px] w-[200px]">
                   <div
                     className="absolute inset-0 rounded-[46%_54%_52%_48%/55%_45%_55%_45%] border-2 border-ink bg-white shadow-[6px_6px_0_0_var(--color-ink)]"
@@ -90,7 +84,25 @@ export function DevShift() {
           </div>
         </div>
 
-        <Reveal className="mt-20">
+        <Reveal className="mt-24">
+          <dl className="mx-auto grid max-w-5xl grid-cols-2 gap-4 sm:gap-6 lg:grid-cols-4">
+            {proof.map((p, i) => (
+              <div
+                key={p.label}
+                className="rounded-[18px] border-2 border-ink bg-white p-5 text-center shadow-[4px_4px_0_0_var(--color-ink)]"
+                style={{ rotate: `${(i % 2 ? 1 : -1) * 0.8}deg` }}
+              >
+                <dt className="sr-only">{p.label}</dt>
+                <dd className="font-display text-4xl font-semibold tracking-tight text-plum sm:text-5xl">
+                  <CountUp to={p.to} suffix={p.suffix} />
+                </dd>
+                <p className="mt-2 text-sm leading-snug text-ink-soft">{p.label}</p>
+              </div>
+            ))}
+          </dl>
+        </Reveal>
+
+        <Reveal className="mt-14">
           <div className="ink-card mx-auto flex max-w-4xl flex-col items-center justify-between gap-5 p-6 sm:flex-row sm:px-8">
             <p className="font-display text-xl font-medium sm:text-2xl">
               Offline-Sympathie trifft auf <Scribble>glasklaren ROI</Scribble>.

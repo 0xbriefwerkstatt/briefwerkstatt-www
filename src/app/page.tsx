@@ -10,6 +10,7 @@ import { DevPricing } from "@/components/dev/DevPricing";
 import { FAQ } from "@/components/FAQ";
 import { Footer } from "@/components/Footer";
 import { Wave } from "@/components/paper/Ink";
+import { FloatingCta } from "@/components/dev/FloatingCta";
 
 export const metadata: Metadata = {
   title: "Die Briefwerkstatt: Post-Outreach API für Tech- und SaaS-Teams",
@@ -34,6 +35,7 @@ export default function Home() {
         <FAQ />
       </main>
       <Footer />
+      <FloatingCta />
     </div>
   );
 }

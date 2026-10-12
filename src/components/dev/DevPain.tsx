@@ -1,22 +1,23 @@
-import { Eyebrow, Reveal, Scribble } from "../paper/Ink";
+import { CountUp, Eyebrow, Reveal, Scribble } from "../paper/Ink";
+import { InboxVsDesk } from "./InboxVsDesk";
 
 const stats = [
   {
-    value: "< 5 %",
+    value: <CountUp to={5} prefix="< " suffix=" %" />,
     label: "Reply-Rate bei B2B-Cold-Mails",
     note: "Der Durchschnitt in deinem Outreach-Tool. Der Rest wird nicht mal geöffnet.",
     rotate: "-1.5deg",
     bg: "bg-white",
   },
   {
-    value: "0,3 %",
+    value: <CountUp to={0.3} decimals={1} suffix=" %" />,
     label: "Spam-Cutoff bei Google",
     note: "Ab dieser Beschwerderate landet deine Domain auf der Blocklist. Ein schlechter Tag reicht.",
     rotate: "1deg",
     bg: "bg-blush",
   },
   {
-    value: "50+",
+    value: <CountUp to={50} suffix="+" />,
     label: "Pitches, die dein Lead pro Tag löscht",
     note: "Reflexartig. Auch deinen. Auch wenn dein Produkt besser ist.",
     rotate: "-0.5deg",
@@ -58,7 +59,14 @@ export function DevPain() {
           ))}
         </div>
 
-        <Reveal className="mx-auto mt-20 max-w-4xl">
+        <Reveal className="mt-24">
+          <p className="mb-8 text-center font-hand text-3xl text-plum sm:text-4xl">
+            Zwei Wege zum selben Lead. Rate mal, welcher ankommt.
+          </p>
+          <InboxVsDesk />
+        </Reveal>
+
+        <Reveal className="mx-auto mt-24 max-w-4xl">
           <div className="relative rotate-[-0.6deg] rounded-[4px] border-2 border-ink bg-sun/70 p-8 shadow-[6px_6px_0_0_var(--color-ink)] sm:p-12">
             <span className="tape -top-3 left-10 rotate-[-6deg]" />
             <p className="font-display text-xl leading-relaxed sm:text-2xl">

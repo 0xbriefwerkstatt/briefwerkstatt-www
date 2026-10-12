@@ -182,3 +182,74 @@ export function Eyebrow({ children, className = "" }: { children: ReactNode; cla
     </p>
   );
 }
+
+/** Zählt eine Zahl hoch, sobald sie sichtbar wird. */
+export function CountUp({
+  to,
+  decimals = 0,
+  duration = 1400,
+  prefix = "",
+  suffix = "",
+}: {
+  to: number;
+  decimals?: number;
+  duration?: number;
+  prefix?: string;
+  suffix?: string;
+}) {
+  const [ref, inView] = useInView<HTMLSpanElement>(0.6);
+  const [value, setValue] = useState(0);
+  useEffect(() => {
+    if (!inView) return;
+    if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
+      setValue(to);
+      return;
+    }
+    let raf = 0;
+    const start = performance.now();
+    const tick = (now: number) => {
+      const t = Math.min(1, (now - start) / duration);
+      setValue(to * (1 - Math.pow(1 - t, 3)));
+      if (t < 1) raf = requestAnimationFrame(tick);
+    };
+    raf = requestAnimationFrame(tick);
+    return () => cancelAnimationFrame(raf);
+  }, [inView, to, duration]);
+  return (
+    <span ref={ref} className="tabular-nums">
+      {prefix}
+      {value.toLocaleString("de-DE", { minimumFractionDigits: decimals, maximumFractionDigits: decimals })}
+      {suffix}
+    </span>
+  );
+}
+
+/** Geschwungener Pfeil zwischen zwei Elementen. */
+export function InkArrow({ className = "", flip = false }: { className?: string; flip?: boolean }) {
+  const [ref, inView] = useInView<HTMLDivElement>(0.5);
+  return (
+    <div ref={ref} aria-hidden className={`${inView ? "in-view" : ""} ${className}`}>
+      <svg viewBox="0 0 120 60" className="h-full w-full" style={flip ? { transform: "scaleY(-1)" } : undefined}>
+        <path
+          className="draw-on-view"
+          style={{ ["--len" as string]: 160, ["--delay" as string]: ".4s" }}
+          d="M6 40 C 30 6, 80 4, 108 30"
+          fill="none"
+          stroke="var(--color-plum)"
+          strokeWidth="3"
+          strokeLinecap="round"
+        />
+        <path
+          className="draw-on-view"
+          style={{ ["--len" as string]: 40, ["--delay" as string]: "1.2s" }}
+          d="M94 30 L 110 32 L 106 16"
+          fill="none"
+          stroke="var(--color-plum)"
+          strokeWidth="3"
+          strokeLinecap="round"
+          strokeLinejoin="round"
+        />
+      </svg>
+    </div>
+  );
+}

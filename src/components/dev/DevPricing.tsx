@@ -144,7 +144,7 @@ export function DevPricing() {
 
       {/* Abschluss-CTA */}
       <Wave from="var(--color-paper-2)" to="var(--color-plum)" />
-      <section className="relative overflow-hidden bg-plum pb-24 pt-10 text-white lg:pb-32">
+      <section id="final-cta" className="relative overflow-hidden bg-plum pb-24 pt-10 text-white lg:pb-32">
         <svg aria-hidden viewBox="0 0 200 200" className="absolute -left-16 top-10 h-64 w-64 opacity-15">
           <circle cx="100" cy="100" r="80" fill="none" stroke="#fff" strokeWidth="3" strokeDasharray="6 10" />
         </svg>

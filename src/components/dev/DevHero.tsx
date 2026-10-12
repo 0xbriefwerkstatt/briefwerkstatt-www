@@ -1,10 +1,11 @@
 "use client";
 
 import { ArrowDown, Calendar, Check } from "lucide-react";
-import { motion } from "motion/react";
+import Image from "next/image";
+import { motion, useMotionValue, useSpring, useTransform, type MotionValue } from "motion/react";
+import type { ReactNode } from "react";
 import { CalModal, openCalModal } from "../CalModal";
 import { HandNote, Scribble } from "../paper/Ink";
-import { img } from "../../lib/imgParams";
 
 const letterImg = "/assets/baf8c036e64b1e4e879710f5028d046ed28fd68c.png";
 const plotterImg = "/assets/2a1e023a513c7d26c4ee4c0148d9ac3f2a7e5096.png";
@@ -30,6 +31,11 @@ const pop = (delay: number, rotate = 0) => ({
 });
 
 export function DevHero() {
+  const mx = useMotionValue(0);
+  const my = useMotionValue(0);
+  const sx = useSpring(mx, { stiffness: 60, damping: 16 });
+  const sy = useSpring(my, { stiffness: 60, damping: 16 });
+
   return (
     <>
       <section className="paper-grain relative overflow-hidden bg-paper text-ink">
@@ -46,17 +52,22 @@ export function DevHero() {
               pen_plotter × webhooks
             </motion.div>
 
-            <motion.h1
-              initial={{ opacity: 0, y: 24 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.8, delay: 0.05, ease: [0.22, 1, 0.36, 1] }}
-              className="font-display text-[2.9rem] font-medium leading-[1.02] tracking-[-0.02em] sm:text-6xl lg:text-[4.4rem] xl:text-[4.8rem]"
-            >
-              Sichere dir <Scribble>30 Sekunden</Scribble> ungeteilte Aufmerksamkeit{" "}
-              <span className="font-hand text-[1.1em] font-bold leading-[0.9] text-plum">
-                deiner idealen Kunden.
-              </span>
-            </motion.h1>
+            <h1 className="font-display text-[2.9rem] font-medium leading-[1.02] tracking-[-0.02em] sm:text-6xl lg:text-[4.4rem] xl:text-[4.8rem]">
+              {["Sichere", "dir"].map((w, i) => (
+                <Word key={w} i={i}>{w}</Word>
+              ))}{" "}
+              <Word i={2}>
+                <Scribble>30 Sekunden</Scribble>
+              </Word>{" "}
+              {["ungeteilte", "Aufmerksamkeit"].map((w, i) => (
+                <Word key={w} i={3 + i}>{w}</Word>
+              ))}{" "}
+              {["deiner", "idealen", "Kunden."].map((w, i) => (
+                <Word key={w} i={5 + i}>
+                  <span className="font-hand text-[1.1em] font-bold leading-[0.9] text-plum">{w}</span>
+                </Word>
+              ))}
+            </h1>
 
             <motion.p
               initial={{ opacity: 0, y: 20 }}
@@ -101,33 +112,52 @@ export function DevHero() {
           </div>
 
           {/* Collage */}
-          <div className="relative mx-auto h-[470px] w-full max-w-[560px] sm:h-[600px]">
+          <div
+            className="relative mx-auto h-[470px] w-full max-w-[560px] sm:h-[600px]"
+            onPointerMove={(e) => {
+              if (e.pointerType !== "mouse") return;
+              const r = e.currentTarget.getBoundingClientRect();
+              mx.set((e.clientX - r.left) / r.width - 0.5);
+              my.set((e.clientY - r.top) / r.height - 0.5);
+            }}
+            onPointerLeave={() => {
+              mx.set(0);
+              my.set(0);
+            }}
+          >
             {/* Kuvert */}
             <motion.div
-              {...pop(0.35, 7)}
-              className="absolute right-0 top-6 w-[68%] sm:right-2 sm:top-10"
+              {...pop(0.35, 5)}
+              className="absolute right-0 top-2 w-[74%] sm:-right-2 sm:top-4"
             >
-              <div className="float" style={{ ["--r" as string]: "7deg", animationDelay: "-2s" }}>
-                <Envelope />
-              </div>
+              <Depth x={sx} y={sy} d={14}>
+                <div className="float" style={{ ["--r" as string]: "5deg", animationDelay: "-2s" }}>
+                  <Envelope />
+                </div>
+              </Depth>
             </motion.div>
 
             {/* Echter Brief */}
             <motion.div
               {...pop(0.15, -5)}
-              className="absolute left-[4%] top-[10%] w-[56%] sm:left-[6%] sm:w-[52%]"
+              className="absolute left-0 top-[16%] w-[52%] sm:left-[2%] sm:w-[48%]"
             >
-              <div className="float" style={{ ["--r" as string]: "-5deg" }}>
-                <div className="relative overflow-hidden rounded-[6px] border-2 border-ink bg-white shadow-[8px_10px_0_0_var(--color-ink)]">
-                  <img
-                    src={img(letterImg, 900)}
-                    alt="Echter, mit Füller geschriebener Brief der Briefwerkstatt"
-                    className="block h-auto w-full"
-                    fetchPriority="high"
-                  />
+              <Depth x={sx} y={sy} d={26}>
+                <div className="float" style={{ ["--r" as string]: "-5deg" }}>
+                  <div className="relative overflow-hidden rounded-[6px] border-2 border-ink bg-white shadow-[8px_10px_0_0_var(--color-ink)]">
+                    <Image
+                      src={letterImg}
+                      alt="Echter, mit Füller geschriebener Brief der Briefwerkstatt"
+                      width={2409}
+                      height={3435}
+                      sizes="(min-width: 1024px) 280px, 50vw"
+                      priority
+                      className="block h-auto w-full"
+                    />
+                  </div>
+                  <span className="tape left-1/2 top-[-12px] -translate-x-1/2 rotate-[-4deg]" />
                 </div>
-                <span className="tape left-1/2 top-[-12px] -translate-x-1/2 rotate-[-4deg]" />
-              </div>
+              </Depth>
             </motion.div>
 
             {/* Plotter-Polaroid */}
@@ -135,11 +165,15 @@ export function DevHero() {
               {...pop(0.5, 4)}
               className="absolute bottom-[2%] right-[2%] w-[52%] sm:bottom-[4%] sm:w-[46%]"
             >
+              <Depth x={sx} y={sy} d={40}>
               <div className="float" style={{ ["--r" as string]: "4deg", animationDelay: "-4s" }}>
                 <div className="relative rounded-[6px] border-2 border-ink bg-white p-2 pb-9 shadow-[6px_6px_0_0_var(--color-ink)]">
-                  <img
-                    src={img(plotterImg, 600)}
+                  <Image
+                    src={plotterImg}
                     alt="Pen-Plotter schreibt einen Brief in München"
+                    width={836}
+                    height={585}
+                    sizes="(min-width: 1024px) 260px, 50vw"
                     className="aspect-[4/3] w-full rounded-[3px] object-cover"
                   />
                   <span className="absolute bottom-1.5 left-3 whitespace-nowrap font-hand text-lg text-ink sm:text-xl">
@@ -148,6 +182,7 @@ export function DevHero() {
                 </div>
                 <span className="tape right-[-18px] top-3 rotate-[38deg]" />
               </div>
+              </Depth>
             </motion.div>
 
             {/* API-Chips */}
@@ -215,15 +250,70 @@ function Envelope() {
         <text x="29" y="41" textAnchor="middle" fontFamily="Georgia, serif" fontSize="16" fontWeight="700" fill="#fff">BW</text>
       </g>
       {/* Poststempel */}
-      <g transform="translate(232 70)" opacity=".55" stroke="var(--color-ink)" fill="none" strokeWidth="1.8">
+      <g transform="translate(206 58)" opacity=".5" stroke="var(--color-ink)" fill="none" strokeWidth="1.8">
         <circle r="26" />
         <path d="M30 -8 q 14 -8 28 0 t 28 0 M30 4 q 14 -8 28 0 t 28 0 M30 16 q 14 -8 28 0 t 28 0" />
       </g>
-      <g fontFamily="var(--nf-hand), cursive" fill="var(--color-fountain)" fontSize="27">
-        <text x="70" y="146">Dr. Thomas Wagner</text>
-        <text x="70" y="176">Parkstraße 12</text>
-        <text x="70" y="206">80538 München</text>
+      <g fontFamily="var(--nf-hand), cursive" fontSize="25" fontWeight="500">
+        {["Dr. Thomas Wagner", "Parkstraße 12", "80538 München"].map((line, i) => (
+          <text
+            key={line}
+            x="150"
+            y={150 + i * 28}
+            className="bw-ink-text"
+            style={{ animationDelay: `${1.1 + i * 0.55}s` }}
+          >
+            {line}
+          </text>
+        ))}
       </g>
+      <style>{`
+        .bw-ink-text {
+          fill: var(--color-fountain); fill-opacity: 0;
+          stroke: var(--color-fountain); stroke-width: .7;
+          stroke-dasharray: 420; stroke-dashoffset: 420;
+          animation: bw-ink-write 1.1s ease-out forwards;
+        }
+        @keyframes bw-ink-write {
+          70% { stroke-dashoffset: 0; fill-opacity: .2; }
+          100% { stroke-dashoffset: 0; fill-opacity: 1; }
+        }
+        @media (prefers-reduced-motion: reduce) {
+          .bw-ink-text { animation: none; fill-opacity: 1; stroke-dashoffset: 0; }
+        }
+      `}</style>
     </svg>
   );
+}
+
+function Word({ i, children }: { i: number; children: ReactNode }) {
+  return (
+    <>
+    <motion.span
+      className="inline-block"
+      initial={{ opacity: 0, y: 28, rotate: 2 }}
+      animate={{ opacity: 1, y: 0, rotate: 0 }}
+      transition={{ duration: 0.75, delay: 0.05 + i * 0.07, ease: [0.22, 1, 0.36, 1] }}
+    >
+      {children}
+    </motion.span>{" "}
+    </>
+  );
+}
+
+/** Verschiebt eine Ebene der Collage je nach Mausposition (Parallaxe). */
+function Depth({
+  x,
+  y,
+  d,
+  children,
+}: {
+  x: MotionValue<number>;
+  y: MotionValue<number>;
+  d: number;
+  children: ReactNode;
+}) {
+  const tx = useTransform(x, (v) => v * d);
+  const ty = useTransform(y, (v) => v * d);
+  return <motion.div style={{ x: tx, y: ty }}>{children}</motion.div>;
 }

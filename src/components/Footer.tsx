@@ -4,15 +4,15 @@ import { Mail, Phone, MapPin, Linkedin, Twitter, Send } from "lucide-react";
 const logoImg = "/assets/580b420df5b154f221ec7c41675f5b0aacc3ab71.png";
 const printerImage = "/assets/2a1e023a513c7d26c4ee4c0148d9ac3f2a7e5096.png";
 import { useState } from "react";
-import { ImageWithFallback } from "./figma/ImageWithFallback";
+import Image from "next/image";
 const officeImage = "/assets/e2f5791ec0044e74da59fc1b390b9293b94bcca8.png";
 const officeImage2 = "/assets/531a0680e7d362118c9aba54d033229647beedd6.png";
 import { img } from "../lib/imgParams";
 
 const photos = [
-  { src: officeImage, alt: "Unser Office in München", caption: "das Office", rotate: "-3deg" },
-  { src: printerImage, alt: "Unsere Roboter-Technologie", caption: "die Plotter", rotate: "2deg" },
-  { src: officeImage2, alt: "Unser Arbeitsbereich in München", caption: "die Werkstatt", rotate: "-1deg" },
+  { src: officeImage, w: 3904, h: 2928, alt: "Unser Office in München", caption: "das Office", rotate: "-3deg" },
+  { src: printerImage, w: 836, h: 585, alt: "Unsere Roboter-Technologie", caption: "die Plotter", rotate: "2deg" },
+  { src: officeImage2, w: 3300, h: 2254, alt: "Unser Arbeitsbereich in München", caption: "die Werkstatt", rotate: "-1deg" },
 ];
 
 const nav = [
@@ -40,7 +40,7 @@ export function Footer() {
   };
 
   return (
-    <footer className="relative bg-ink text-white">
+    <footer id="site-footer" className="relative bg-ink text-white">
       {/* Siegel */}
       <div className="absolute left-1/2 top-0 flex h-20 w-20 -translate-x-1/2 -translate-y-1/2 items-center justify-center rounded-full border-2 border-ink bg-paper shadow-[4px_4px_0_0_var(--color-plum)]">
         <img src={img(logoImg, 160)} alt="" className="h-14 w-14 object-contain" />
@@ -163,9 +163,12 @@ export function Footer() {
               className="rounded-[4px] bg-paper p-2.5 pb-10 shadow-xl transition-transform duration-300 hover:rotate-0 hover:scale-[1.02]"
               style={{ rotate: p.rotate }}
             >
-              <ImageWithFallback
-                src={img(p.src, 900)}
+              <Image
+                src={p.src}
                 alt={p.alt}
+                width={p.w}
+                height={p.h}
+                sizes="(min-width: 640px) 33vw, 100vw"
                 className="aspect-[4/3] w-full rounded-[2px] object-cover"
               />
               <figcaption className="mt-2 text-center font-hand text-2xl text-ink">
