@@ -87,7 +87,7 @@ export function DevPricing() {
               const body = (
                 <>
                   {tier.highlighted ? (
-                    <span className="absolute -top-5 left-1/2 -translate-x-1/2 rotate-[-3deg] whitespace-nowrap rounded-full border-2 border-ink bg-sun px-4 py-1 font-hand text-xl shadow-[3px_3px_0_0_var(--color-ink)]">
+                    <span className="absolute -top-5 left-1/2 -translate-x-1/2 rotate-[-3deg] whitespace-nowrap rounded-full border border-ink/10 bg-sun px-4 py-1 font-hand text-xl shadow-soft">
                       am beliebtesten
                     </span>
                   ) : null}
@@ -119,10 +119,10 @@ export function DevPricing() {
                   </span>
                 </>
               );
-              const cls = `relative flex flex-col rounded-[22px] border-2 border-ink p-8 text-left transition-transform duration-300 hover:-translate-y-1 ${
+              const cls = `relative flex flex-col rounded-3xl border border-ink/10 p-8 text-left transition-transform duration-300 hover:-translate-y-1 ${
                 tier.highlighted
-                  ? "z-10 bg-plum text-white shadow-[10px_10px_0_0_var(--color-ink)] lg:-my-6 lg:py-12"
-                  : `bg-white shadow-[6px_6px_0_0_var(--color-ink)]`
+                  ? "z-10 bg-plum text-white shadow-lift lg:-my-6 lg:py-12"
+                  : `bg-white shadow-lift`
               }`;
               return (
                 <Reveal key={tier.name} delay={i * 0.1} className="h-full">
@@ -169,7 +169,7 @@ export function DevPricing() {
                 <Send className="h-4 w-4" />
                 Kostenlosen Test-Brief senden
               </a>
-              <button onClick={openCalModal} className="btn-ink bg-transparent text-white !border-white !shadow-[4px_4px_0_0_#fff] hover:bg-white/10">
+              <button onClick={openCalModal} className="btn-ink btn-ghost-light">
                 Kennenlerngespräch buchen
               </button>
             </div>

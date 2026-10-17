@@ -54,8 +54,8 @@ export function CodeTabs() {
   }
 
   return (
-    <div className="overflow-hidden rounded-[22px] border-2 border-ink bg-white shadow-[6px_6px_0_0_var(--color-ink)]">
-      <div className="flex items-center justify-between gap-3 border-b-2 border-ink bg-paper px-3 py-2.5 sm:px-4">
+    <div className="overflow-hidden rounded-3xl border border-ink/10 bg-white shadow-lift">
+      <div className="flex items-center justify-between gap-3 border-b border-ink/10 bg-paper px-3 py-2.5 sm:px-4">
         <div role="tablist" aria-label="Programmiersprache" className="flex gap-1.5">
           {(Object.keys(snippets) as Lang[]).map((l) => (
             <button
@@ -73,7 +73,7 @@ export function CodeTabs() {
         </div>
         <button
           onClick={copy}
-          className="flex items-center gap-1.5 rounded-full border-2 border-ink bg-white px-3 py-1.5 text-xs font-bold transition-colors hover:bg-sun"
+          className="flex items-center gap-1.5 rounded-full border border-ink/10 bg-white px-3 py-1.5 text-xs font-bold transition-colors hover:bg-sun"
           aria-label="Code kopieren"
         >
           {copied ? <Check className="h-3.5 w-3.5 text-emerald-600" /> : <Copy className="h-3.5 w-3.5" />}

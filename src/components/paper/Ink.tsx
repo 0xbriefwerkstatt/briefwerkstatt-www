@@ -176,8 +176,8 @@ export function Wave({
 /** Kleines Label über Überschriften. */
 export function Eyebrow({ children, className = "" }: { children: ReactNode; className?: string }) {
   return (
-    <p className={`inline-flex items-center gap-2 text-xs font-bold uppercase tracking-[0.18em] text-plum ${className}`}>
-      <span className="h-[2px] w-6 rounded bg-plum" />
+    <p className={`inline-flex items-center gap-2 rounded-full border border-plum/15 bg-plum/[0.06] px-3.5 py-1.5 text-xs font-semibold uppercase tracking-[0.14em] text-plum ${className}`}>
+      <span className="h-1.5 w-1.5 rounded-full bg-plum" />
       {children}
     </p>
   );

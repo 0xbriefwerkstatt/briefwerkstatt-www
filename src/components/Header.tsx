@@ -41,8 +41,8 @@ export function Header() {
       <header
         className={`sticky top-0 z-50 transition-all duration-500 ${
           scrolled || isMenuOpen
-            ? "border-b-2 border-ink bg-paper/90 backdrop-blur-md"
-            : "border-b-2 border-transparent bg-paper"
+            ? "border-b border-ink/[0.06] bg-paper/70 shadow-[0_8px_30px_-18px_rgba(27,19,32,.25)] backdrop-blur-xl backdrop-saturate-150"
+            : "border-b border-transparent bg-paper"
         }`}
       >
         <div

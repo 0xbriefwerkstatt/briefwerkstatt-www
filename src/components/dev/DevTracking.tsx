@@ -45,7 +45,7 @@ export function DevTracking() {
               {flow.map((step, i) => (
                 <Reveal key={step.num} delay={i * 0.12}>
                   <div className="relative">
-                    <span className="absolute -left-16 top-0 flex h-12 w-12 items-center justify-center rounded-full border-2 border-ink bg-sun font-hand text-2xl font-bold shadow-[3px_3px_0_0_var(--color-ink)]">
+                    <span className="absolute -left-16 top-0 flex h-12 w-12 items-center justify-center rounded-full border border-ink/10 bg-sun font-hand text-2xl font-bold shadow-soft">
                       {step.num}
                     </span>
                     <h3 className="font-display text-2xl font-semibold tracking-tight">{step.title}</h3>
@@ -58,7 +58,7 @@ export function DevTracking() {
 
           <Reveal delay={0.15} className="lg:sticky lg:top-28">
             <div className="relative">
-              <div className="absolute -right-3 -top-5 z-10 rotate-[6deg] rounded-full border-2 border-ink bg-mint px-4 py-1.5 font-hand text-xl shadow-[3px_3px_0_0_var(--color-ink)]">
+              <div className="absolute -right-3 -top-5 z-10 rotate-[6deg] rounded-full border border-ink/10 bg-mint px-4 py-1.5 font-hand text-xl shadow-soft">
                 in Echtzeit, ohne Polling
               </div>
               <WebhookLog />

@@ -38,7 +38,7 @@ export function DevHero() {
 
   return (
     <>
-      <section className="paper-grain relative overflow-hidden bg-paper text-ink">
+      <section className="paper-grain aurora relative overflow-hidden bg-paper text-ink">
         <div className="relative mx-auto grid max-w-7xl items-center gap-10 px-4 pb-20 pt-10 sm:px-8 lg:grid-cols-[1.05fr_1fr] lg:gap-6 lg:pb-28 lg:pt-14">
           {/* Copy */}
           <div className="relative z-10 max-w-2xl">
@@ -46,7 +46,7 @@ export function DevHero() {
               initial={{ opacity: 0, y: 10 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6 }}
-              className="mb-7 inline-flex items-center gap-2 rounded-full border-2 border-ink bg-white px-4 py-1.5 font-mono text-xs text-ink shadow-[3px_3px_0_0_var(--color-ink)]"
+              className="mb-7 inline-flex items-center gap-2 rounded-full border border-ink/10 bg-white px-4 py-1.5 font-mono text-xs text-ink shadow-soft"
             >
               <span className="h-2 w-2 animate-pulse rounded-full bg-emerald-500" />
               pen_plotter × webhooks
@@ -144,7 +144,7 @@ export function DevHero() {
             >
               <Depth x={sx} y={sy} d={26}>
                 <div className="float" style={{ ["--r" as string]: "-5deg" }}>
-                  <div className="relative overflow-hidden rounded-[6px] border-2 border-ink bg-white shadow-[8px_10px_0_0_var(--color-ink)]">
+                  <div className="relative overflow-hidden rounded-[6px] border border-ink/10 bg-white shadow-lift">
                     <Image
                       src={letterImg}
                       alt="Echter, mit Füller geschriebener Brief der Briefwerkstatt"
@@ -167,7 +167,7 @@ export function DevHero() {
             >
               <Depth x={sx} y={sy} d={40}>
               <div className="float" style={{ ["--r" as string]: "4deg", animationDelay: "-4s" }}>
-                <div className="relative rounded-[6px] border-2 border-ink bg-white p-2 pb-9 shadow-[6px_6px_0_0_var(--color-ink)]">
+                <div className="relative rounded-[6px] border border-ink/10 bg-white p-2 pb-9 shadow-lift">
                   <Image
                     src={plotterImg}
                     alt="Pen-Plotter schreibt einen Brief in München"
@@ -190,14 +190,14 @@ export function DevHero() {
               {...pop(0.8)}
               className="absolute right-[-4px] top-0 z-20 sm:right-[-24px]"
             >
-              <div className="float rounded-xl border-2 border-ink bg-ink px-3.5 py-2.5 font-mono text-[11px] text-white shadow-[4px_4px_0_0_var(--color-plum)]">
+              <div className="float rounded-xl border border-white/10 bg-ink px-3.5 py-2.5 font-mono text-[11px] text-white shadow-glow">
                 <span className="text-white/50">POST </span>/v1/letters
                 <div className="text-emerald-300">200 OK · 12 ms</div>
               </div>
             </motion.div>
             <motion.div {...pop(1)} className="absolute bottom-[30%] left-[-6px] z-20 sm:left-[-28px]">
               <div
-                className="float rounded-xl border-2 border-ink bg-white px-3.5 py-2.5 font-mono text-[11px] shadow-[4px_4px_0_0_var(--color-ink)]"
+                className="float rounded-xl border border-ink/10 bg-white px-3.5 py-2.5 font-mono text-[11px] shadow-soft"
                 style={{ animationDelay: "-3s" }}
               >
                 <span className="text-ink-soft">webhook:</span>
@@ -216,7 +216,7 @@ export function DevHero() {
         </div>
 
         {/* Laufband */}
-        <div className="relative border-y-2 border-ink bg-plum py-3.5 text-white">
+        <div className="relative border-y border-ink/10 bg-plum py-3.5 text-white">
           <div className="flex w-max marquee">
             {[...ticker, ...ticker, ...ticker, ...ticker].map((t, i) => (
               <span key={i} className="flex items-center gap-6 px-6 font-display text-lg italic sm:text-xl">
@@ -240,7 +240,7 @@ export function DevHero() {
 
 function Envelope() {
   return (
-    <svg viewBox="0 0 360 240" className="h-auto w-full drop-shadow-[6px_8px_0_var(--color-ink)]" role="img" aria-label="Handadressiertes Kuvert">
+    <svg viewBox="0 0 360 240" className="h-auto w-full drop-shadow-[0_24px_30px_rgba(27,19,32,.16)]" role="img" aria-label="Handadressiertes Kuvert">
       <rect x="2" y="2" width="356" height="236" rx="10" fill="#fbf7ee" stroke="var(--color-ink)" strokeWidth="3" />
       <path d="M4 8 L180 128 L356 8" fill="none" stroke="var(--color-ink)" strokeWidth="2.5" strokeLinejoin="round" opacity=".35" />
       {/* Briefmarke */}

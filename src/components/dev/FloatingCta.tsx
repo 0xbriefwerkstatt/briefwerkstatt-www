@@ -68,14 +68,13 @@ export function FloatingCta() {
       <AnimatePresence>
         {show && !dismissed ? (
           <motion.div
-            initial={{ opacity: 0, y: 120, rotate: 8 }}
-            animate={{ opacity: 1, y: 0, rotate: -2 }}
-            exit={{ opacity: 0, y: 120, rotate: 8 }}
+            initial={{ opacity: 0, y: 40, scale: 0.96 }}
+            animate={{ opacity: 1, y: 0, scale: 1 }}
+            exit={{ opacity: 0, y: 40, scale: 0.96 }}
             transition={{ type: "spring", stiffness: 160, damping: 18 }}
             className="fixed bottom-5 right-5 z-40 hidden w-[250px] lg:block"
           >
-            <div className="relative rounded-[6px] border-2 border-ink bg-paper p-5 pt-6 shadow-[6px_6px_0_0_var(--color-ink)]">
-              <span className="tape -top-3 left-1/2 -translate-x-1/2 rotate-[3deg]" />
+            <div className="relative rounded-2xl border border-ink/10 bg-white/90 p-5 pt-6 backdrop-blur shadow-lift">
               <button
                 onClick={dismiss}
                 className="absolute right-2.5 top-2.5 rounded-full p-1 text-ink-soft hover:bg-ink/5 hover:text-ink"
@@ -112,7 +111,7 @@ export function FloatingCta() {
             animate={{ y: 0 }}
             exit={{ y: 100 }}
             transition={{ type: "spring", stiffness: 220, damping: 26 }}
-            className="fixed inset-x-0 bottom-0 z-40 border-t-2 border-ink bg-paper/95 px-4 pb-[max(0.75rem,env(safe-area-inset-bottom))] pt-3 backdrop-blur lg:hidden"
+            className="fixed inset-x-0 bottom-0 z-40 border-t border-ink/10 bg-paper/95 px-4 pb-[max(0.75rem,env(safe-area-inset-bottom))] pt-3 backdrop-blur lg:hidden"
           >
             <div className="flex gap-3">
               <button onClick={toPlayground} className="btn-ink btn-plum btn-sm flex-1">

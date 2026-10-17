@@ -35,7 +35,7 @@ export function DevGuide() {
               {["50+ Tech Due Diligences", "VC & Private Equity"].map((t) => (
                 <span
                   key={t}
-                  className="rounded-full border-2 border-ink bg-white px-4 py-1.5 text-sm font-semibold"
+                  className="rounded-full border border-ink/10 bg-white px-4 py-1.5 text-sm font-semibold"
                 >
                   {t}
                 </span>
@@ -47,7 +47,7 @@ export function DevGuide() {
           <Reveal delay={0.15} className="relative">
             <div className="relative mx-auto max-w-lg rotate-[1.5deg]">
               <span className="tape -top-3 left-1/2 z-10 -translate-x-1/2 rotate-[3deg]" />
-              <div className="ruled relative rounded-[4px] border-2 border-ink bg-[#fffdf8] px-8 pb-10 pt-8 shadow-[10px_10px_0_0_var(--color-ink)] sm:px-10">
+              <div className="ruled relative rounded-[4px] border border-ink/10 bg-[#fffdf8] px-8 pb-10 pt-8 shadow-lift sm:px-10">
                 <div className="absolute bottom-0 left-12 top-0 w-[2px] bg-red-300/70" />
                 <div className="flex items-center justify-between pl-6">
                   <span className="font-mono text-xs uppercase tracking-widest text-ink-soft">

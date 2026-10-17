@@ -64,13 +64,13 @@ export function DevShift() {
                 ) : null}
                 <div className="relative mx-auto h-[200px] w-[200px]">
                   <div
-                    className="absolute inset-0 rounded-[46%_54%_52%_48%/55%_45%_55%_45%] border-2 border-ink bg-white shadow-[6px_6px_0_0_var(--color-ink)]"
+                    className="absolute inset-0 rounded-[46%_54%_52%_48%/55%_45%_55%_45%] border border-ink/10 bg-white shadow-lift"
                     style={{ rotate: `${(i - 1) * 6}deg` }}
                   />
                   <div className="absolute inset-6">
                     <Art />
                   </div>
-                  <span className="absolute -right-2 -top-2 flex h-12 w-12 items-center justify-center rounded-full border-2 border-ink bg-sun font-hand text-2xl font-bold">
+                  <span className="absolute -right-2 -top-2 flex h-12 w-12 items-center justify-center rounded-full border border-ink/10 bg-sun font-hand text-2xl font-bold">
                     {num}
                   </span>
                 </div>
@@ -89,8 +89,8 @@ export function DevShift() {
             {proof.map((p, i) => (
               <div
                 key={p.label}
-                className="rounded-[18px] border-2 border-ink bg-white p-5 text-center shadow-[4px_4px_0_0_var(--color-ink)]"
-                style={{ rotate: `${(i % 2 ? 1 : -1) * 0.8}deg` }}
+                className="rounded-2xl border border-ink/10 bg-white p-5 text-center shadow-soft"
+
               >
                 <dt className="sr-only">{p.label}</dt>
                 <dd className="font-display text-4xl font-semibold tracking-tight text-plum sm:text-5xl">

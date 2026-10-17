@@ -42,7 +42,7 @@ export function Footer() {
   return (
     <footer id="site-footer" className="relative bg-ink text-white">
       {/* Siegel */}
-      <div className="absolute left-1/2 top-0 flex h-20 w-20 -translate-x-1/2 -translate-y-1/2 items-center justify-center rounded-full border-2 border-ink bg-paper shadow-[4px_4px_0_0_var(--color-plum)]">
+      <div className="absolute left-1/2 top-0 flex h-20 w-20 -translate-x-1/2 -translate-y-1/2 items-center justify-center rounded-full border border-ink/10 bg-paper shadow-glow">
         <img src={img(logoImg, 160)} alt="" className="h-14 w-14 object-contain" />
       </div>
 
@@ -65,12 +65,12 @@ export function Footer() {
               value={email}
               onChange={(e) => setEmail(e.target.value)}
               required
-              className="flex-1 rounded-full border-2 border-white/20 bg-white/5 px-5 py-3.5 text-white outline-none transition-colors placeholder:text-white/40 focus:border-[#e08bd0]"
+              className="flex-1 rounded-full border border-white/20 bg-white/5 px-5 py-3.5 text-white outline-none transition-colors placeholder:text-white/40 focus:border-[#e08bd0]"
             />
             <button
               type="submit"
               disabled={isSubmitting}
-              className="btn-ink btn-plum btn-sm !border-white !shadow-[3px_3px_0_0_#fff]"
+              className="btn-ink btn-plum btn-sm"
             >
               <Send className="h-4 w-4" />
               {isSubmitting ? "Senden …" : "Abonnieren"}
@@ -101,7 +101,7 @@ export function Footer() {
               {[Linkedin, Twitter].map((Icon, i) => (
                 <span
                   key={i}
-                  className="flex h-10 w-10 items-center justify-center rounded-full border-2 border-white/20 text-white/70 transition-colors hover:border-white hover:text-white"
+                  className="flex h-10 w-10 items-center justify-center rounded-full border border-white/20 text-white/70 transition-colors hover:border-white hover:text-white"
                 >
                   <Icon className="h-4 w-4" />
                 </span>
@@ -140,7 +140,7 @@ export function Footer() {
                 </span>
               </div>
             </div>
-            <div className="mt-6 overflow-hidden rounded-2xl border-2 border-white/15">
+            <div className="mt-6 overflow-hidden rounded-2xl border border-white/15">
               <iframe
                 src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d10648.189956553542!2d11.586236876891728!3d48.15508407124344!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x479e75f7f6f6f6f7%3A0x3f3f3f3f3f3f3f3f!2sTengstra%C3%9Fe%2026%2C%2080798%20M%C3%BCnchen!5e0!3m2!1sde!2sde!4v1234567890123!5m2!1sde!2sde&z=12"
                 width="100%"

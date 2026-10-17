@@ -65,7 +65,7 @@ export function WebhookLog() {
   const vis = (n: number) => (shown > n ? "opacity-100" : "opacity-0");
 
   return (
-    <div ref={ref} className="overflow-hidden rounded-[22px] border-2 border-ink bg-ink shadow-[10px_10px_0_0_var(--color-plum)]">
+    <div ref={ref} className="overflow-hidden rounded-3xl border border-white/10 bg-ink shadow-glow">
       <div className="flex items-center justify-between border-b border-white/10 px-5 py-3.5 font-mono text-xs">
         <span className="text-white/60">webhook_delivery.log</span>
         <span className="flex items-center gap-3">

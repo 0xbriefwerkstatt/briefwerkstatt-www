@@ -110,9 +110,9 @@ export function FAQ() {
                 role="tab"
                 aria-selected={i === active}
                 onClick={() => setActive(i)}
-                className={`rounded-full border-2 border-ink px-4 py-2 text-sm font-semibold transition-all ${
+                className={`rounded-full border border-ink/10 px-4 py-2 text-sm font-semibold transition-all ${
                   i === active
-                    ? "bg-ink text-white shadow-[3px_3px_0_0_var(--color-plum)]"
+                    ? "bg-ink text-white shadow-glow"
                     : "bg-white hover:bg-sun"
                 }`}
               >
@@ -121,7 +121,7 @@ export function FAQ() {
             ))}
           </div>
 
-          <div className="relative mt-12 hidden rotate-[-1.5deg] rounded-[4px] border-2 border-ink bg-white p-6 shadow-[5px_5px_0_0_var(--color-ink)] lg:block">
+          <div className="relative mt-12 hidden rounded-2xl border border-ink/10 bg-white p-6 shadow-lift lg:block">
             <span className="tape -top-3 left-8 rotate-[-5deg]" />
             <p className="font-hand text-2xl leading-snug">
               Noch eine technische Frage? Schreib direkt an unsere API-Entwickler:
@@ -137,12 +137,12 @@ export function FAQ() {
             <AccordionPrimitive.Item
               key={faq.question}
               value={`q-${index}`}
-              className="group rounded-[18px] border-2 border-ink bg-white shadow-[4px_4px_0_0_var(--color-ink)] transition-shadow data-[state=open]:shadow-[6px_6px_0_0_var(--color-plum)]"
+              className="group rounded-2xl border border-ink/10 bg-white shadow-soft transition-shadow data-[state=open]:shadow-glow"
             >
               <AccordionPrimitive.Header>
                 <AccordionPrimitive.Trigger className="flex w-full items-center justify-between gap-6 px-6 py-5 text-left font-display text-lg font-semibold leading-snug outline-none focus-visible:underline sm:text-xl">
                   {faq.question}
-                  <span className="flex h-9 w-9 shrink-0 items-center justify-center rounded-full border-2 border-ink bg-paper transition-all duration-300 group-data-[state=open]:rotate-45 group-data-[state=open]:bg-plum group-data-[state=open]:text-white">
+                  <span className="flex h-9 w-9 shrink-0 items-center justify-center rounded-full border border-ink/10 bg-paper transition-all duration-300 group-data-[state=open]:rotate-45 group-data-[state=open]:bg-plum group-data-[state=open]:text-white">
                     <Plus className="h-4 w-4" strokeWidth={3} />
                   </span>
                 </AccordionPrimitive.Trigger>

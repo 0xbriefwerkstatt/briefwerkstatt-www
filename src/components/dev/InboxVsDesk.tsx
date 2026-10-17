@@ -59,7 +59,7 @@ export function InboxVsDesk() {
     <div ref={ref} className="grid gap-8 lg:grid-cols-2 lg:gap-10">
       {/* Postfach */}
       <div className="ink-card overflow-hidden">
-        <div className="flex items-center justify-between border-b-2 border-ink bg-paper px-5 py-3.5">
+        <div className="flex items-center justify-between border-b border-ink/10 bg-paper px-5 py-3.5">
           <span className="flex items-center gap-2 text-sm font-bold">
             <Inbox className="h-4 w-4" /> Posteingang deines Leads
           </span>
@@ -80,7 +80,7 @@ export function InboxVsDesk() {
                 style={{ animation: "bw-mail-in .45s cubic-bezier(.22,1,.36,1)" }}
               >
                 <span
-                  className={`flex h-9 w-9 shrink-0 items-center justify-center rounded-full border-2 border-ink text-xs font-bold ${
+                  className={`flex h-9 w-9 shrink-0 items-center justify-center rounded-full border border-ink/10 text-xs font-bold ${
                     m.mine ? "bg-plum text-white" : "bg-paper-2"
                   }`}
                 >
@@ -100,14 +100,14 @@ export function InboxVsDesk() {
           })}
           <div className="pointer-events-none absolute inset-x-0 bottom-0 h-16 bg-gradient-to-t from-white to-transparent" />
         </ul>
-        <p className="border-t-2 border-ink bg-paper px-5 py-3 text-sm text-ink-soft">
+        <p className="border-t border-ink/10 bg-paper px-5 py-3 text-sm text-ink-soft">
           Löschen geht schneller als Lesen. <strong className="text-ink">Auch bei deiner Mail.</strong>
         </p>
       </div>
 
       {/* Schreibtisch */}
       <div className="ink-card relative overflow-hidden bg-paper-2">
-        <div className="flex items-center justify-between border-b-2 border-ink bg-paper px-5 py-3.5">
+        <div className="flex items-center justify-between border-b border-ink/10 bg-paper px-5 py-3.5">
           <span className="flex items-center gap-2 text-sm font-bold">
             <MailOpen className="h-4 w-4" /> Schreibtisch deines Leads
           </span>
@@ -129,15 +129,15 @@ export function InboxVsDesk() {
               inView ? "rotate-[-4deg] opacity-100" : "translate-y-8 rotate-[-14deg] opacity-0"
             }`}
           >
-            <div className="overflow-hidden rounded-[3px] border-2 border-ink bg-white shadow-[6px_8px_0_0_rgba(27,19,32,.85)]">
+            <div className="overflow-hidden rounded-[3px] border border-ink/10 bg-white shadow-lift">
               <Image src={letterImg} alt="" width={2409} height={3435} sizes="210px" className="h-auto w-full" />
             </div>
           </div>
-          <div className="absolute bottom-5 right-5 rotate-[-6deg] rounded-[4px] border-2 border-ink bg-sun px-3 py-1.5 font-hand text-2xl shadow-[3px_3px_0_0_var(--color-ink)]">
+          <div className="absolute bottom-5 right-5 rotate-[-6deg] rounded-[4px] border border-ink/10 bg-sun px-3 py-1.5 font-hand text-2xl shadow-soft">
             liegt da. wird gelesen.
           </div>
         </div>
-        <p className="border-t-2 border-ink bg-paper px-5 py-3 text-sm text-ink-soft">
+        <p className="border-t border-ink/10 bg-paper px-5 py-3 text-sm text-ink-soft">
           Kein Spam-Filter, kein Wegklicken: <strong className="text-ink">98 % Öffnungsrate.</strong>
         </p>
       </div>

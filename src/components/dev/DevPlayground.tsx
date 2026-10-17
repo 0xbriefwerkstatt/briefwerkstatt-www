@@ -132,7 +132,7 @@ export function DevPlayground() {
             return (
               <li key={label} className="flex flex-1 items-center gap-2 last:flex-none">
                 <span
-                  className={`flex h-9 w-9 shrink-0 items-center justify-center rounded-full border-2 border-ink font-hand text-lg transition-colors ${
+                  className={`flex h-9 w-9 shrink-0 items-center justify-center rounded-full border border-ink/10 font-hand text-lg transition-colors ${
                     done ? "bg-plum text-white" : active ? "bg-sun" : "bg-white"
                   }`}
                 >
@@ -152,7 +152,7 @@ export function DevPlayground() {
           </HandNote>
           <div
             id="playground"
-            className="scroll-mt-28 overflow-hidden rounded-[22px] border-2 border-ink bg-ink text-white shadow-[10px_10px_0_0_var(--color-plum)]"
+            className="scroll-mt-28 overflow-hidden rounded-3xl border border-white/10 bg-ink text-white shadow-glow"
           >
             {/* Title bar */}
             <div className="flex items-center justify-between border-b border-white/10 px-5 py-3.5">
@@ -191,7 +191,7 @@ export function DevPlayground() {
                   <button
                     onClick={generate}
                     disabled={!canType}
-                    className="btn-ink btn-plum btn-sm !border-white !shadow-[3px_3px_0_0_#fff]"
+                    className="btn-ink btn-plum btn-sm"
                   >
                     {phase === "generating" ? (
                       <Loader2 className="h-4 w-4 animate-spin" />
@@ -287,7 +287,7 @@ export function DevPlayground() {
                       <button
                         onClick={sendPreview}
                         disabled={!emailValid}
-                        className="btn-ink btn-plum btn-sm !border-white !shadow-[3px_3px_0_0_#fff]"
+                        className="btn-ink btn-plum btn-sm"
                       >
                         {`Preview anfordern`}
                       </button>
