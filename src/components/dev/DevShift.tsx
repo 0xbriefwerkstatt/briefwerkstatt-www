@@ -28,7 +28,6 @@ const steps = [
 
 const proof = [
   { to: 98, suffix: " %", label: "Öffnungsrate bei handadressierten Briefen" },
-  { to: 95, suffix: " %", label: "erkennen im Blindtest keinen Unterschied zur Hand" },
   { to: 1, suffix: "", label: "Werktag bis zur Post, bei Bestellung bis 12 Uhr" },
   { to: 0, suffix: "", label: "Mindestauflage. Ein Brief reicht." },
 ];
@@ -85,7 +84,7 @@ export function DevShift() {
         </div>
 
         <Reveal className="mt-24">
-          <dl className="mx-auto grid max-w-5xl grid-cols-2 gap-4 sm:gap-6 lg:grid-cols-4">
+          <dl className="mx-auto grid max-w-4xl gap-4 sm:grid-cols-3 sm:gap-6">
             {proof.map((p, i) => (
               <div
                 key={p.label}

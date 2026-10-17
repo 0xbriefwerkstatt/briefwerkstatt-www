@@ -9,6 +9,7 @@ import { CalModal, openCalModal } from "./CalModal";
 import { img } from "../lib/imgParams";
 
 const links = [
+  { href: "ki", label: "KI × Roboter" },
   { href: "use-cases", label: "So funktioniert's" },
   { href: "so-gehts", label: "Playground" },
   { href: "roi-tracking", label: "Tracking" },
@@ -72,12 +73,12 @@ export function Header() {
             </span>
           </a>
 
-          <nav className="hidden items-center gap-1 lg:flex">
+          <nav className="hidden items-center gap-0.5 xl:flex">
             {links.map((l) => (
               <a
                 key={l.href}
                 href={`${base}#${l.href}`}
-                className="group relative px-3 py-2 text-[15px] font-medium text-ink"
+                className="group relative whitespace-nowrap px-3 py-2 text-[15px] font-medium text-ink"
               >
                 {l.label}
                 <svg
@@ -92,7 +93,7 @@ export function Header() {
             ))}
           </nav>
 
-          <div className="hidden items-center gap-5 lg:flex">
+          <div className="hidden items-center gap-5 xl:flex">
             <a href={`${base}#so-gehts`} className="text-[15px] font-medium text-ink hover:text-plum">
               Sandbox
             </a>
@@ -102,7 +103,7 @@ export function Header() {
           </div>
 
           <button
-            className="btn-ink btn-paper !p-2.5 lg:hidden"
+            className="btn-ink btn-paper !p-2.5 xl:hidden"
             onClick={() => setIsMenuOpen(!isMenuOpen)}
             aria-label={isMenuOpen ? "Menü schließen" : "Menü öffnen"}
             aria-expanded={isMenuOpen}
@@ -118,7 +119,7 @@ export function Header() {
         />
 
         {isMenuOpen && (
-          <div className="paper-grain absolute inset-x-0 top-full h-[100dvh] overflow-y-auto bg-paper lg:hidden">
+          <div className="paper-grain absolute inset-x-0 top-full h-[100dvh] overflow-y-auto bg-paper xl:hidden">
             <nav className="flex flex-col px-6 pb-10 pt-6">
               {links.map((l, i) => (
                 <a
