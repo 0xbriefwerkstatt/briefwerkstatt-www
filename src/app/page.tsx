@@ -9,7 +9,7 @@ import { DevTracking } from "@/components/dev/DevTracking";
 import { DevPricing } from "@/components/dev/DevPricing";
 import { FAQ } from "@/components/FAQ";
 import { Footer } from "@/components/Footer";
-import { Wave } from "@/components/paper/Ink";
+
 import { FloatingCta } from "@/components/dev/FloatingCta";
 import { AiStudio } from "@/components/dev/AiStudio";
 import { MachineBento } from "@/components/dev/MachineBento";
@@ -28,11 +28,8 @@ export default function Home() {
         <DevHero />
         <DevPain />
         <DevGuide />
-        <Wave from="var(--color-paper-2)" to="var(--color-paper)" />
         <AiStudio />
-        <Wave from="var(--color-paper)" to="var(--color-blush)" flip />
         <DevShift />
-        <Wave from="var(--color-blush)" to="var(--color-paper)" flip />
         <MachineBento />
         <DevPlayground />
         <DevTracking />

@@ -36,7 +36,7 @@ export function MachineBento() {
             <h2 className="mt-5 font-display text-4xl font-medium leading-[1.05] tracking-tight sm:text-5xl lg:text-6xl">
               Ein Roboter mit Füller.
               <br />
-              <span className="bg-gradient-to-r from-[#e08bd0] via-sun to-[#e08bd0] bg-clip-text font-hand text-[1.15em] text-transparent">
+              <span className="bg-gradient-to-r from-[#e08bd0] via-sun to-[#e08bd0] bg-clip-text italic text-transparent">
                 Keine Druckerpatrone.
               </span>
             </h2>

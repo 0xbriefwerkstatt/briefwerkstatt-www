@@ -1,7 +1,7 @@
 "use client";
 
 import { useEffect, useRef, useState } from "react";
-import { Eyebrow, HandNote, Reveal } from "../paper/Ink";
+import { Eyebrow, Reveal } from "../paper/Ink";
 import { SamplePackageModal } from "../SamplePackageModal";
 import { CodeTabs } from "./CodeTabs";
 import { Loader2, Mail, PackageOpen, RotateCcw, Sparkles } from "lucide-react";
@@ -103,14 +103,14 @@ export function DevPlayground() {
   return (
     <section
       id="so-gehts"
-      className="paper-grain relative scroll-mt-20 bg-paper py-24 text-ink lg:py-32"
+      className="relative scroll-mt-20 bg-white py-24 text-ink lg:py-32"
     >
       <div className="relative mx-auto max-w-5xl px-4 sm:px-8">
         <Reveal className="text-center">
           <Eyebrow>Der API-Playground</Eyebrow>
           <h2 className="mt-5 font-display text-4xl font-medium leading-[1.05] tracking-tight sm:text-5xl lg:text-6xl">
             Integriere echte Hardware in Sekunden.{" "}
-            <span className="font-hand text-[1.15em] text-plum">Teste es direkt hier.</span>
+            <span className="italic text-plum">Teste es direkt hier.</span>
           </h2>
           <p className="mx-auto mt-6 max-w-2xl text-lg leading-relaxed text-ink-soft sm:text-xl">
             Wirf stundenlanges API-Wälzen über Bord. Gib einfach deinen Prompt ein, generiere den
@@ -132,8 +132,8 @@ export function DevPlayground() {
             return (
               <li key={label} className="flex flex-1 items-center gap-2 last:flex-none">
                 <span
-                  className={`flex h-9 w-9 shrink-0 items-center justify-center rounded-full border border-ink/10 font-hand text-lg transition-colors ${
-                    done ? "bg-plum text-white" : active ? "bg-sun" : "bg-white"
+                  className={`flex h-9 w-9 shrink-0 items-center justify-center rounded-full border border-ink/10 font-mono text-sm font-semibold transition-colors ${
+                    done ? "bg-plum text-white" : active ? "bg-ink text-white" : "bg-white"
                   }`}
                 >
                   {done ? "✓" : i + 1}
@@ -147,9 +147,6 @@ export function DevPlayground() {
 
         {/* Terminal */}
         <Reveal delay={0.1} className="relative mt-10">
-          <HandNote className="absolute -left-40 top-6 hidden xl:block" arrow="down-right" rotate={-8}>
-            probier&apos;s aus!
-          </HandNote>
           <div
             id="playground"
             className="scroll-mt-28 overflow-hidden rounded-3xl border border-white/10 bg-ink text-white shadow-glow"
@@ -334,7 +331,7 @@ export function DevPlayground() {
             <h3 className="font-display text-3xl font-semibold tracking-tight">
               Oder direkt aus deinem Code.
             </h3>
-            <p className="font-hand text-2xl text-plum">ein Request, ein Brief.</p>
+            <p className="text-sm text-ink-soft">Ein Request, ein Brief.</p>
           </div>
           <CodeTabs />
         </Reveal>

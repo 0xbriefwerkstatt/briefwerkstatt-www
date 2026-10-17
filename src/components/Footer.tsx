@@ -10,9 +10,9 @@ const officeImage2 = "/assets/531a0680e7d362118c9aba54d033229647beedd6.png";
 import { img } from "../lib/imgParams";
 
 const photos = [
-  { src: officeImage, w: 3904, h: 2928, alt: "Unser Office in München", caption: "das Office", rotate: "-3deg" },
-  { src: printerImage, w: 836, h: 585, alt: "Unsere Roboter-Technologie", caption: "die Plotter", rotate: "2deg" },
-  { src: officeImage2, w: 3300, h: 2254, alt: "Unser Arbeitsbereich in München", caption: "die Werkstatt", rotate: "-1deg" },
+  { src: officeImage, w: 3904, h: 2928, alt: "Unser Office in München", caption: "das Office", },
+  { src: printerImage, w: 836, h: 585, alt: "Unsere Roboter-Technologie", caption: "die Plotter", },
+  { src: officeImage2, w: 3300, h: 2254, alt: "Unser Arbeitsbereich in München", caption: "die Werkstatt", },
 ];
 
 const nav = [
@@ -41,17 +41,13 @@ export function Footer() {
 
   return (
     <footer id="site-footer" className="relative bg-ink text-white">
-      {/* Siegel */}
-      <div className="absolute left-1/2 top-0 flex h-20 w-20 -translate-x-1/2 -translate-y-1/2 items-center justify-center rounded-full border border-ink/10 bg-paper shadow-glow">
-        <img src={img(logoImg, 160)} alt="" className="h-14 w-14 object-contain" />
-      </div>
 
-      <div className="mx-auto max-w-7xl px-4 pb-10 pt-24 sm:px-8">
+      <div className="mx-auto max-w-7xl px-4 pb-10 pt-20 sm:px-8">
         {/* Newsletter */}
         <div className="mx-auto max-w-xl text-center">
           <h3 className="font-display text-3xl font-medium tracking-tight sm:text-4xl">
             Post von uns,{" "}
-            <span className="font-hand text-[1.2em] text-[#e08bd0]">ab und zu.</span>
+            <span className="italic text-[#e08bd0]">ab und zu.</span>
           </h3>
           <p className="mt-3 text-white/60">
             Exklusive Tipps, Erfolgsgeschichten und Angebote direkt in Ihr Postfach.
@@ -160,8 +156,7 @@ export function Footer() {
           {photos.map((p) => (
             <figure
               key={p.caption}
-              className="rounded-[4px] bg-paper p-2.5 pb-10 shadow-xl transition-transform duration-300 hover:rotate-0 hover:scale-[1.02]"
-              style={{ rotate: p.rotate }}
+              className="rounded-2xl bg-white/[0.04] p-2 pb-3 ring-1 ring-white/10 transition-colors hover:bg-white/[0.07]"
             >
               <Image
                 src={p.src}
@@ -169,9 +164,9 @@ export function Footer() {
                 width={p.w}
                 height={p.h}
                 sizes="(min-width: 640px) 33vw, 100vw"
-                className="aspect-[4/3] w-full rounded-[2px] object-cover"
+                className="aspect-[4/3] w-full rounded-xl object-cover"
               />
-              <figcaption className="mt-2 text-center font-hand text-2xl text-ink">
+              <figcaption className="mt-2.5 text-center text-sm font-medium text-white/60">
                 {p.caption}
               </figcaption>
             </figure>

@@ -85,7 +85,7 @@ export function FloatingCta() {
               <p className="font-display text-lg font-semibold leading-snug">
                 Lust auf deinen ersten Brief?
               </p>
-              <p className="mt-1 font-hand text-lg leading-tight text-plum">
+              <p className="mt-1 text-sm text-ink-soft">
                 Sandbox, ohne Kreditkarte.
               </p>
               <button onClick={toPlayground} className="btn-ink btn-plum btn-sm mt-4 w-full">

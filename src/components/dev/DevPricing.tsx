@@ -2,7 +2,7 @@
 
 import { ArrowRight, Check, Send } from "lucide-react";
 import { CalModal, openCalModal } from "../CalModal";
-import { Eyebrow, Reveal, Scribble, Wave } from "../paper/Ink";
+import { Eyebrow, Reveal } from "../paper/Ink";
 
 const tiers = [
   {
@@ -54,13 +54,13 @@ const tiers = [
 export function DevPricing() {
   return (
     <>
-      <section id="pricing" className="paper-grain relative scroll-mt-20 bg-paper-2 py-24 text-ink lg:py-32">
+      <section id="pricing" className="relative scroll-mt-20 bg-white py-24 text-ink lg:py-32">
         <div className="mx-auto max-w-7xl px-4 sm:px-8">
           {/* Preis des Nichthandelns */}
           <Reveal className="mx-auto max-w-4xl text-center">
             <Eyebrow>Der Preis des Nichthandelns</Eyebrow>
             <h2 className="mt-5 font-display text-4xl font-medium leading-[1.05] tracking-tight sm:text-5xl lg:text-6xl">
-              Hör auf, Runway im <Scribble variant="circle">Spam-Filter</Scribble> zu verbrennen.
+              Hör auf, Runway im <span className="text-plum">Spam-Filter</span> zu verbrennen.
             </h2>
             <p className="mx-auto mt-6 max-w-3xl text-lg leading-relaxed text-ink-soft sm:text-xl">
               Jeder Tag, an dem du versuchst, im übersättigten digitalen Raum lauter zu schreien als die
@@ -72,7 +72,7 @@ export function DevPricing() {
 
           {/* Pricing */}
           <Reveal className="mx-auto mt-24 max-w-2xl text-center">
-            <p className="font-hand text-3xl text-plum">Pay-as-you-go</p>
+            <p className="text-xs font-semibold uppercase tracking-[0.14em] text-plum">Pay-as-you-go</p>
             <h3 className="mt-1 font-display text-3xl font-semibold tracking-tight sm:text-4xl">
               API-Pricing ohne Setup-Gebühren.
             </h3>
@@ -87,7 +87,7 @@ export function DevPricing() {
               const body = (
                 <>
                   {tier.highlighted ? (
-                    <span className="absolute -top-5 left-1/2 -translate-x-1/2 rotate-[-3deg] whitespace-nowrap rounded-full border border-ink/10 bg-sun px-4 py-1 font-hand text-xl shadow-soft">
+                    <span className="absolute -top-5 left-1/2 -translate-x-1/2 whitespace-nowrap rounded-full bg-ink px-3.5 py-1 text-xs font-semibold text-white shadow-soft">
                       am beliebtesten
                     </span>
                   ) : null}
@@ -143,21 +143,16 @@ export function DevPricing() {
       </section>
 
       {/* Abschluss-CTA */}
-      <Wave from="var(--color-paper-2)" to="var(--color-plum)" />
-      <section id="final-cta" className="relative overflow-hidden bg-plum pb-24 pt-10 text-white lg:pb-32">
-        <svg aria-hidden viewBox="0 0 200 200" className="absolute -left-16 top-10 h-64 w-64 opacity-15">
-          <circle cx="100" cy="100" r="80" fill="none" stroke="#fff" strokeWidth="3" strokeDasharray="6 10" />
-        </svg>
-        <svg aria-hidden viewBox="0 0 200 200" className="absolute -right-10 bottom-0 h-80 w-80 opacity-15">
-          <path d="M20 160 C 60 40, 140 40, 180 160" fill="none" stroke="#fff" strokeWidth="3" />
-        </svg>
+      <section id="final-cta" className="bg-white px-3 pb-6 sm:px-5">
+        <div className="relative overflow-hidden rounded-[40px] bg-plum py-24 text-white lg:py-32">
+        <div className="absolute -top-40 left-1/2 h-[420px] w-[800px] -translate-x-1/2 rounded-full bg-plum-2 blur-[120px]" />
         <div className="relative mx-auto max-w-5xl px-4 text-center sm:px-8">
           <Reveal>
             <h2 className="font-display text-5xl font-medium leading-[1.02] tracking-tight sm:text-6xl lg:text-[5.5rem]">
               Dein Code.{" "}
               <span className="whitespace-nowrap">
                 In Tinte{" "}
-                <span className="inline-block rotate-[-8deg] font-hand text-[1.25em] text-sun">+</span>{" "}
+                <span className="italic text-[#f3b6e4]">+</span>{" "}
                 Papier.
               </span>
             </h2>
@@ -173,13 +168,13 @@ export function DevPricing() {
                 Kennenlerngespräch buchen
               </button>
             </div>
-            <p className="mt-6 font-hand text-2xl text-white/80">
+            <p className="mt-6 text-sm text-white/60">
               Sandbox · keine Kreditkarte · Preview in 2 Min.
             </p>
           </Reveal>
         </div>
+        </div>
       </section>
-      <Wave from="var(--color-plum)" to="var(--color-paper)" flip />
 
       <CalModal />
     </>

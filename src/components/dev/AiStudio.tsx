@@ -99,14 +99,14 @@ export function AiStudio() {
   const step = phase === "idle" || phase === "think" ? 1 : phase === "stream" ? 2 : 3;
 
   return (
-    <section id="ki" className="relative scroll-mt-20 overflow-hidden bg-paper py-24 text-ink lg:py-32">
+    <section id="ki" className="relative scroll-mt-20 overflow-hidden bg-white py-24 text-ink lg:py-32">
       <div className="mx-auto max-w-7xl px-4 sm:px-8">
         <Reveal className="mx-auto max-w-3xl text-center">
           <Eyebrow>KI × Roboter</Eyebrow>
           <h2 className="mt-5 font-display text-4xl font-medium leading-[1.05] tracking-tight sm:text-5xl lg:text-6xl">
             Die KI schreibt den Text.
             <br />
-            <span className="font-hand text-[1.15em] text-plum">Der Roboter die Handschrift.</span>
+            <span className="italic text-plum">Der Roboter die Handschrift.</span>
           </h2>
           <p className="mx-auto mt-6 max-w-2xl text-lg leading-relaxed text-ink-soft sm:text-xl">
             Aus deinen CRM-Daten entsteht pro Lead ein eigener Brief, keine Serienmail mit
@@ -188,7 +188,7 @@ export function AiStudio() {
 
           {/* 03 Tinte */}
           <Panel n="03" title="Roboter-Tinte" icon={<PenTool className="h-3.5 w-3.5" />} active={step >= 3}>
-            <div className="ruled relative min-h-[260px] rounded-2xl bg-[#fffdf8] px-5 pb-5 pt-[10px] ring-1 ring-ink/5">
+            <div className="relative min-h-[260px] rounded-2xl bg-[#fffdf8] px-5 pb-5 pt-[10px] ring-1 ring-ink/5">
               <div key={`${lead}-${run}`} className="font-hand text-[21px] leading-8 text-fountain sm:text-[22px]">
                 {cur.lines.map((l, i) => (
                   <div key={i}>
@@ -241,7 +241,7 @@ export function AiStudio() {
           ))}
         </div>
 
-        <p className="mt-8 text-center font-hand text-2xl text-plum">
+        <p className="mt-8 text-center text-sm text-ink-soft">
           Ein Lead, ein Brief. Kein Text kommt zweimal vor.
         </p>
       </div>

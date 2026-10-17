@@ -5,19 +5,7 @@ import { motion } from "motion/react";
 import { PlotterStage } from "./PlotterStage";
 import type { ReactNode } from "react";
 import { CalModal, openCalModal } from "../CalModal";
-import { HandNote, Scribble } from "../paper/Ink";
 
-const ticker = [
-  "Echte Tinte",
-  "KI-personalisiert",
-  "Roboter-Handschrift",
-  "REST API + Webhooks",
-  "QR-Tracking pro Brief",
-  "DSGVO-konform",
-  "Keine Mindestauflage",
-  "Made in München",
-  "98 % Öffnungsrate",
-];
 
 function scrollToPlayground() {
   document.getElementById("playground")?.scrollIntoView({ behavior: "smooth", block: "start" });
@@ -26,8 +14,8 @@ function scrollToPlayground() {
 export function DevHero() {
   return (
     <>
-      <section className="paper-grain aurora relative overflow-hidden bg-paper text-ink">
-        <div className="relative mx-auto grid max-w-7xl items-center gap-10 px-4 pb-20 pt-10 sm:px-8 lg:grid-cols-[1.05fr_1fr] lg:gap-12 lg:pb-28 lg:pt-14">
+      <section className="relative overflow-hidden bg-paper text-ink">
+        <div className="relative mx-auto grid max-w-7xl items-center gap-10 px-4 pb-24 pt-10 sm:px-8 lg:grid-cols-[1.05fr_1fr] lg:gap-12 lg:pb-28 lg:pt-14">
           {/* Copy */}
           <div className="relative z-10 max-w-2xl">
             <motion.div
@@ -45,14 +33,14 @@ export function DevHero() {
                 <Word key={w} i={i}>{w}</Word>
               ))}{" "}
               <Word i={2}>
-                <Scribble>30 Sekunden</Scribble>
+                <span className="text-plum">30 Sekunden</span>
               </Word>{" "}
               {["ungeteilte", "Aufmerksamkeit"].map((w, i) => (
                 <Word key={w} i={3 + i}>{w}</Word>
               ))}{" "}
               {["deiner", "idealen", "Kunden."].map((w, i) => (
                 <Word key={w} i={5 + i}>
-                  <span className="font-hand text-[1.1em] font-bold leading-[0.9] text-plum">{w}</span>
+                  <span className="italic text-plum">{w}</span>
                 </Word>
               ))}
             </h1>
@@ -111,32 +99,13 @@ export function DevHero() {
               <span className="text-ink-soft">POST </span>/v1/letters
               <div className="font-semibold text-emerald-600">200 OK · queued</div>
             </div>
-            <div className="float absolute -right-2 bottom-[18%] z-20 hidden rounded-2xl bg-white px-3.5 py-2.5 font-mono text-[11px] shadow-lift ring-1 ring-ink/5 sm:block lg:-right-8" style={{ animationDelay: "-3s" }}>
+            <div className="absolute -right-2 bottom-[18%] z-20 hidden rounded-2xl bg-white px-3.5 py-2.5 font-mono text-[11px] shadow-lift ring-1 ring-ink/5 sm:block lg:-right-8">
               <span className="text-ink-soft">webhook:</span>
               <div className="font-semibold text-ink">letter.scanned ✓</div>
             </div>
-            <HandNote className="absolute -bottom-14 left-4 z-20 hidden sm:block" arrow="none" rotate={-4}>
-              <span className="block">kein Font. echte Tinte, live geschrieben.</span>
-            </HandNote>
           </motion.div>
         </div>
 
-        {/* Laufband */}
-        <div className="relative border-y border-ink/10 bg-plum py-3.5 text-white">
-          <div className="flex w-max marquee">
-            {[...ticker, ...ticker, ...ticker, ...ticker].map((t, i) => (
-              <span key={i} className="flex items-center gap-6 px-6 font-display text-lg italic sm:text-xl">
-                {t}
-                <svg viewBox="0 0 20 20" className="h-4 w-4 text-sun" aria-hidden>
-                  <path
-                    d="M10 0 L12 8 L20 10 L12 12 L10 20 L8 12 L0 10 L8 8 Z"
-                    fill="currentColor"
-                  />
-                </svg>
-              </span>
-            ))}
-          </div>
-        </div>
       </section>
 
       <CalModal />

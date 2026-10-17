@@ -73,7 +73,7 @@ export function CodeTabs() {
         </div>
         <button
           onClick={copy}
-          className="flex items-center gap-1.5 rounded-full border border-ink/10 bg-white px-3 py-1.5 text-xs font-bold transition-colors hover:bg-sun"
+          className="flex items-center gap-1.5 rounded-full border border-ink/10 bg-white px-3 py-1.5 text-xs font-bold transition-colors hover:border-ink/25"
           aria-label="Code kopieren"
         >
           {copied ? <Check className="h-3.5 w-3.5 text-emerald-600" /> : <Copy className="h-3.5 w-3.5" />}

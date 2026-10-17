@@ -1,4 +1,4 @@
-import { CountUp, Eyebrow, Reveal, Scribble } from "../paper/Ink";
+import { CountUp, Eyebrow, Reveal } from "../paper/Ink";
 import { InboxVsDesk } from "./InboxVsDesk";
 
 const stats = [
@@ -12,7 +12,7 @@ const stats = [
     value: <CountUp to={0.3} decimals={1} suffix=" %" />,
     label: "Spam-Cutoff bei Google",
     note: "Ab dieser Beschwerderate landet deine Domain auf der Blocklist. Ein schlechter Tag reicht.",
-    bg: "bg-blush",
+    bg: "bg-white",
   },
   {
     value: <CountUp to={50} suffix="+" />,
@@ -30,7 +30,7 @@ export function DevPain() {
           <Eyebrow>Das Problem</Eyebrow>
           <h2 className="mt-5 font-display text-4xl font-medium leading-[1.08] tracking-tight sm:text-5xl lg:text-[3.6rem]">
             Es wird digital immer schwerer, B2B-Kunden zu erreichen.{" "}
-            <span className="font-hand text-[1.15em] text-plum">Und du kannst nichts dafür.</span>
+            <span className="italic text-plum">Und du kannst nichts dafür.</span>
           </h2>
           <p className="mx-auto mt-6 max-w-2xl text-lg leading-relaxed text-ink-soft sm:text-xl">
             Aktuelle Daten zeigen: Die durchschnittliche Reply-Rate bei B2B-Cold-Mails liegt bei unter
@@ -56,22 +56,22 @@ export function DevPain() {
         </div>
 
         <Reveal className="mt-24">
-          <p className="mb-8 text-center font-hand text-3xl text-plum sm:text-4xl">
+          <p className="mb-8 text-center font-display text-2xl italic text-ink-soft sm:text-3xl">
             Zwei Wege zum selben Lead. Rate mal, welcher ankommt.
           </p>
           <InboxVsDesk />
         </Reveal>
 
         <Reveal className="mx-auto mt-24 max-w-4xl">
-          <div className="relative rounded-3xl border border-ink/10 bg-sun/70 p-8 shadow-lift sm:p-12">
+          <div className="relative rounded-3xl border border-ink/10 bg-white p-8 shadow-soft sm:p-12">
             <p className="font-display text-xl leading-relaxed sm:text-2xl">
               Jeder kann heute für 20 Euro tausende Spam-Mails generieren. Das digitale Postfach deiner
               Zielgruppe ist ein Schlachtfeld. Wenn dein idealer Kunde jeden Tag 50 Pitches reflexartig
               löscht, geht dein überragendes Produkt einfach unter.
             </p>
-            <p className="mt-6 font-hand text-3xl leading-tight text-plum-ink sm:text-[2.1rem]">
+            <p className="mt-6 font-display text-xl italic leading-relaxed text-plum sm:text-2xl">
               Ich verstehe deinen Frust: Du bist Gründer. Du willst{" "}
-              <Scribble color="var(--color-ink)">bauen und wachsen</Scribble>, nicht gegen Spam-Filter
+              bauen und wachsen, nicht gegen Spam-Filter
               kämpfen.
             </p>
           </div>

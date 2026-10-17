@@ -75,7 +75,7 @@ export function InboxVsDesk() {
               <li
                 key={m.id}
                 className={`flex items-center gap-3 overflow-hidden border-ink/10 px-5 transition-all duration-500 ${
-                  m.mine ? "bg-blush" : "bg-white"
+                  m.mine ? "bg-plum/[0.05]" : "bg-white"
                 } ${out ? "h-0 -translate-x-full border-b-0 opacity-0" : "h-[66px] translate-x-0 border-b opacity-100"}`}
                 style={{ animation: "bw-mail-in .45s cubic-bezier(.22,1,.36,1)" }}
               >
@@ -93,7 +93,7 @@ export function InboxVsDesk() {
                   </span>
                 </span>
                 {m.mine ? (
-                  <span className="shrink-0 font-hand text-xl text-plum">← deins</span>
+                  <span className="shrink-0 text-xs font-semibold text-plum">← deins</span>
                 ) : null}
               </li>
             );
@@ -126,14 +126,14 @@ export function InboxVsDesk() {
           <span className="absolute left-8 top-10 h-24 w-24 rounded-full border-[6px] border-[#8a5a2b]/20" />
           <div
             className={`absolute left-1/2 top-1/2 w-[46%] max-w-[210px] -translate-x-1/2 -translate-y-1/2 transition-all duration-1000 ${
-              inView ? "rotate-[-4deg] opacity-100" : "translate-y-8 rotate-[-14deg] opacity-0"
+              inView ? "rotate-[-2deg] opacity-100" : "translate-y-8 rotate-[-6deg] opacity-0"
             }`}
           >
             <div className="overflow-hidden rounded-[3px] border border-ink/10 bg-white shadow-lift">
               <Image src={letterImg} alt="" width={2409} height={3435} sizes="210px" className="h-auto w-full" />
             </div>
           </div>
-          <div className="absolute bottom-5 right-5 rotate-[-6deg] rounded-[4px] border border-ink/10 bg-sun px-3 py-1.5 font-hand text-2xl shadow-soft">
+          <div className="absolute bottom-5 right-5 rounded-full bg-white px-3.5 py-1.5 text-xs font-semibold text-ink shadow-lift">
             liegt da. wird gelesen.
           </div>
         </div>

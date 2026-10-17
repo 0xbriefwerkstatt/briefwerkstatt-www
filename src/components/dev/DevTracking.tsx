@@ -1,4 +1,4 @@
-import { Eyebrow, Reveal, Scribble } from "../paper/Ink";
+import { Eyebrow, Reveal } from "../paper/Ink";
 import { WebhookLog } from "./WebhookLog";
 
 const flow = [
@@ -21,7 +21,7 @@ const flow = [
 
 export function DevTracking() {
   return (
-    <section id="roi-tracking" className="relative scroll-mt-20 bg-white py-24 text-ink lg:py-32">
+    <section id="roi-tracking" className="relative scroll-mt-20 bg-paper py-24 text-ink lg:py-32">
       <div className="mx-auto max-w-7xl px-4 sm:px-8">
         <div className="grid items-start gap-16 lg:grid-cols-[1fr_1.1fr] lg:gap-20">
           <div>
@@ -29,10 +29,10 @@ export function DevTracking() {
               <Eyebrow>Tracking</Eyebrow>
               <h2 className="mt-5 font-display text-4xl font-medium leading-[1.05] tracking-tight sm:text-5xl lg:text-[3.4rem]">
                 Jeder Scan ist ein Event.{" "}
-                <span className="font-hand text-[1.15em] text-plum">Jeder Brief messbar.</span>
+                <span className="italic text-plum">Jeder Brief messbar.</span>
               </h2>
               <p className="mt-6 text-lg leading-relaxed text-ink-soft sm:text-xl">
-                Beweise <Scribble>schwarz auf weiß</Scribble>, welche Kampagne funktioniert. Die Daten
+                Beweise <span className="text-plum">schwarz auf weiß</span>, welche Kampagne funktioniert. Die Daten
                 fließen zurück in dein Dashboard, dein CRM, deine Analytics.
               </p>
             </Reveal>
@@ -45,7 +45,7 @@ export function DevTracking() {
               {flow.map((step, i) => (
                 <Reveal key={step.num} delay={i * 0.12}>
                   <div className="relative">
-                    <span className="absolute -left-16 top-0 flex h-12 w-12 items-center justify-center rounded-full border border-ink/10 bg-sun font-hand text-2xl font-bold shadow-soft">
+                    <span className="absolute -left-16 top-0 flex h-12 w-12 items-center justify-center rounded-full border border-ink/10 bg-white font-mono text-sm font-semibold text-plum shadow-soft">
                       {step.num}
                     </span>
                     <h3 className="font-display text-2xl font-semibold tracking-tight">{step.title}</h3>
@@ -58,7 +58,7 @@ export function DevTracking() {
 
           <Reveal delay={0.15} className="lg:sticky lg:top-28">
             <div className="relative">
-              <div className="absolute -right-3 -top-5 z-10 rotate-[6deg] rounded-full border border-ink/10 bg-mint px-4 py-1.5 font-hand text-xl shadow-soft">
+              <div className="absolute -right-3 -top-5 z-10 rounded-full border border-emerald-200 bg-emerald-50 px-3.5 py-1.5 text-xs font-semibold text-emerald-700 shadow-soft">
                 in Echtzeit, ohne Polling
               </div>
               <WebhookLog />

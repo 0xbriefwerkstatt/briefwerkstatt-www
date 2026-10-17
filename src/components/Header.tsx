@@ -55,7 +55,7 @@ export function Header() {
             <img
               src={img(logoImg, 160)}
               alt="Briefwerkstatt Logo"
-              className={`object-contain transition-all duration-500 group-hover:rotate-[-8deg] ${
+              className={`object-contain transition-all duration-500 ${
                 scrolled ? "h-10 w-10" : "h-12 w-12 sm:h-16 sm:w-16"
               }`}
             />
@@ -64,7 +64,7 @@ export function Header() {
                 Die Briefwerkstatt
               </span>
               <span
-                className={`font-hand text-lg text-plum transition-all duration-500 ${
+                className={`text-xs font-medium tracking-wide text-ink-soft transition-all duration-500 ${
                   scrolled ? "h-0 opacity-0" : "h-5 opacity-100"
                 }`}
               >
@@ -119,7 +119,7 @@ export function Header() {
         />
 
         {isMenuOpen && (
-          <div className="paper-grain absolute inset-x-0 top-full h-[100dvh] overflow-y-auto bg-paper xl:hidden">
+          <div className="absolute inset-x-0 top-full h-[100dvh] overflow-y-auto bg-paper xl:hidden">
             <nav className="flex flex-col px-6 pb-10 pt-6">
               {links.map((l, i) => (
                 <a
@@ -142,7 +142,7 @@ export function Header() {
               >
                 Kennenlerngespräch buchen
               </button>
-              <p className="mt-8 font-hand text-2xl text-plum">
+              <p className="mt-8 text-sm text-ink-soft">
                 Tengstraße 26 · München
               </p>
             </nav>

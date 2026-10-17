@@ -91,13 +91,13 @@ export function FAQ() {
   const section = faqSections[active];
 
   return (
-    <section id="faq" className="paper-grain relative scroll-mt-20 bg-paper py-24 text-ink lg:py-32">
+    <section id="faq" className="relative scroll-mt-20 bg-paper py-24 text-ink lg:py-32">
       <div className="mx-auto grid max-w-7xl gap-12 px-4 sm:px-8 lg:grid-cols-[0.8fr_1.2fr] lg:gap-20">
         <div className="lg:sticky lg:top-28 lg:self-start">
           <Eyebrow>FAQ</Eyebrow>
           <h2 className="mt-5 font-display text-4xl font-medium leading-[1.05] tracking-tight sm:text-5xl">
             Häufig gestellte{" "}
-            <span className="font-hand text-[1.2em] text-plum">Fragen</span>
+            <span className="italic text-plum">Fragen</span>
           </h2>
           <p className="mt-5 text-lg text-ink-soft">
             Alles, was Sie über die Briefwerkstatt wissen müssen.
@@ -113,7 +113,7 @@ export function FAQ() {
                 className={`rounded-full border border-ink/10 px-4 py-2 text-sm font-semibold transition-all ${
                   i === active
                     ? "bg-ink text-white shadow-glow"
-                    : "bg-white hover:bg-sun"
+                    : "bg-white hover:border-ink/25"
                 }`}
               >
                 {s.category}
@@ -122,8 +122,7 @@ export function FAQ() {
           </div>
 
           <div className="relative mt-12 hidden rounded-2xl border border-ink/10 bg-white p-6 shadow-lift lg:block">
-            <span className="tape -top-3 left-8 rotate-[-5deg]" />
-            <p className="font-hand text-2xl leading-snug">
+            <p className="font-medium leading-snug">
               Noch eine technische Frage? Schreib direkt an unsere API-Entwickler:
             </p>
             <a href="mailto:dev@briefwerkstatt.com" className="mt-2 inline-block font-mono text-sm font-semibold text-plum underline decoration-2 underline-offset-4">

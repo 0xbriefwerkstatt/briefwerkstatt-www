@@ -1,6 +1,6 @@
 "use client";
 
-import { CountUp, Eyebrow, InkArrow, Reveal, Scribble, useInView } from "../paper/Ink";
+import { CountUp, Eyebrow, Reveal, useInView } from "../paper/Ink";
 
 const steps = [
   {
@@ -36,14 +36,14 @@ export function DevShift() {
   const [pathRef, pathInView] = useInView<HTMLDivElement>(0.3);
 
   return (
-    <section id="use-cases" className="relative scroll-mt-20 bg-blush py-24 text-ink lg:py-32">
+    <section id="use-cases" className="relative scroll-mt-20 bg-paper py-24 text-ink lg:py-32">
       <div className="mx-auto max-w-7xl px-4 sm:px-8">
         <Reveal className="mx-auto max-w-3xl text-center">
           <Eyebrow>Die Lösung</Eyebrow>
           <h2 className="mt-5 font-display text-4xl font-medium leading-[1.05] tracking-tight sm:text-5xl lg:text-6xl">
             Ein physischer Payload.
             <br />
-            <span className="font-hand text-[1.2em] text-plum">Ein digitaler Klick.</span>
+            <span className="italic text-plum">Ein digitaler Klick.</span>
           </h2>
           <p className="mx-auto mt-6 max-w-2xl text-lg leading-relaxed text-ink-soft sm:text-xl">
             Verlasse das Online-Schlachtfeld. Wir geben dir die Infrastruktur, um deine Kunden physisch
@@ -55,12 +55,6 @@ export function DevShift() {
           <div className="grid gap-16 lg:grid-cols-3 lg:gap-10">
             {steps.map(({ num, kicker, title, text, Art }, i) => (
               <Reveal key={num} delay={i * 0.15} className="relative text-center">
-                {i < 2 ? (
-                  <InkArrow
-                    flip={i === 1}
-                    className="absolute -right-[22%] top-12 hidden h-16 w-32 lg:block"
-                  />
-                ) : null}
                 <div className="relative mx-auto h-[200px] w-[200px]">
                   <div
                     className="absolute inset-0 rounded-[46%_54%_52%_48%/55%_45%_55%_45%] border border-ink/10 bg-white shadow-lift"
@@ -69,11 +63,11 @@ export function DevShift() {
                   <div className="absolute inset-6">
                     <Art />
                   </div>
-                  <span className="absolute -right-2 -top-2 flex h-12 w-12 items-center justify-center rounded-full border border-ink/10 bg-sun font-hand text-2xl font-bold">
+                  <span className="absolute -right-2 -top-2 flex h-12 w-12 items-center justify-center rounded-full border border-ink/10 bg-white font-mono text-sm font-semibold text-plum shadow-soft">
                     {num}
                   </span>
                 </div>
-                <p className="mt-8 font-hand text-2xl text-plum">{kicker}</p>
+                <p className="mt-8 text-xs font-semibold uppercase tracking-[0.14em] text-plum">{kicker}</p>
                 <h3 className="mt-1 font-display text-2xl font-semibold tracking-tight sm:text-[1.7rem]">
                   {title}
                 </h3>
@@ -104,7 +98,7 @@ export function DevShift() {
         <Reveal className="mt-14">
           <div className="ink-card mx-auto flex max-w-4xl flex-col items-center justify-between gap-5 p-6 sm:flex-row sm:px-8">
             <p className="font-display text-xl font-medium sm:text-2xl">
-              Offline-Sympathie trifft auf <Scribble>glasklaren ROI</Scribble>.
+              Offline-Sympathie trifft auf <span className="text-plum">glasklaren ROI</span>.
             </p>
             <code className="rounded-lg bg-ink px-4 py-2.5 font-mono text-xs text-emerald-300 sm:text-sm">
               letter.sent → letter.scanned → webhook(200)
